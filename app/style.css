@@ -43,13 +43,13 @@
   color-scheme: light;
 }
 :root[data-tema="noite"] {
-  /* noite em preto e branco: cinza-grafite liso para ler, retícula só nos boxes */
-  --papel: #1E1E1D;
-  --papel-2: #111111;
-  --tinta: #ECECE8;
-  --cinza: #A9A9A3;
-  --fio: #3B3B39;
-  --rubrica: #ECECE8;
+  /* noite em preto e branco: cinza médio liso para ler (menos cansativo que o preto), retícula só nos boxes */
+  --papel: #383836;
+  --papel-2: #2A2A28;
+  --tinta: #EDEDE8;
+  --cinza: #BABAB3;
+  --fio: #50504C;
+  --rubrica: #EDEDE8;
   color-scheme: dark;
 }
 :root[data-tema="noite"] body { font-weight: 380; }
@@ -58,13 +58,13 @@
 :root[data-tema="noite"] .mesma-semana,
 :root[data-tema="noite"] .indice,
 :root[data-tema="noite"] .navegacao {
-  background-color: #111111;
-  background-image: radial-gradient(circle, rgba(236, 236, 232, 0.15) 0.7px, transparent 1px);
+  background-color: #2A2A28;
+  background-image: radial-gradient(circle, rgba(237, 237, 232, 0.15) 0.7px, transparent 1px);
   background-size: 3.4px 3.4px;
 }
 :root[data-tema="noite"] .cabeca { padding-bottom: 18px; }
-:root[data-tema="noite"] .indice button { background: #1E1E1D; }
-:root[data-tema="noite"] .botao-principal { background: #ECECE8; color: #111111; }
+:root[data-tema="noite"] .indice button { background: #383836; }
+:root[data-tema="noite"] .botao-principal { background: #EDEDE8; color: #2A2A28; }
 :root[data-tema="noite"] .rubrica, :root[data-tema="noite"] .bloco-cab h2 { letter-spacing: 0.2em; }
 :root[data-tema="noite"] .item-dia .num, :root[data-tema="noite"] .verbete .aspas, :root[data-tema="noite"] .resumo::first-letter { color: #ECECE8; font-weight: 400; }
 :root[data-tema="noite"] .resumo strong { font-weight: 560; }
