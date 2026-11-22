@@ -43,12 +43,12 @@
   color-scheme: light;
 }
 :root[data-tema="noite"] {
-  /* tom jornal: papel branco com luz normal, boxes em cinza liso, tinta preta e uma terceira cor, o azul */
-  --papel: #FAFAF8;
-  --papel-2: #DCDCD8;
-  --tinta: #111111;
-  --cinza: #4A4A47;
-  --fio: #BDBDB8;
+  /* tom cinza: página em cinza frio, boxes mais claros (a luz fica neles), tinta preta e uma terceira cor, o azul */
+  --papel: #C5C7C9;
+  --papel-2: #D7D9DB;
+  --tinta: #0E0E0E;
+  --cinza: #3C3E41;
+  --fio: #9A9DA1;
   --rubrica: #1A3E96;
   color-scheme: light;
 }
@@ -57,11 +57,11 @@
 :root[data-tema="noite"] .mesma-semana,
 :root[data-tema="noite"] .indice,
 :root[data-tema="noite"] .navegacao {
-  background-color: #DCDCD8;
+  background-color: #D7D9DB;
 }
 :root[data-tema="noite"] .cabeca { padding-bottom: 18px; }
 :root[data-tema="noite"] .cabeca h1 { color: #141414; }
-:root[data-tema="noite"] .indice button { background: #FAFAF8; }
+:root[data-tema="noite"] .indice button { background: #C5C7C9; }
 :root[data-tema="noite"] .botao-principal { background: #1A3E96; color: #F1F1EC; }
 :root[data-tema="noite"] .botao-principal svg { stroke: #F1F1EC; }
 :root[data-tema="noite"] .navegacao a[aria-current="page"] { border-top-color: #1A3E96; }
