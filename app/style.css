@@ -43,31 +43,30 @@
   color-scheme: light;
 }
 :root[data-tema="noite"] {
-  /* noite em preto e branco: cinza médio liso para ler (menos cansativo que o preto), retícula só nos boxes */
-  --papel: #383836;
-  --papel-2: #2A2A28;
-  --tinta: #EDEDE8;
-  --cinza: #BABAB3;
-  --fio: #50504C;
-  --rubrica: #EDEDE8;
-  color-scheme: dark;
+  /* tom cinza: cinza de jornal com tinta preta e uma terceira cor, o azul */
+  --papel: #B3B3AE;
+  --papel-2: #A2A29D;
+  --tinta: #141414;
+  --cinza: #3A3A37;
+  --fio: #7A7A75;
+  --rubrica: #16357F;
+  color-scheme: light;
 }
-:root[data-tema="noite"] body { font-weight: 380; }
 :root[data-tema="noite"] .cabeca,
 :root[data-tema="noite"] .chamada-edicao,
 :root[data-tema="noite"] .mesma-semana,
 :root[data-tema="noite"] .indice,
 :root[data-tema="noite"] .navegacao {
-  background-color: #2A2A28;
-  background-image: radial-gradient(circle, rgba(237, 237, 232, 0.15) 0.7px, transparent 1px);
+  background-color: #A6A6A1;
+  background-image: radial-gradient(circle, rgba(20, 20, 20, 0.16) 0.75px, transparent 1.05px);
   background-size: 3.4px 3.4px;
 }
 :root[data-tema="noite"] .cabeca { padding-bottom: 18px; }
-:root[data-tema="noite"] .indice button { background: #383836; }
-:root[data-tema="noite"] .botao-principal { background: #EDEDE8; color: #2A2A28; }
-:root[data-tema="noite"] .rubrica, :root[data-tema="noite"] .bloco-cab h2 { letter-spacing: 0.2em; }
-:root[data-tema="noite"] .item-dia .num, :root[data-tema="noite"] .verbete .aspas, :root[data-tema="noite"] .resumo::first-letter { color: #ECECE8; font-weight: 400; }
-:root[data-tema="noite"] .resumo strong { font-weight: 560; }
+:root[data-tema="noite"] .cabeca h1 { color: #141414; }
+:root[data-tema="noite"] .indice button { background: #B3B3AE; }
+:root[data-tema="noite"] .botao-principal { background: #16357F; color: #F1F1EC; }
+:root[data-tema="noite"] .botao-principal svg { stroke: #F1F1EC; }
+:root[data-tema="noite"] .navegacao a[aria-current="page"] { border-top-color: #16357F; }
 
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -209,17 +208,14 @@ button { font: inherit; color: inherit; }
   @keyframes entra { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 }
 
-/* noite: retícula mais leve onde há texto corrido, e links sublinhados (sem a cor de rubrica) */
-:root[data-tema="noite"] .mesma-semana,
-:root[data-tema="noite"] .chamada-edicao {
-  background-image: radial-gradient(circle, rgba(236, 236, 232, 0.10) 0.7px, transparent 1px);
-}
+/* tom cinza: links em azul, sublinhados */
 :root[data-tema="noite"] .mesma-semana a,
 :root[data-tema="noite"] .capa-edicao .abertura a,
 :root[data-tema="noite"] .bloco a.link-rubrica,
 :root[data-tema="noite"] .linha a,
 :root[data-tema="noite"] .prazos a,
 :root[data-tema="noite"] .vazio a {
+  color: #16357F;
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
