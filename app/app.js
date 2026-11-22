@@ -74,10 +74,16 @@
     var noite = document.documentElement.dataset.tema === 'noite';
     return '<button type="button" class="icone" data-acao="tema" aria-label="' + (noite ? 'Modo diurno' : 'Modo noturno') + '">' + (noite ? ICONES.sol : ICONES.lua) + '</button>';
   }
+  function pintarBarra() {
+    var cor = document.documentElement.dataset.tema === 'noite' ? '#111111' : '#F4F0E6';
+    document.querySelectorAll('meta[name="theme-color"]').forEach(function (m) { m.setAttribute('content', cor); });
+  }
+  pintarBarra();
   function trocarTema() {
     var noite = document.documentElement.dataset.tema !== 'noite';
     if (noite) document.documentElement.dataset.tema = 'noite'; else delete document.documentElement.dataset.tema;
     try { localStorage.setItem('suplemento:tema', noite ? 'noite' : 'dia'); } catch (e) {}
+    pintarBarra();
     var b = document.querySelector('[data-acao="tema"]');
     if (b) b.outerHTML = botaoTema();
   }
@@ -149,7 +155,7 @@
 
   function cabeca(dataTxt, numTxt) {
     return '<header class="cabeca">' +
-      '<div class="linha-data"><span>' + esc(dataTxt) + '</span><span>' + esc(numTxt) + '</span></div>' +
+      '<div class="linha-data"><span>' + esc(dataTxt) + '</span><span class="topo-dir">' + (numTxt ? '<span>' + esc(numTxt) + '</span>' : '') + botaoTema() + '</span></div>' +
       '<h1>Suplemento</h1><p class="lema">“Quem desconfia, fica sábio”</p><div class="fio-duplo"></div></header>';
   }
 
