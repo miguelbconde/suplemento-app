@@ -2,54 +2,92 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://suplemento.substack.com/formato/edicao.schema.json",
   "title": "Edição do Suplemento",
-  "description": "Uma edição semanal do Suplemento. Fonte única: o app lê este arquivo e o HTML do Substack é gerado a partir dele. Formato 1.0, de 22/11/2026.",
+  "description": "Uma edição semanal do Suplemento. Fonte única: o app lê este arquivo e o HTML do Substack é gerado a partir dele. Formato 1.0, de 22/11/2026 (revisto no mesmo dia com o nº 2 real).",
   "type": "object",
   "additionalProperties": false,
-  "required": ["formato", "numero", "data", "titulo", "abertura", "secoes", "verbetes", "destaques_por_dia"],
+  "required": [
+    "formato",
+    "numero",
+    "data",
+    "titulo",
+    "abertura",
+    "secoes",
+    "verbetes",
+    "destaques_por_dia"
+  ],
   "properties": {
-    "formato": { "const": "1.0" },
-    "numero": { "type": "integer", "minimum": 1 },
-    "data": { "$ref": "#/$defs/data", "description": "Data de publicação (quarta-feira)." },
-    "titulo": { "type": "string", "description": "Sem o 'Nº N ·', que o app e o Substack acrescentam." },
-    "subtitulo": { "type": "string" },
-    "url_substack": { "type": "string", "format": "uri" },
-    "abertura": { "$ref": "#/$defs/texto", "description": "3 a 5 linhas, voz da redação." },
-
+    "formato": {
+      "const": "1.0"
+    },
+    "numero": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "data": {
+      "$ref": "#/$defs/data",
+      "description": "Data de publicação (quarta-feira)."
+    },
+    "titulo": {
+      "type": "string",
+      "description": "Sem o 'Nº N ·', que o app e o Substack acrescentam."
+    },
+    "subtitulo": {
+      "type": "string"
+    },
+    "url_substack": {
+      "type": "string",
+      "format": "uri"
+    },
+    "abertura": {
+      "$ref": "#/$defs/texto",
+      "description": "3 a 5 linhas, voz da redação."
+    },
     "secoes": {
       "type": "array",
       "description": "Ordem em que as seções aparecem na edição.",
-      "items": { "$ref": "#/$defs/secao" },
+      "items": {
+        "$ref": "#/$defs/secao"
+      },
       "minItems": 1
     },
-
     "verbetes": {
       "type": "array",
-      "items": { "$ref": "#/$defs/verbete" },
+      "items": {
+        "$ref": "#/$defs/verbete"
+      },
       "minItems": 1
     },
-
     "lancamentos": {
       "type": "array",
-      "items": { "$ref": "#/$defs/item_com_link" }
+      "items": {
+        "$ref": "#/$defs/item_com_link"
+      }
     },
     "prazos": {
       "type": "array",
       "description": "Bloco curto de prazos da edição. O mural completo tem arquivo próprio.",
-      "items": { "$ref": "#/$defs/prazo" }
+      "items": {
+        "$ref": "#/$defs/prazo"
+      }
     },
     "notas": {
       "type": "array",
       "description": "Notas da semana, 4 a 8.",
-      "items": { "$ref": "#/$defs/nota" }
+      "items": {
+        "$ref": "#/$defs/nota"
+      }
     },
-
     "destaques_por_dia": {
       "type": "object",
       "description": "Home do app: para cada dia (quarta a terça), até 5 ids de verbete, na ordem de exibição.",
-      "propertyNames": { "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+      "propertyNames": {
+        "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+      },
       "additionalProperties": {
         "type": "array",
-        "items": { "type": "string" },
+        "items": {
+          "type": "string"
+        },
         "minItems": 1,
         "maxItems": 5,
         "uniqueItems": true
@@ -58,106 +96,290 @@
       "maxProperties": 7
     }
   },
-
   "$defs": {
-    "data": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
-
+    "data": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
     "texto": {
       "type": "string",
       "description": "Markdown restrito: **negrito** (só nomes de pessoas centrais), *itálico* (veículos, obras, palavras estrangeiras) e [links](url). Sem sublinhado, sem títulos, sem listas."
     },
-
     "acesso_suplemento": {
-      "enum": ["aberto", "assinantes"],
+      "enum": [
+        "aberto",
+        "assinantes"
+      ],
       "description": "Quem vê no Substack. No app, assinante vê tudo."
     },
-
     "secao": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "nome", "acesso"],
+      "required": [
+        "id",
+        "nome",
+        "acesso"
+      ],
       "properties": {
         "id": {
-          "enum": ["repare", "para-ler-ja", "livros", "a-contrapelo", "achados", "para-ler-com-calma", "estante-academica", "lancamentos-e-prazos", "notas"]
+          "enum": [
+            "repare",
+            "para-ler-ja",
+            "livros",
+            "a-contrapelo",
+            "achados",
+            "para-ler-com-calma",
+            "estante-academica",
+            "lancamentos-e-prazos",
+            "notas"
+          ]
         },
-        "nome": { "type": "string" },
-        "linha_do_fio": { "type": "string", "description": "Linha opcional em itálico abaixo do nome (usada em A contrapelo)." },
-        "acesso": { "$ref": "#/$defs/acesso_suplemento" }
+        "nome": {
+          "type": "string"
+        },
+        "linha_do_fio": {
+          "type": "string",
+          "description": "Linha opcional em itálico abaixo do nome (usada em A contrapelo)."
+        },
+        "acesso": {
+          "$ref": "#/$defs/acesso_suplemento"
+        }
       }
     },
-
     "verbete": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "secao", "citacao", "resumo", "veiculo", "url", "lingua", "acesso_fonte", "regiao"],
+      "required": [
+        "id",
+        "secao",
+        "citacao",
+        "resumo",
+        "veiculo",
+        "url",
+        "lingua",
+        "acesso_fonte",
+        "regiao"
+      ],
       "properties": {
-        "id": { "type": "string", "pattern": "^n\\d+-\\d{2}$", "description": "Ex.: n2-01. Fixo depois de publicado." },
-        "secao": { "type": "string", "description": "id de uma das seções da edição." },
-        "citacao": { "type": "string", "description": "Em português, sem aspas (o app e o HTML põem as aspas)." },
+        "id": {
+          "type": "string",
+          "pattern": "^n\\d+-\\d{2}$",
+          "description": "Ex.: n2-01. Fixo depois de publicado."
+        },
+        "secao": {
+          "type": "string",
+          "description": "id de uma das seções da edição."
+        },
+        "citacao": {
+          "type": "string",
+          "description": "Em português, sem aspas (o app e o HTML põem as aspas)."
+        },
         "conferencia": {
           "type": "string",
           "description": "Trecho original da citação. Uso interno: não aparece no app nem no Substack."
         },
-        "resumo": { "$ref": "#/$defs/texto" },
-        "autor": { "type": "string", "description": "Autor do texto, como no registro ('—' se não houver)." },
-        "figura": { "type": "string", "description": "Figura ou tema central, para busca e registro." },
-        "veiculo": { "type": "string" },
-        "veiculo_complemento": { "type": "string", "description": "Afiliação da revista acadêmica ou tradutor: 'UFMG', 'tradução de Pedro Silva'." },
-        "url": { "type": "string", "format": "uri" },
-        "lingua": { "enum": ["pt", "en", "es", "fr", "it", "de"] },
-        "lingua_original": { "type": "string", "description": "Quando o texto é versão de um original em outra língua: 'árabe'." },
-        "acesso_fonte": { "enum": ["aberto", "parcial", "paywall"], "description": "Acesso ao texto original, não ao Suplemento." },
-        "nota_acesso": { "type": "string", "description": "Ex.: 'dois textos grátis por mês'." },
-        "area": { "type": "array", "items": { "type": "string" } },
-        "regiao": {
-          "enum": ["Brasil", "América Latina", "Caribe", "Áfricas", "Oriente Médio e mundo árabe", "Ásia", "Europa Ocidental", "Europa (margens)", "América do Norte", "Global"]
+        "resumo": {
+          "$ref": "#/$defs/texto"
         },
-        "regiao_obs": { "type": "string", "description": "Parêntese do registro: 'veículo dos EUA'." },
+        "autor": {
+          "type": "string",
+          "description": "Autor do texto, como no registro ('—' se não houver)."
+        },
+        "figura": {
+          "type": "string",
+          "description": "Figura ou tema central, para busca e registro."
+        },
+        "veiculo": {
+          "type": "string"
+        },
+        "veiculo_complemento": {
+          "type": "string",
+          "description": "Afiliação da revista acadêmica ou tradutor: 'UFMG', 'tradução de Pedro Silva'."
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "lingua": {
+          "enum": [
+            "pt",
+            "en",
+            "es",
+            "fr",
+            "it",
+            "de"
+          ]
+        },
+        "lingua_original": {
+          "type": "string",
+          "description": "Quando o texto é versão de um original em outra língua: 'árabe'."
+        },
+        "acesso_fonte": {
+          "enum": [
+            "aberto",
+            "parcial",
+            "paywall"
+          ],
+          "description": "Acesso ao texto original, não ao Suplemento."
+        },
+        "nota_acesso": {
+          "type": "string",
+          "description": "Ex.: 'dois textos grátis por mês'."
+        },
+        "area": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "regiao": {
+          "enum": [
+            "Brasil",
+            "América Latina",
+            "Caribe",
+            "Áfricas",
+            "Oriente Médio e mundo árabe",
+            "Ásia",
+            "Europa Ocidental",
+            "Europa (margens)",
+            "América do Norte",
+            "Global"
+          ]
+        },
+        "regiao_obs": {
+          "type": "string",
+          "description": "Parêntese do registro: 'veículo dos EUA'."
+        },
         "na_mesma_semana": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["texto", "url", "veiculo"],
+          "required": [
+            "texto",
+            "url",
+            "veiculo",
+            "lingua"
+          ],
           "properties": {
-            "texto": { "$ref": "#/$defs/texto" },
-            "url": { "type": "string", "format": "uri" },
-            "veiculo": { "type": "string" },
-            "regiao": { "type": "string" }
+            "texto": {
+              "$ref": "#/$defs/texto"
+            },
+            "url": {
+              "type": "string",
+              "format": "uri"
+            },
+            "veiculo": {
+              "type": "string"
+            },
+            "regiao": {
+              "type": "string"
+            },
+            "lingua": {
+              "enum": [
+                "pt",
+                "en",
+                "es",
+                "fr",
+                "it",
+                "de"
+              ]
+            }
           }
         }
       }
     },
-
     "item_com_link": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["texto"],
+      "required": [
+        "texto"
+      ],
       "properties": {
-        "texto": { "$ref": "#/$defs/texto" },
-        "url": { "type": "string", "format": "uri" }
+        "texto": {
+          "$ref": "#/$defs/texto"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "rotulo_link": {
+          "type": "string",
+          "description": "Texto do link no fim da linha: 'ler', 'edital', 'chamada', o nome do site."
+        }
       }
     },
-
     "prazo": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["nome", "promotor", "prazo", "url"],
+      "required": [
+        "nome",
+        "promotor",
+        "prazo",
+        "url"
+      ],
       "properties": {
-        "nome": { "type": "string" },
-        "promotor": { "type": "string" },
-        "publico": { "type": "string" },
-        "prazo": { "oneOf": [{ "$ref": "#/$defs/data" }, { "const": "fluxo contínuo" }] },
-        "url": { "type": "string", "format": "uri" }
+        "nome": {
+          "type": "string",
+          "description": "O que é a chamada, depois do promotor."
+        },
+        "promotor": {
+          "type": "string",
+          "description": "Quem promove, como aparece na linha (pode ter itálico, se for revista)."
+        },
+        "publico": {
+          "type": "string"
+        },
+        "prazo": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/data"
+            },
+            {
+              "const": "fluxo contínuo"
+            }
+          ]
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "rotulo_link": {
+          "type": "string",
+          "description": "Texto do link no fim da linha: 'ler', 'edital', 'chamada', o nome do site."
+        },
+        "nova_na_semana": {
+          "type": "boolean",
+          "description": "Chamada que entrou nesta semana (vai sob 'Novas na semana')."
+        }
       }
     },
-
     "nota": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["texto", "url"],
+      "required": [
+        "titulo",
+        "texto",
+        "url"
+      ],
       "properties": {
-        "texto": { "$ref": "#/$defs/texto" },
-        "url": { "type": "string", "format": "uri" },
-        "data_fato": { "$ref": "#/$defs/data", "description": "Só quando o fato for anterior à semana." }
+        "texto": {
+          "$ref": "#/$defs/texto"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "data_fato": {
+          "$ref": "#/$defs/data",
+          "description": "Só quando o fato for anterior à semana."
+        },
+        "titulo": {
+          "$ref": "#/$defs/texto",
+          "description": "Abertura em negrito da nota: 'Goncourt com IA.', 'Chile.'."
+        },
+        "rotulo_link": {
+          "type": "string",
+          "description": "Texto do link no fim da linha: 'ler', 'edital', 'chamada', o nome do site."
+        }
       }
     }
   }

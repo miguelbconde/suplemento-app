@@ -1,0 +1,521 @@
+{
+  "formato": "1.0",
+  "numero": 2,
+  "data": "2026-11-18",
+  "titulo": "Um bosque também é arquivo",
+  "subtitulo": "Um pinhal fascista que nenhum documento registra, as fotos que Angola guardava em casa e o acervo que Havana exibe mas não deixa consultar. E mais: Didi-Huberman, Violeta Parra e Mao visto do futuro.",
+  "url_substack": "https://suplemento.substack.com/p/n-2-um-bosque-tambem-e-arquivo",
+  "abertura": "Numa encosta perto de Rieti, vinte mil pinheiros plantados pelo fascismo escrevem DVX, o *Duce* em latim, e nenhum documento sobre o plantio apareceu até hoje: o que há para ler está na montanha. É por aí que este número entra no assunto da semana. Em Angola, fotografias guardadas em gavetas de família começam a contar a história recente do país; em Havana, a Unesco exibe um acervo bem preservado e de consulta vigiada. O arquivo volta mais adiante: numa carta enterrada em Birkenau, nos cartões-postais do caso Dreyfus, nos romances chineses que mandam um rapaz a 1950 para contar o futuro a Mao. As recomendações vêm agora em cinco línguas. E há novidade de serviço: a página [Editais e prazos](https://suplemento.substack.com/p/editais-e-prazos) reúne as chamadas abertas da área e será atualizada toda semana.",
+  "secoes": [
+    {
+      "id": "repare",
+      "nome": "Repare",
+      "acesso": "aberto"
+    },
+    {
+      "id": "para-ler-ja",
+      "nome": "Para ler já",
+      "acesso": "aberto"
+    },
+    {
+      "id": "livros",
+      "nome": "Livros",
+      "acesso": "aberto"
+    },
+    {
+      "id": "a-contrapelo",
+      "nome": "A contrapelo",
+      "acesso": "aberto",
+      "linha_do_fio": "Um tríptico arqueológico: a cidade antes do sertão, o postal antes da rede, a palavra antes da imagem."
+    },
+    {
+      "id": "achados",
+      "nome": "Achados",
+      "acesso": "assinantes"
+    },
+    {
+      "id": "para-ler-com-calma",
+      "nome": "Para ler com calma",
+      "acesso": "assinantes"
+    },
+    {
+      "id": "estante-academica",
+      "nome": "Da estante acadêmica",
+      "acesso": "assinantes"
+    },
+    {
+      "id": "lancamentos-e-prazos",
+      "nome": "Lançamentos e prazos",
+      "acesso": "assinantes"
+    },
+    {
+      "id": "notas",
+      "nome": "Notas da semana",
+      "acesso": "aberto"
+    }
+  ],
+  "verbetes": [
+    {
+      "id": "n2-01",
+      "secao": "repare",
+      "citacao": "A floresta, basicamente, não existe nos arquivos.",
+      "resumo": "No monte Giano, acima de Antrodoco, perto de Rieti, uns vinte mil pinheiros-negros escrevem DVX em letras de mais de 400 metros, visíveis de Roma em dia claro. Foram plantados nos anos 1930 por alunos da milícia florestal fascista, a pretexto de conter deslizamentos. **Lucio Meola** sobe até lá e encontra um monumento que ninguém decide o que é. O pesquisador **Damiano Benvegnù**, que prepara um livro sobre o pinhal, procurou durante sete anos nos arquivos de Roma, de Rieti e da cidade e não achou um documento sequer; o quartel onde os alunos se formavam recusou-lhe três vezes a consulta. Desde os anos 1990 há propostas de apagar ou de restaurar as letras, e nenhuma foi adiante. Em 2017 um incêndio deixou o V e o X quase ilegíveis; no ano seguinte, voluntários da CasaPound replantaram parte deles. Os moradores, antifascistas incluídos, ajudaram a combater o fogo, têm o pinhal por símbolo da cidade e fazem que não leem.",
+      "autor": "Lucio Meola",
+      "figura": "Pinhal DVX do monte Giano (Antrodoco), monumento fascista sem registro em arquivo; pesquisa de Damiano Benvegnù",
+      "veiculo": "Il Tascabile",
+      "url": "https://www.iltascabile.com/societa/memoria-sconveniente-alberi/",
+      "lingua": "it",
+      "acesso_fonte": "aberto",
+      "area": [
+        "história",
+        "memória",
+        "paisagem"
+      ],
+      "regiao": "Europa Ocidental"
+    },
+    {
+      "id": "n2-02",
+      "secao": "repare",
+      "citacao": "Há muita coisa guardada em gavetas.",
+      "resumo": "Em Angola, o arquivo sai das gavetas. Negativos da viagem de músicos brasileiros ao país em 1980, o dia a dia nas bases da guerrilha, desfiles de Carnaval, as eleições de 1992: o Angola Digitization Project recolhe fotografias que contam a história recente pelo lado da vida comum, e boa parte delas estava em acervos pessoais. **Paula Agostinho**, que cuida em Luanda de coleções como a de Lúcio Lara, explica a **Marta Lança** por que o trabalho anda devagar: há material política e militarmente sensível, originais que sumiram, donos que só cedem depois de confiar. A primeira fase fecha em janeiro, com versões públicas em baixa resolução. Enquanto a gaveta estiver fechada, lembra ela, ninguém sabe o que há para pesquisar.",
+      "autor": "Marta Lança (entrevista)",
+      "figura": "Paula Agostinho e o Angola Digitization Project: fotografias em acervos de família",
+      "veiculo": "Buala",
+      "url": "https://www.buala.org/pt/cara-a-cara/ha-muita-coisa-guardada-em-gavetas-entrevista-a-paula-agostinho-1",
+      "lingua": "pt",
+      "acesso_fonte": "aberto",
+      "area": [
+        "fotografia",
+        "arquivo"
+      ],
+      "regiao": "Áfricas",
+      "na_mesma_semana": {
+        "texto": "Em Havana, a Unesco abriu em 3 de novembro a exposição “Cuba en la Memoria del Mundo”, com o Fundo José Martí, os negativos do Noticiero ICAIC e os cartazes de cinema. O Observatorio de Derechos Culturales lembra o que a vitrine não mostra: consulta sujeita a autorização prévia, exceções por segurança nacional, quase nada na internet. As atas do Ayuntamiento de Havana (1550–1898) se leem com mais facilidade na Universidade da Flórida.",
+        "url": "https://hypermediamagazine.com/sociedad/cuba-en-la-memoria-del-mundo-la-herencia-tutelada/",
+        "veiculo": "Hypermedia Magazine",
+        "lingua": "es",
+        "regiao": "Caribe"
+      }
+    },
+    {
+      "id": "n2-03",
+      "secao": "para-ler-ja",
+      "citacao": "Uma publicação pode mudar as perguntas que uma sociedade faz a si mesma.",
+      "resumo": "Para que serve uma revista cultural? Nos 50 anos da *Vuelta*, **Juan Alfonso Mejía** refaz a linhagem que vai da *Nouvelle Revue Française* à *Sur* de Victoria Ocampo e às revistas de **Octavio Paz**, a última delas nascida de um rompimento com o *Excélsior*, sob pressão do governo mexicano. A independência, diz ele, não se herda dos fundadores: decide-se a cada escolha de quem edita. O colaboracionismo da *NRF* sob Drieu la Rochelle, durante a ocupação nazista, serve de aviso. Um detalhe: quem publica a homenagem é a herdeira da homenageada.",
+      "autor": "Juan Alfonso Mejía",
+      "figura": "50 anos da Vuelta; revistas culturais e independência",
+      "veiculo": "Letras Libres",
+      "url": "https://letraslibres.com/cultura/pensar-desde-las-revistas/13/11/2026/",
+      "lingua": "es",
+      "acesso_fonte": "aberto",
+      "area": [
+        "revistas",
+        "ideias"
+      ],
+      "regiao": "América Latina"
+    },
+    {
+      "id": "n2-04",
+      "secao": "para-ler-ja",
+      "citacao": "Ninguém se livra tão facilmente do próprio passado.",
+      "resumo": "Num café perto da Praça da República, em Paris, **Georges Didi-Huberman** conversa com a psicanalista e poeta **Sara Cohen** sobre *Faits d’affects*, sua série de livros sobre as emoções. Imagens e emoções, diz ele, servem ao melhor e ao pior, e denunciar seu uso mercantil é dizer só metade da verdade: Trump mente o tempo todo, e nem por isso vamos parar de falar. Cabe ao filósofo separar o uso ético do uso imundo, este último examinado na máquina nazista, em que um soldado se comove com Hitler e mata crianças sem emoção. Daí a ponte, com Johann Chapoutot, entre o nazismo e o *management* de hoje.",
+      "autor": "Sara Cohen (entrevista)",
+      "figura": "Georges Didi-Huberman, Faits d'affects",
+      "veiculo": "Revista Ñ (Clarín)",
+      "url": "https://www.clarin.com/revista-n/georges-didi-huberman-uso-etico-uso-inmundo-emociones_0_N8D40V8L08.html",
+      "lingua": "es",
+      "acesso_fonte": "parcial",
+      "area": [
+        "filosofia",
+        "imagem"
+      ],
+      "regiao": "América Latina",
+      "regiao_obs": "voz francesa"
+    },
+    {
+      "id": "n2-05",
+      "secao": "para-ler-ja",
+      "citacao": "Já não podemos nem devemos fazer nosso trabalho como antes.",
+      "resumo": "Em vez de perguntar o que os humanistas farão com a inteligência artificial, **Juan Espíndola**, filósofo da UNAM, pergunta o que ela fará com eles. Proibir seria ludismo, admite: já não dá para pensar o avanço do conhecimento sem ela. Mas a IA corrói o reconhecimento entre pares, com a avaliação afogada em artigos fracos e o uso não declarado semeando desconfiança, e ameaça o livro e o artigo, veículos do ofício, como a imprensa de Victor Hugo ameaçava a catedral. Resta decidir que práticas largar, quais manter e quem escolhe. Só a ideia do filósofo reduzido a curador de modelos de linguagem o assusta.",
+      "autor": "Juan Espíndola",
+      "figura": "IA e o futuro das humanidades",
+      "veiculo": "Nexos",
+      "url": "https://www.nexos.com.mx/la-ia-degenerativa-ii-hacia-unas-humanidades-poshumanas/",
+      "lingua": "es",
+      "acesso_fonte": "aberto",
+      "area": [
+        "universidade",
+        "IA"
+      ],
+      "regiao": "América Latina"
+    },
+    {
+      "id": "n2-06",
+      "secao": "para-ler-ja",
+      "citacao": "Nem toda árvore é útil. De tempos em tempos, é preciso desbastar a floresta.",
+      "resumo": "Um quinto das florestas do mundo está na Rússia, e em *The Oak and the Larch* **Sophie Pinkham** conta a história do país por meio delas: as peles da Sibéria, os carvalhos derrubados para a frota de Pedro I, o Cáucaso desmatado para vencer a guerrilha de Shamil e depois cantado por Púchkin e Liérmontov, os presos do Gulag serrando a taiga, os “irmãos da floresta” resistindo no Báltico até os anos 1950. (A frase da citação é de Khruschov, a propósito de um romance de Leonid Leonov.) **Miriam Dobson** acompanha o percurso e desconfia do final, em que a autora sonha uma paisagem sem nação. O livro inteiro, diz ela, mostra o contrário.",
+      "autor": "Miriam Dobson",
+      "figura": "Sophie Pinkham, The Oak and the Larch",
+      "veiculo": "London Review of Books",
+      "url": "https://www.lrb.co.uk/the-paper/v48/n20/miriam-dobson/not-all-trees-are-useful",
+      "lingua": "en",
+      "acesso_fonte": "parcial",
+      "nota_acesso": "dois textos grátis por mês no site",
+      "area": [
+        "história",
+        "resenha"
+      ],
+      "regiao": "Europa (margens)",
+      "regiao_obs": "veículo britânico"
+    },
+    {
+      "id": "n2-07",
+      "secao": "livros",
+      "citacao": "*Física da tristeza* é um título literal.",
+      "resumo": "Um cubano lê um búlgaro e reconhece a casa. **Xavier Carbonell** resenha *Física de la tristeza*, de **Gueorgui Gospodínov**, romance em que um minotauro melancólico guarda a memória do comunismo num labirinto de mitologia própria: Lênin de Cronos, Stálin de Zeus, a Sibéria de Hades. O livro é caótico, admite o crítico, mas o caos é a matéria. E há referências que só decifra quem viveu o regime: a mesma medalha das Olimpíadas de 1980 guardada em Sófia e em Las Villas, o mesmo jeito de rir dos russos em Varsóvia e em Havana.",
+      "autor": "Xavier Carbonell",
+      "figura": "Gueorgui Gospodínov, Física de la tristeza",
+      "veiculo": "Hypermedia Magazine",
+      "url": "https://hypermediamagazine.com/critica/georgui-gospodinov-el-comunismo-como-laberinto/",
+      "lingua": "es",
+      "acesso_fonte": "aberto",
+      "area": [
+        "literatura"
+      ],
+      "regiao": "Caribe",
+      "regiao_obs": "livro búlgaro"
+    },
+    {
+      "id": "n2-08",
+      "secao": "livros",
+      "citacao": "Uma pedreira ou uma mina a céu aberto são feridas no território.",
+      "resumo": "Em *A montanha das fúrias* (Instante, tradução de Marina Waquil), uma mulher vigia uma pedreira, anota a vida num caderno e passa a cuidar dos cadáveres mutilados que aparecem na encosta, sem medo nem espanto, como parte da paisagem. A uruguaia **Fernanda Trías**, que vive na Colômbia, explica a **Antonio Barros** que não quis fazer alegoria nem pôr discurso ecologista na boca de ninguém: seus personagens precisam do emprego, e quem conta a degradação é a própria montanha, mãe nada idílica, território ferido e esconderijo de mortos. Gótico latino-americano? Ela ri e devolve a etiqueta aos críticos.",
+      "autor": "Antonio Barros (entrevista)",
+      "figura": "Fernanda Trías, A montanha das fúrias",
+      "veiculo": "Carbono",
+      "veiculo_complemento": "UFRGS",
+      "url": "https://www.ufrgs.br/carbono/2026/11/11/entrevista-com-fernanda-trias/",
+      "lingua": "pt",
+      "acesso_fonte": "aberto",
+      "area": [
+        "literatura"
+      ],
+      "regiao": "América Latina",
+      "regiao_obs": "veículo brasileiro"
+    },
+    {
+      "id": "n2-09",
+      "secao": "livros",
+      "citacao": "Por que não você, por que eu e não você?",
+      "resumo": "Do comboio 58, que deixou Bobigny em 31 de julho de 1943, 55 mulheres foram separadas para o bloco 10 de Auschwitz, onde médicos nazistas faziam experiências de esterilização. A historiadora **Johanna Lehr** levou dois anos para devolver nome e rosto a cada uma; 24 voltaram. **Jean-Yves Potel** lê o livro ao lado de outro, sobre a carta que Hersz-Herman Strasfogel, do Sonderkommando de Birkenau, enterrou numa garrafa: chegou à mulher e à filha em 1948, passou décadas atribuída a outro homem, e só em 2018 uma arquivista desfez o engano. Dois livros sobre o que quase não deixou arquivo.",
+      "autor": "Jean-Yves Potel",
+      "figura": "Johanna Lehr, as francesas do bloco 10 de Auschwitz",
+      "veiculo": "En attendant Nadeau",
+      "url": "https://www.en-attendant-nadeau.fr/2026/11/10/des-femmes-a-auschwitz/",
+      "lingua": "fr",
+      "acesso_fonte": "aberto",
+      "area": [
+        "história",
+        "memória"
+      ],
+      "regiao": "Europa Ocidental"
+    },
+    {
+      "id": "n2-10",
+      "secao": "a-contrapelo",
+      "citacao": "Não é inocente, é deliberado, é a tentativa de fazer o Nordeste voltar para o lugar que ele ocupou de subalternidade.",
+      "resumo": "A novela *Lá na Minha Terra*, da Globo, apanhou nas redes pelo Nordeste de clichê, e **Durval Muniz de Albuquerque Jr.**, autor de *A invenção do Nordeste e outras artes*, acha a reação do tamanho da agressão. Em entrevista a **Bruno Fonseca**, o historiador lembra, porém, que o retrato de terra pobre e seca não veio só de fora: a elite regional o fabricou e viveu dele. Hoje mais de 80% dos nordestinos moram em cidades, e o próprio Nordeste foi inventado numa metrópole, o Recife. Baião e cordel, aliás, nasceram onde?",
+      "autor": "Bruno Fonseca (entrevista)",
+      "figura": "Durval Muniz de Albuquerque Jr. e a invenção do Nordeste",
+      "veiculo": "Agência Pública",
+      "url": "https://apublica.org/2026/11/la-na-minha-terra-nordeste-nao-aceita-ser-subalterno-diz-professor/",
+      "lingua": "pt",
+      "acesso_fonte": "aberto",
+      "area": [
+        "história",
+        "televisão"
+      ],
+      "regiao": "Brasil"
+    },
+    {
+      "id": "n2-11",
+      "secao": "a-contrapelo",
+      "citacao": "As escolhas eram das próprias pessoas.",
+      "resumo": "A bolha não nasceu com o algoritmo. **Karine Macarez** volta ao caso Dreyfus para mostrar que, na França de 1898, campos políticos antagônicos já se encerravam em redes de informação estanques, feitas de jornais, cartazes e, sobretudo, cartões-postais, que mais confirmavam lealdades do que convertiam indecisos. Os dreyfusards tinham a série de Édouard Couturier; os adversários, o *Musée des Horreurs*, 51 litografias que transformavam Zola e Dreyfus em bichos. Colecionar era declarar partido. A diferença para hoje está em quem escolhe: o comprador de postais pressionava o editor; a plataforma decide sozinha.",
+      "autor": "Karine Macarez",
+      "figura": "Cartões-postais do caso Dreyfus",
+      "veiculo": "Eurozine",
+      "url": "https://www.eurozine.com/before-social-media-there-were-postcards/",
+      "lingua": "en",
+      "acesso_fonte": "aberto",
+      "area": [
+        "história",
+        "mídia"
+      ],
+      "regiao": "Europa Ocidental"
+    },
+    {
+      "id": "n2-12",
+      "secao": "a-contrapelo",
+      "citacao": "Sem a palavra não se pode pensar a imagem.",
+      "resumo": "*Historia(s) del cine* é filme ou livro? As duas coisas, insistia **Jean-Luc Godard**, e a argentina Caja Negra acaba de reeditar a versão em papel, sem imagem nenhuma. No prólogo, **Roger Koza** defende que o texto é cinema-pensamento por conta própria: ler é descontínuo, ver é contínuo, e as duas experiências se completam. Numa cultura afogada em imagens, inclusive as fabricadas por máquinas, o crítico vira a hierarquia de cabeça para baixo e põe a palavra como condição do olhar. Bazin, Daney, Borges e Kluge passam pelo caminho.",
+      "autor": "Roger Koza",
+      "figura": "Historia(s) del cine, de Godard",
+      "veiculo": "Con los ojos abiertos",
+      "url": "https://www.conlosojosabiertos.com/historias-del-cine/",
+      "lingua": "es",
+      "acesso_fonte": "aberto",
+      "area": [
+        "cinema"
+      ],
+      "regiao": "América Latina"
+    },
+    {
+      "id": "n2-13",
+      "secao": "achados",
+      "citacao": "Moçambique é meio que uma ilha de língua portuguesa na África Austral.",
+      "resumo": "**Sandra Tamele**, arquiteta de formação e tradutora desde 2007, fundou em Maputo, em 2018, a Trinta Zero Nove, primeira editora independente moçambicana dedicada à tradução. São mais de 60 títulos, em português, inglês e línguas como changana, macua e sena, em papel e em audiolivro; no catálogo, Conceição Evaristo divide espaço com a coreana Bora Chung. As enchentes de janeiro destruíram cerca de 80% do estoque, e a distribuição para os países vizinhos segue travada. Livro que o leitor não acha nem pode pagar, diz ela, não muda vida nenhuma.",
+      "autor": "—",
+      "figura": "Sandra Tamele e a Editora Trinta Zero Nove",
+      "veiculo": "Global Literature in Libraries Initiative",
+      "url": "https://glli-us.org/2026/11/12/readingafrica-editora-trinta-zero-nove/",
+      "lingua": "en",
+      "acesso_fonte": "aberto",
+      "area": [
+        "edição",
+        "tradução"
+      ],
+      "regiao": "Áfricas"
+    },
+    {
+      "id": "n2-14",
+      "secao": "achados",
+      "citacao": "O erro deles é provavelmente nunca ter lido Stus – e eis o porquê.",
+      "resumo": "**Vasyl Stus** (1938–1985), poeta e dissidente ucraniano que passou quase toda a vida adulta em campos de trabalho soviéticos e neles morreu, chega enfim em edições de fôlego ao inglês (*Vortex*, Lost Horse Press, tradução de Bohdan Tokarsky e Nina Murray) e ao francês (*Palimpsests*, Noir sur Blanc). O tradutor francês, Georges Nivat, começou a aprender ucraniano aos 85 anos para dar conta do manuscrito clandestino do gulag. **Ella Yevtushenko** lê nessa poesia, frágil e desafiadora, uma chave para a resistência ucraniana de hoje, e aproveita para cobrar um reexame dos laços da cultura russa com o império.",
+      "autor": "Ella Yevtushenko",
+      "figura": "Vasyl Stus em novas traduções",
+      "veiculo": "Chytomo",
+      "url": "https://chytomo.com/en/what-vasyl-stus-tells-us-about-today-s-ukraine/",
+      "lingua": "en",
+      "acesso_fonte": "aberto",
+      "area": [
+        "poesia"
+      ],
+      "regiao": "Europa (margens)"
+    },
+    {
+      "id": "n2-15",
+      "secao": "achados",
+      "citacao": "É terrível a vida.",
+      "resumo": "*Las últimas composiciones* saiu em novembro de 1966, poucos meses antes da morte de **Violeta Parra**, e desde então é ouvido como testamento. O musicólogo **Javier Rodríguez Aedo** discorda: o disco é o ponto alto de uma criadora completa, que entre 1955 e 1965 gravou para a BBC, expôs no Louvre e montou espetáculos em Genebra e Paris. A frase acima ela escreveu numa carta, por volta de 1963; em 1966, em La Paz, compôs “Gracias a la vida”, canção de amor cujo verso final, o que a entrega a todos, não estava no manuscrito. E a consagração é tardia: veio com a ditadura e o exílio. Reportagem de **Felipe Retamal**.",
+      "autor": "Felipe Retamal",
+      "figura": "Violeta Parra, Las últimas composiciones",
+      "veiculo": "Culto (La Tercera)",
+      "url": "https://www.latercera.com/culto/noticia/las-ultimas-composiciones-de-violeta-parra-los-60-anos-del-disco-mas-importante-de-la-musica-chilena/",
+      "lingua": "es",
+      "acesso_fonte": "paywall",
+      "area": [
+        "música"
+      ],
+      "regiao": "América Latina"
+    },
+    {
+      "id": "n2-16",
+      "secao": "para-ler-com-calma",
+      "citacao": "O nome dele serve hoje para imaginar uma China mais forte, não mais um mundo diferente.",
+      "resumo": "Em *Levando um cibercafé de volta a 1950*, folhetim publicado de 2022 a 2025 na plataforma Xirang, o jovem Li Rui volta no tempo com seu estabelecimento e mostra a Mao, em documentários editados, o que será do país. Mao se enfurece, e os dirigentes concluem que a Revolução Cultural e as reformas foram desvios, culpa da influência ocidental. Li antecipa então a bomba atômica, vence a Guerra da Coreia, evita a fome e conquista mercados com uma fórmula de refrigerante. **Zewei Wu** levantou esse e outros 223 títulos do gênero e tira deles um diagnóstico: os romances condenam a guinada capitalista, calam sobre os desastres maoistas e respondem ao declínio com tecnologia e crescimento, nunca com luta de classes. É um maoísmo esvaziado, que Wu aproxima do realismo capitalista de Mark Fisher. A imagem do líder virou símbolo flexível, invocado até contra o dote de casamento. São cerca de 4 mil palavras, e nenhuma delas vem da comemoração oficial.",
+      "autor": "Zewei Wu",
+      "figura": "Romances chineses de viagem no tempo e o maoísmo",
+      "veiculo": "Made in China Journal",
+      "url": "https://madeinchinajournal.com/2026/11/13/reporting-the-future-to-mao-time-travel-web-novels-and-the-digital-afterlives-of-maoism/",
+      "lingua": "en",
+      "acesso_fonte": "aberto",
+      "area": [
+        "literatura",
+        "política"
+      ],
+      "regiao": "Ásia"
+    },
+    {
+      "id": "n2-17",
+      "secao": "estante-academica",
+      "citacao": "Só uma banda manteve desde então uma política de apropriação.",
+      "resumo": "Antes de haver rock em espanhol, houve rock traduzido (a Jovem Guarda fez o mesmo por aqui). **Salvador Calderón de Anta** examina 38 pares de canções, de 1960 a 2010, e separa três maneiras de verter: o decalque dos anos 1960, quase literal e de rima forçada, como o do Dúo Dinámico com Neil Sedaka ou o dos mexicanos Teen Tops com Little Richard; a glosa, que reescreve a letra para outro público; e a versão livre, irônica, em que “Sweet Home Alabama” vai parar na Galícia. Com streaming e inglês na ponta da língua, quem ainda precisa traduzir?",
+      "autor": "Salvador Calderón de Anta",
+      "figura": "Versões em espanhol de canções de rock, 1960–2010",
+      "veiculo": "Anclajes",
+      "veiculo_complemento": "UNLPam",
+      "url": "https://cerac.unlpam.edu.ar/index.php/anclajes/pt_BR/article/view/9775",
+      "lingua": "es",
+      "acesso_fonte": "aberto",
+      "area": [
+        "música",
+        "tradução"
+      ],
+      "regiao": "América Latina",
+      "regiao_obs": "autor espanhol"
+    }
+  ],
+  "lancamentos": [
+    {
+      "texto": "*História da arte no Brasil moderno*, volume 1 (1889–1930), organizado por **Rafael Cardoso** (BEĨ, 512 páginas): primeiro de três tomos sobre a produção artística brasileira de 1889 a 1989, com textos de 38 autores, entre eles Ana Magalhães e Tadeu Chiarelli.",
+      "url": "https://bei.com.br/livro/em-breve-historia-da-arte-no-brasil-moderno-volume-1-1889-1930/320",
+      "rotulo_link": "BEĨ"
+    },
+    {
+      "texto": "Para compor a estante: a *ArteQueAcontece* indica cinco livros de história da arte brasileira, da arte popular à vanguarda, de Vilma Eid e Germana Monte-Mór, Paulo Sergio Duarte, Ana Paula Cavalcanti Simioni, Aracy Amaral e Sérgio Martins.",
+      "url": "https://artequeacontece.com.br/5-livros-sobre-historia-da-arte-brasileira-que-voce-precisa-conhecer/",
+      "rotulo_link": "ler"
+    }
+  ],
+  "prazos": [
+    {
+      "nome": "Auxílio Jovens Pesquisadores para Pesquisadores Internacionais",
+      "promotor": "FAPESP",
+      "prazo": "2026-11-19",
+      "url": "https://fapesp.br/18389",
+      "rotulo_link": "edital"
+    },
+    {
+      "nome": "aperfeiçoamento de especialistas de museus e acervos",
+      "promotor": "FAPESP",
+      "prazo": "2026-11-23",
+      "url": "https://fapesp.br/18387",
+      "rotulo_link": "edital"
+    },
+    {
+      "nome": "convocatória da sexta edição para artistas e curadores de qualquer nacionalidade; inscrição gratuita, em espanhol ou inglês",
+      "promotor": "Bienalsur",
+      "prazo": "2026-11-30",
+      "url": "https://bienalsur.org/es/page/convocatoria-abierta",
+      "rotulo_link": "convocatória"
+    },
+    {
+      "nome": "dossiê",
+      "promotor": "*Synergies Brésil*",
+      "prazo": "2026-11-30",
+      "url": "https://anpoll.org.br/2022/prolongation-dossier-synergies/",
+      "rotulo_link": "chamada"
+    },
+    {
+      "nome": "dossiê sobre os 20 anos da BNDigital",
+      "promotor": "*Revista Brasileira de Preservação Digital*",
+      "prazo": "2026-12-01",
+      "url": "https://www.gov.br/bn/pt-br/central-de-conteudos/noticias/revista-brasileira-de-preservacao-digital-recebe-trabalhos-cientificos-para-dossie-especial-sobre-os-20-anos-da-bndigital",
+      "rotulo_link": "chamada"
+    },
+    {
+      "nome": "apoio a eventos (ARC, chamada 34/2026)",
+      "promotor": "CNPq",
+      "prazo": "2026-12-04",
+      "url": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-34-2026/chamada-publica-cnpq-N-34-2026",
+      "rotulo_link": "chamada",
+      "nova_na_semana": true
+    },
+    {
+      "nome": "XVIII Seleção Marc Ferrez de Fotografia",
+      "promotor": "Funarte",
+      "prazo": "2026-12-18",
+      "url": "https://www.gov.br/funarte/pt-br/fomento/chamadas-abertas/xviii-selecao-funarte-marc-ferrez-de-fotografia",
+      "rotulo_link": "chamada",
+      "nova_na_semana": true
+    },
+    {
+      "nome": "Bolsas de Produtividade (chamada 33/2026)",
+      "promotor": "CNPq",
+      "prazo": "2027-01-07",
+      "url": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-33-2026/chamada-publica-cnpq-N-33-2026",
+      "rotulo_link": "chamada",
+      "nova_na_semana": true
+    }
+  ],
+  "notas": [
+    {
+      "titulo": "Goncourt com IA.",
+      "texto": "Um dia depois de levar o prêmio por *L’Inconnue du quai de Javel*, **Philippe Jaenada** contou à France Inter, em 4/11, que recorreu à inteligência artificial três vezes, uma delas para plantar no romance uma frase do ChatGPT e “brincar com o leitor”. A temporada já vinha abalada pelo caso Thélyson Orélien, retirado da seleção em setembro por suspeita de uso de IA.",
+      "url": "⟨link a conferir⟩",
+      "rotulo_link": "Euronews"
+    },
+    {
+      "titulo": "Chile.",
+      "texto": "Cerca de 200 nomes da cultura, entre eles **Diamela Eltit**, **Raúl Zurita** e Nona Fernández, pedem ao Ministério das Culturas que volte atrás na anulação do prêmio de Poesia Publicada dado por júri unânime a **Verónica Jiménez**, por um livro que trata das sequelas do *estallido social*.",
+      "url": "⟨link a conferir⟩",
+      "rotulo_link": "G5 Noticias"
+    },
+    {
+      "titulo": "Lisboa.",
+      "texto": "**Ondjaki** leva ao palco *Os da minha rua*, suas memórias ficcionadas de infância em Luanda, com dramaturgia dividida com António Jorge Gonçalves e Paula Delecave. De 14 a 18 de abril de 2027, no Centro Cultural de Belém.",
+      "url": "https://www.ccb.pt/evento/os-da-minha-rua/2027-04-14/",
+      "rotulo_link": "CCB"
+    },
+    {
+      "titulo": "Prêmio São Paulo.",
+      "texto": "Saíram na segunda-feira, 16, os 20 finalistas da 19ª edição, dez em cada categoria, com mulheres em maioria. Entre os romances do ano estão livros de **Milton Hatoum**, Cristovão Tezza, Aline Bei, Marilene Felinto, Micheliny Verunschk e **Eliana Alves Cruz**, recém-premiada com o Jabuti. Cada vencedor leva R$ 200 mil; o anúncio será em 15 de dezembro.",
+      "url": "⟨link a conferir⟩",
+      "rotulo_link": "Agência SP"
+    },
+    {
+      "titulo": "*serrote*.",
+      "texto": "Saiu em 16/11 o resultado do 9º Concurso de Ensaísmo da revista do IMS: em primeiro lugar, **Nina da Hora**, cientista da computação de Duque de Caxias, com “Função de perda”, sobre o lugar do Brasil na nova ordem da inteligência artificial; em segundo, Juliana Fausto, com “Belo e vermelho”; em terceiro, Gilson Plano, com “Olho de vidro”. Os ensaios saem na *serrote* 53, neste mês.",
+      "url": "⟨link a conferir⟩",
+      "rotulo_link": "serrote"
+    },
+    {
+      "titulo": "Rio.",
+      "texto": "De 23 a 27 de novembro, o Instituto de Letras da UERJ recebe o I Encontro Internacional Narrar o Agora, com o tema “Precariedades, contingências e fazer o novo”. **Florencia Garramuño** e Luciene Azevedo fazem a mesa de abertura; Torsa Ghosal fala da IA narrativa como tecnologia de fronteira; Beatriz Resende, **Mario Cámara** e Paloma Vidal discutem crítica, arquivo e território. Garramuño e Cámara lançam livros na Travessa.",
+      "url": "⟨link a conferir⟩",
+      "rotulo_link": "programação"
+    }
+  ],
+  "destaques_por_dia": {
+    "2026-11-18": [
+      "n2-01",
+      "n2-02",
+      "n2-03",
+      "n2-04",
+      "n2-05"
+    ],
+    "2026-11-19": [
+      "n2-06",
+      "n2-07",
+      "n2-08",
+      "n2-09",
+      "n2-10"
+    ],
+    "2026-11-20": [
+      "n2-11",
+      "n2-12",
+      "n2-13",
+      "n2-14",
+      "n2-15"
+    ],
+    "2026-11-21": [
+      "n2-16",
+      "n2-17",
+      "n2-01",
+      "n2-02",
+      "n2-03"
+    ],
+    "2026-11-22": [
+      "n2-04",
+      "n2-05",
+      "n2-06",
+      "n2-07",
+      "n2-08"
+    ],
+    "2026-11-23": [
+      "n2-09",
+      "n2-10",
+      "n2-11",
+      "n2-12",
+      "n2-13"
+    ],
+    "2026-11-24": [
+      "n2-14",
+      "n2-15",
+      "n2-16",
+      "n2-17",
+      "n2-01"
+    ]
+  }
+}

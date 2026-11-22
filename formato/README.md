@@ -5,7 +5,6 @@ Cada edição é um arquivo JSON, `edicoes/AAAA-MM-DD.json`, com a data da quart
 Arquivos desta pasta:
 
 - `edicao.schema.json`: as regras do formato (JSON Schema).
-- `exemplo-n2.json`: o nº 2 nesse formato, com os dados do registro. Citações, resumos e abertura estão marcados como `⟨a preencher⟩`, porque o registro não guarda esses textos. Para completar, basta o HTML publicado do nº 2.
 - `validar.py`: confere o esquema e as regras da casa. Uso: `python validar.py edicoes/2026-11-25.json`.
 
 ## O que vai no arquivo
@@ -16,10 +15,12 @@ Arquivos desta pasta:
 | `abertura` | Texto da redação, de 3 a 5 linhas. |
 | `secoes` | As seções na ordem da edição, cada uma com `acesso`: `aberto` (aparece no Substack gratuito) ou `assinantes` (só no app). |
 | `verbetes` | Um objeto por texto recomendado (ver abaixo). |
-| `lancamentos`, `prazos`, `notas` | Listas curtas. O mural completo de editais terá arquivo próprio. |
+| `lancamentos`, `prazos`, `notas` | Listas curtas, cada item com `url` e `rotulo_link` (o texto do link: "ler", "edital", "Euronews"). As notas têm `titulo`, a abertura em negrito ("Chile."). Os prazos têm `nova_na_semana` para as chamadas que entraram na semana. O mural completo de editais terá arquivo próprio. |
 | `destaques_por_dia` | A home do app: de quarta a terça, até 5 ids de verbete por dia, na ordem de exibição. |
 
-O lema, o rodapé e o expediente são fixos e ficam na configuração do app, não em cada edição.
+O lema, o rodapé, o expediente e a linha "Todas as chamadas abertas da área estão na página Editais e prazos" são fixos e ficam na configuração do app, não em cada edição. As marcas de língua e acesso (*[Em inglês]*, *[paywall]*) também não vão no resumo: são geradas a partir de `lingua`, `nota_acesso` e `acesso_fonte`.
+
+Exemplo completo: [`edicoes/2026-11-18.json`](../edicoes/2026-11-18.json), o nº 2.
 
 ### Verbete
 

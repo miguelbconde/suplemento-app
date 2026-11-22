@@ -32,8 +32,6 @@ def main(caminho):
         if v["secao"] not in secoes: erros.append(f"{v['id']}: seção '{v['secao']}' não declarada")
         if v["secao"] == "repare" and v["acesso_fonte"] != "aberto":
             erros.append(f"{v['id']}: o texto do Repare tem de ser aberto")
-        if "⟨" in json.dumps(v, ensure_ascii=False):
-            avisos.append(f"{v['id']}: ainda tem campo a preencher")
 
     for veic, n in Counter(v["veiculo"] for v in verbetes).items():
         if n > 2: avisos.append(f"{veic}: {n} textos (máximo da casa: 2)")
@@ -61,6 +59,16 @@ def main(caminho):
             vezes[i] += 1
     for i in ids:
         if vezes[i] == 0: avisos.append(f"{i} nunca aparece em destaque")
+
+    def pendentes(x, caminho=""):
+        if isinstance(x, dict):
+            for k, y in x.items(): yield from pendentes(y, f"{caminho}/{k}")
+        elif isinstance(x, list):
+            for k, y in enumerate(x): yield from pendentes(y, f"{caminho}/{k}")
+        elif isinstance(x, str) and "⟨" in x:
+            yield caminho
+    for c in pendentes(ed):
+        avisos.append(f"a preencher: {c}")
 
     for a in avisos: print("aviso:", a)
     for e in erros: print("ERRO:", e)
