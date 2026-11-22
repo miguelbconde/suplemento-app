@@ -131,7 +131,7 @@
   function quem(v) { return v.assinatura || (v.autor && v.autor !== '—' ? v.autor : ''); }
   function linhaMeta(v) {
     var p = [];
-    if (quem(v)) p.push(esc(quem(v)));
+    if (quem(v)) p.push('<span class="nome">' + esc(quem(v)) + '</span>');
     p.push(veiculoHTML(v));
     return p.concat(marcas(v)).join(' · ');
   }
@@ -213,7 +213,7 @@
       '<div class="topo-dir"><span>' + pos + '</span>' + botaoTema() + '</div></div>' +
       '<article class="verbete"><span class="rubrica">' + esc(s ? s.nome : '') + '</span>' +
       '<div class="citacao-bloco"><span class="aspas" aria-hidden="true">“</span><p class="citacao">' + md(v.citacao) + '</p></div>' +
-      '<div class="assinatura"><span>' + (quem(v) ? esc(quem(v)) : veiculoHTML(v)) + '</span></div>' +
+      '<div class="assinatura"><span>' + (quem(v) ? '<span class="nome">' + esc(quem(v)) + '</span>' : veiculoHTML(v)) + '</span></div>' +
       '<p class="resumo">' + md(v.resumo) + '</p>' + mesma +
       '<dl class="ficha"><dt>Onde</dt><dd>' + veiculoHTML(v) + '</dd><dt>Língua</dt><dd>' + lingua + '</dd><dt>Acesso</dt><dd>' + acesso + '</dd></dl>' +
       '<a class="botao-principal" href="' + esc(v.url) + '" target="_blank" rel="noopener">Ler em <em>' + esc(v.veiculo) + '</em>' + ICONES.fora + '</a>' +
