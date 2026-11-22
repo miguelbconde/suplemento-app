@@ -76,7 +76,7 @@
     return '<button type="button" class="icone" data-acao="tema" aria-label="' + (noite ? 'Voltar ao papel' : 'Tom cinza') + '">' + (noite ? ICONES.sol : ICONES.lua) + '</button>';
   }
   function pintarBarra() {
-    var cor = document.documentElement.dataset.tema === 'noite' ? '#C7C7C2' : '#F4F0E6';
+    var cor = document.documentElement.dataset.tema === 'noite' ? '#FAFAF8' : '#F4F0E6';
     document.querySelectorAll('meta[name="theme-color"]').forEach(function (m) { m.setAttribute('content', cor); });
   }
   pintarBarra();
