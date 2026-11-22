@@ -20,7 +20,7 @@ A edição sai toda quarta em [suplemento.substack.com](https://suplemento.subst
 
 ## Publicação
 
-A Cloudflare (Workers Static Assets) publica a pasta `app/` a cada commit na `main`, conforme `wrangler.jsonc`. O resto do repositório não vai para o site.
+A Cloudflare (Workers Static Assets) publica a pasta `app/` a cada commit na `main`, conforme `wrangler.jsonc`. O resto do repositório não vai para o site. Endereço: https://suplemento-app.mbconde.workers.dev/
 
 ## Princípios do app
 
