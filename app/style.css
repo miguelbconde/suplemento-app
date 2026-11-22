@@ -43,13 +43,13 @@
   color-scheme: light;
 }
 :root[data-tema="noite"] {
-  /* tom cinza: cinza de jornal com tinta preta e uma terceira cor, o azul */
-  --papel: #B3B3AE;
-  --papel-2: #A2A29D;
-  --tinta: #141414;
-  --cinza: #3A3A37;
-  --fio: #7A7A75;
-  --rubrica: #16357F;
+  /* tom cinza: cinza de jornal, liso, com tinta preta e uma terceira cor, o azul */
+  --papel: #D5D5D1;
+  --papel-2: #C7C7C2;
+  --tinta: #121212;
+  --cinza: #464643;
+  --fio: #9A9A95;
+  --rubrica: #1A3E96;
   color-scheme: light;
 }
 :root[data-tema="noite"] .cabeca,
@@ -57,16 +57,14 @@
 :root[data-tema="noite"] .mesma-semana,
 :root[data-tema="noite"] .indice,
 :root[data-tema="noite"] .navegacao {
-  background-color: #A6A6A1;
-  background-image: radial-gradient(circle, rgba(20, 20, 20, 0.16) 0.75px, transparent 1.05px);
-  background-size: 3.4px 3.4px;
+  background-color: #C7C7C2;
 }
 :root[data-tema="noite"] .cabeca { padding-bottom: 18px; }
 :root[data-tema="noite"] .cabeca h1 { color: #141414; }
-:root[data-tema="noite"] .indice button { background: #B3B3AE; }
-:root[data-tema="noite"] .botao-principal { background: #16357F; color: #F1F1EC; }
+:root[data-tema="noite"] .indice button { background: #D5D5D1; }
+:root[data-tema="noite"] .botao-principal { background: #1A3E96; color: #F1F1EC; }
 :root[data-tema="noite"] .botao-principal svg { stroke: #F1F1EC; }
-:root[data-tema="noite"] .navegacao a[aria-current="page"] { border-top-color: #16357F; }
+:root[data-tema="noite"] .navegacao a[aria-current="page"] { border-top-color: #1A3E96; }
 
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -215,7 +213,7 @@ button { font: inherit; color: inherit; }
 :root[data-tema="noite"] .linha a,
 :root[data-tema="noite"] .prazos a,
 :root[data-tema="noite"] .vazio a {
-  color: #16357F;
+  color: #1A3E96;
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
