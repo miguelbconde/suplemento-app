@@ -1,6 +1,6 @@
 """Valida um arquivo de edição do Suplemento.
 
-Uso: python validar.py edicoes/2026-11-25.json
+Uso: python formato/validar.py app/edicoes/2026-11-25.json
 Confere o esquema (edicao.schema.json, na mesma pasta) e as regras da casa
 que um esquema não expressa. Erros impedem a publicação; avisos, não.
 """

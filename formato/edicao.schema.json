@@ -284,6 +284,10 @@
               ]
             }
           }
+        },
+        "assinatura": {
+          "type": "string",
+          "description": "Como a autoria aparece para o leitor, quando o campo autor não basta (entrevistas): 'Georges Didi-Huberman, em conversa com Sara Cohen'. Sem ela, o app mostra o autor."
         }
       }
     },

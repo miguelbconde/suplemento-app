@@ -8,15 +8,16 @@ A edição sai toda quarta em [suplemento.substack.com](https://suplemento.subst
 
 | Pasta | O que tem |
 |---|---|
-| `formato/` | O formato de cada edição: esquema JSON, exemplo, validador e documentação ([README](formato/README.md)). |
-| `edicoes/` | Uma edição por arquivo, `AAAA-MM-DD.json`, com a data da quarta de publicação. |
-| `app/` | O app (PWA), publicado pela Cloudflare a cada commit na `main`. Por enquanto, só uma página provisória. |
+| `formato/` | O formato de cada edição: esquema JSON, validador e documentação ([README](formato/README.md)). |
+| `app/` | O app (PWA), publicado pela Cloudflare a cada commit na `main`: `index.html`, `app.js`, `style.css`, `sw.js` (leitura offline), `manifest.webmanifest`, ícones e a fonte Newsreader (licença OFL), servida pelo próprio site. |
+| `app/edicoes/` | As edições publicadas, uma por arquivo (`AAAA-MM-DD.json`, data da quarta), e `index.json` com a lista. O app abre a mais recente. |
+| `app/exemplo/` | O nº 2, só como referência. Abre em `?exemplo` (https://suplemento-app.mbconde.workers.dev/?exemplo). |
 
 ## Publicar uma edição
 
-1. Salvar a edição em `edicoes/AAAA-MM-DD.json`.
-2. Validar: `python formato/validar.py edicoes/AAAA-MM-DD.json` (requer `pip install jsonschema`).
-3. Fazer o commit só se não houver erros. Avisos não bloqueiam.
+1. Salvar a edição em `app/edicoes/AAAA-MM-DD.json` e acrescentar a data em `app/edicoes/index.json`.
+2. Validar: `python formato/validar.py app/edicoes/AAAA-MM-DD.json` (requer `pip install jsonschema`).
+3. Fazer o commit só se não houver erros. Avisos não bloqueiam. A Cloudflare publica em seguida.
 
 ## Publicação
 
@@ -25,7 +26,7 @@ A Cloudflare (Workers Static Assets) publica a pasta `app/` a cada commit na `ma
 ## Princípios do app
 
 - Uma edição por semana, sem feed ao vivo. A cada dia, a abertura mostra cinco destaques diferentes da edição, e a edição completa fica a um toque.
-- No máximo uma notificação por dia, só se o leitor quiser.
+- No máximo uma notificação por dia, só se o leitor quiser (ainda não implementada).
 - Sem anúncios, sem rastreadores de terceiros, sem rolagem infinita.
 - Leitura offline: a edição é baixada inteira.
 

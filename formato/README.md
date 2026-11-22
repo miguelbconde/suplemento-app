@@ -1,11 +1,11 @@
 # Formato da edição do Suplemento (1.0, 22/11/2026)
 
-Cada edição é um arquivo JSON, `edicoes/AAAA-MM-DD.json`, com a data da quarta de publicação. É a **fonte única**: o app lê este arquivo, e o HTML para o Substack é gerado a partir dele. Depois de publicado, o arquivo não muda, salvo correção, que fica no histórico do repositório.
+Cada edição é um arquivo JSON, `app/edicoes/AAAA-MM-DD.json`, com a data da quarta de publicação. É a **fonte única**: o app lê este arquivo, e o HTML para o Substack é gerado a partir dele. Depois de publicado, o arquivo não muda, salvo correção, que fica no histórico do repositório.
 
 Arquivos desta pasta:
 
 - `edicao.schema.json`: as regras do formato (JSON Schema).
-- `validar.py`: confere o esquema e as regras da casa. Uso: `python validar.py edicoes/2026-11-25.json`.
+- `validar.py`: confere o esquema e as regras da casa. Uso: `python formato/validar.py app/edicoes/2026-11-25.json`.
 
 ## O que vai no arquivo
 
@@ -20,14 +20,14 @@ Arquivos desta pasta:
 
 O lema, o rodapé, o expediente e a linha "Todas as chamadas abertas da área estão na página Editais e prazos" são fixos e ficam na configuração do app, não em cada edição. As marcas de língua e acesso (*[Em inglês]*, *[paywall]*) também não vão no resumo: são geradas a partir de `lingua`, `nota_acesso` e `acesso_fonte`.
 
-Exemplo completo: [`edicoes/2026-11-18.json`](../edicoes/2026-11-18.json), o nº 2.
+Exemplo completo: [`app/exemplo/2026-11-18.json`](../app/exemplo/2026-11-18.json), o nº 2.
 
 ### Verbete
 
 - `id`: `n2-01`, `n2-02`… Fixo depois de publicado, porque o app guarda o que o leitor salvou.
 - `secao`, `citacao` (em português, sem aspas), `resumo`.
 - `conferencia`: o trecho original da citação. **Uso interno**: nunca aparece no app nem no Substack.
-- `autor`, `figura`, `veiculo`, `veiculo_complemento` (afiliação ou tradutor), `url`.
+- `autor`, `assinatura` (como a autoria aparece ao leitor quando `autor` não basta, como nas entrevistas: "Georges Didi-Huberman, em conversa com Sara Cohen"), `figura`, `veiculo`, `veiculo_complemento` (afiliação ou tradutor), `url`.
 - `lingua`: só as seis de recomendação (`pt en es fr it de`). O esquema recusa outras. `lingua_original` quando o texto é versão de um original em outra língua.
 - `acesso_fonte`: `aberto`, `parcial` ou `paywall`. Refere-se ao texto original, não ao Suplemento. Detalhe opcional em `nota_acesso`.
 - `area`, `regiao` (as mesmas regiões do registro), `regiao_obs`.

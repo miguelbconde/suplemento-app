@@ -2,20 +2,40 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Suplemento</title>
-<style>
-  html,body{margin:0;height:100%}
-  body{display:flex;align-items:center;justify-content:center;background:#F4F0E6;color:#1D1B17;font-family:Georgia,serif;text-align:center;padding:24px;box-sizing:border-box}
-  h1{font-size:44px;margin:0 0 8px;font-weight:600}
-  p{margin:0;font-style:italic;color:#5E584C}
-</style>
+<meta name="description" content="O melhor da semana em livros, artes e ideias.">
+<meta name="theme-color" content="#F4F0E6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17150F" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Suplemento">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preload" href="fonts/newsreader-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/newsreader-latin-opsz-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+<script>
+  // tema antes de desenhar, para não piscar
+  try {
+    var t = localStorage.getItem('suplemento:tema');
+    if (t === 'noite' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) document.documentElement.dataset.tema = 'noite';
+  } catch (e) {}
+</script>
 </head>
 <body>
-  <main>
-    <h1>Suplemento</h1>
-    <p>“Quem desconfia, fica sábio”</p>
-    <p style="margin-top:20px;font-style:normal">O app está em preparação. Enquanto isso, a edição sai toda quarta em <a href="https://suplemento.substack.com" style="color:#A6261C">suplemento.substack.com</a>.</p>
-  </main>
+<div class="pagina">
+  <main id="app" class="miolo" aria-live="polite"></main>
+  <nav class="navegacao" aria-label="Seções do app">
+    <a href="#/" data-rota="hoje">Hoje</a>
+    <a href="#/edicao" data-rota="edicao">Edição</a>
+    <a href="#/guardados" data-rota="guardados">Guardados</a>
+  </nav>
+</div>
+<div class="aviso" id="aviso" role="status"></div>
+<noscript><p style="padding:24px;font-family:Georgia,serif">O Suplemento precisa de JavaScript. A edição também sai toda quarta em <a href="https://suplemento.substack.com">suplemento.substack.com</a>.</p></noscript>
+<script src="app.js"></script>
 </body>
 </html>
