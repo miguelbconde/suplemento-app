@@ -224,3 +224,8 @@ button { font: inherit; color: inherit; }
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
+
+/* faixa de prévia (só enquanto não há edição publicada) */
+.faixa-previa { display: none; }
+body.previa .faixa-previa, .exemplo .faixa-previa { display: block; padding: calc(8px + env(safe-area-inset-top)) 16px 8px; background: var(--tinta); color: var(--papel); font-size: 13px; text-align: center; letter-spacing: 0.02em; }
+body.previa .pagina, .exemplo .pagina { padding-top: 0; }

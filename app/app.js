@@ -9,6 +9,7 @@
   var FUSO = 'America/Sao_Paulo';
   var params = new URLSearchParams(location.search);
   var EXEMPLO = params.has('exemplo');
+  if (EXEMPLO) document.documentElement.classList.add('exemplo');
   var BASE = EXEMPLO ? 'exemplo/' : 'edicoes/';
   var LINGUAS = { pt: 'português', en: 'inglês', es: 'espanhol', fr: 'francês', it: 'italiano', de: 'alemão' };
   var app = document.getElementById('app');
@@ -336,10 +337,19 @@
   }
   window.addEventListener('hashchange', rotear);
 
-  buscar(BASE + 'index.json').then(function (idx) {
-    var lista = (idx.edicoes || []).slice().sort();
-    if (!lista.length) return null;
-    return buscar(BASE + lista[lista.length - 1] + '.json');
+  // Enquanto não houver edição publicada, o endereço principal mostra o nº 2 como prévia.
+  function carregar(base) {
+    return buscar(base + 'index.json').then(function (idx) {
+      var lista = (idx.edicoes || []).slice().sort();
+      if (!lista.length) return null;
+      return buscar(base + lista[lista.length - 1] + '.json');
+    });
+  }
+  carregar(BASE).then(function (e) {
+    if (e || EXEMPLO) return e;
+    EXEMPLO = true; BASE = 'exemplo/';
+    document.body.classList.add('previa');
+    return carregar(BASE);
   }).then(function (e) {
     ed = e;
     if (ed) escolherDia();
