@@ -10,13 +10,17 @@ A edição sai toda quarta em [suplemento.substack.com](https://suplemento.subst
 |---|---|
 | `formato/` | O formato de cada edição: esquema JSON, exemplo, validador e documentação ([README](formato/README.md)). |
 | `edicoes/` | Uma edição por arquivo, `AAAA-MM-DD.json`, com a data da quarta de publicação. |
-| `app/` | O app (PWA). Ainda não começado. |
+| `app/` | O app (PWA), publicado pela Cloudflare a cada commit na `main`. Por enquanto, só uma página provisória. |
 
 ## Publicar uma edição
 
 1. Salvar a edição em `edicoes/AAAA-MM-DD.json`.
 2. Validar: `python formato/validar.py edicoes/AAAA-MM-DD.json` (requer `pip install jsonschema`).
 3. Fazer o commit só se não houver erros. Avisos não bloqueiam.
+
+## Publicação
+
+A Cloudflare (Workers Static Assets) publica a pasta `app/` a cada commit na `main`, conforme `wrangler.jsonc`. O resto do repositório não vai para o site.
 
 ## Princípios do app
 

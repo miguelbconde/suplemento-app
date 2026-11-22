@@ -1,0 +1,11 @@
+{
+	// Publicação do app do Suplemento na Cloudflare (Workers Static Assets).
+	// O nome precisa ser igual ao do Worker criado no painel.
+	"name": "suplemento-app",
+	"compatibility_date": "2026-11-22",
+	"assets": {
+		// Só a pasta app/ é publicada: formato/ e scripts ficam fora do site.
+		"directory": "./app",
+		"not_found_handling": "single-page-application"
+	}
+}
