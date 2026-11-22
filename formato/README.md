@@ -56,4 +56,4 @@ Avisos, que só sinalizam:
 ## Em aberto
 
 - **A regra de repetição dos destaques.** São 35 vagas na semana para cerca de 15 a 20 verbetes. O exemplo apenas percorre a edição em ordem, cinco por dia, e começa a quarta pelo Repare.
-- **Onde fica o conteúdo dos assinantes.** O repositório no GitHub Pages é público. Quando o app passar a ser pago, as seções `assinantes` saem do arquivo público e vão para um serviço com login. O campo `acesso` de cada seção já marca o corte.
+- **Onde fica o conteúdo dos assinantes.** O repositório e o site são públicos. Quando o app passar a ser pago, as seções `assinantes` saem do arquivo público e vão para um serviço com login (Workers e KV ou D1 da Cloudflare). O campo `acesso` de cada seção já marca o corte.
