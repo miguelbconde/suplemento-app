@@ -45,6 +45,8 @@
     h = h.replace(/\*(.+?)\*/g, '<em>$1</em>');
     return h;
   }
+  // resumo dentro de um item que já é link: sem links internos
+  function mdTexto(s) { return md(String(s || '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')); }
   function semMarcas(s) { return String(s || '').replace(/\*+/g, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1'); }
 
   function hojeISO() {
@@ -205,6 +207,7 @@
         '<span class="num" aria-hidden="true">' + (i + 1) + '</span>' +
         '<div class="corpo"><span class="rubrica">' + esc(s ? s.nome : '') + '</span>' +
         '<p class="citacao-lista">“' + md(v.citacao) + '”</p>' +
+        '<p class="resumo-lista">' + mdTexto(v.resumo) + '</p>' +
         '<span class="meta">' + linhaMeta(v) + '</span></div></a>';
     }).join('');
     app.innerHTML =
@@ -278,6 +281,7 @@
         (s.linha_do_fio ? '<p class="fio-semana">' + md(s.linha_do_fio) + '</p>' : '') +
         vs.map(function (v) {
           return '<a class="item-edicao" href="' + rotaVerbete(v.id) + '"><p class="citacao-lista">“' + md(v.citacao) + '”</p>' +
+            '<p class="resumo-lista">' + mdTexto(v.resumo) + '</p>' +
             '<span class="meta">' + linhaMeta(v) + '</span></a>';
         }).join('') + '</section>';
     }).join('');

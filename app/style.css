@@ -288,3 +288,9 @@ body.previa .pagina, .exemplo .pagina { padding-top: 0; }
 :root:not([data-tema]) .aviso { background: var(--cobalto); color: #fff; border-radius: 10px; }
 :root:not([data-tema]) .faixa-previa { background: var(--tinta); color: #fff; }
 :root:not([data-tema]) .cabeca .topo-dir { color: #C9D3FF; }
+
+/* resumo nas listas (Hoje e Edição) */
+.resumo-lista { margin: 0; font-size: 17px; line-height: 1.55; color: var(--tinta); hyphens: auto; -webkit-hyphens: auto; font-variation-settings: 'opsz' 16; }
+.resumo-lista strong { font-weight: 600; }
+:root[data-tema="noite"] .resumo-lista { line-height: 1.62; }
+:root[data-tema="noite"] .resumo-lista strong { color: #EE8E6C; }
