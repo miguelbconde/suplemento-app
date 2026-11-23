@@ -376,7 +376,7 @@
       '<h2>Citações</h2>' +
       '<p>As citações são trechos curtos, traduzidos pela redação, sempre com autor e origem, para fins de crítica e divulgação (Lei 9.610/98, art. 46, III). Os textos pertencem a seus autores e veículos; o <em>Suplemento</em> só aponta o caminho.</p>' +
       '<h2>Privacidade</h2>' +
-      '<p>Este app não tem anúncios nem rastreadores, e não pede cadastro. O que você guarda e o modo de leitura que escolhe ficam só no seu aparelho.</p>' +
+      '<p>Este app não tem anúncios nem rastreadores, e não pede cadastro. O que você guarda e o modo de leitura que escolhe ficam só no seu aparelho. <a href="privacidade.html">Política de privacidade</a></p>' +
       '<h2>O lema</h2>' +
       '<p>“Quem desconfia, fica sábio” é uma frase dita por Riobaldo no <em>Grande sertão: veredas</em>, de Guimarães Rosa. A frase aparece na página 125 da edição comemorativa dos 50 anos do livro, publicada em 2006 pela editora Nova Fronteira.</p>' +
       '<h2>Contato</h2>' +

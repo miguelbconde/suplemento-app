@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Privacidade — Suplemento</title>
+<meta name="description" content="Política de privacidade do app Suplemento.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="style.css">
+<script>
+  try {
+    var t = localStorage.getItem('suplemento:tema');
+    if (t === 'noite' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) document.documentElement.dataset.tema = 'noite';
+    else if (t === 'papel') document.documentElement.dataset.tema = 'papel';
+  } catch (e) {}
+</script>
+</head>
+<body>
+<div class="pagina">
+<main class="miolo">
+  <div class="topo"><a class="voltar" href="./#/sobre"><svg width="10" height="16" viewBox="0 0 10 16" aria-hidden="true"><path d="M8 2 2 8l6 6" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Sobre</a></div>
+  <div class="capa-edicao"><span class="rubrica" style="color:var(--cinza)">Política de privacidade</span><h1>Privacidade</h1><div class="fio-duplo"></div></div>
+  <section class="sobre">
+    <p class="destaque">O Suplemento não vende, não aluga e não compartilha dados de leitores. Não há anúncios nem rastreadores.</p>
+
+    <h2>O que guardamos</h2>
+    <p>Hoje, nada sobre você. O app não pede cadastro e não envia ao nosso servidor nenhuma informação sobre o que você lê.</p>
+    <p>Duas coisas ficam guardadas <strong>só no seu aparelho</strong>, no armazenamento do navegador: os textos que você marca em “Guardar” e o modo de leitura que escolhe (azulejo, papel ou noite). Para apagá-las, basta limpar os dados do site no navegador ou desinstalar o app.</p>
+    <p>Para funcionar sem internet, o app também guarda no aparelho uma cópia das edições e das fontes tipográficas.</p>
+
+    <h2>Hospedagem</h2>
+    <p>O app é servido pela Cloudflare. Como todo servidor na internet, ela recebe dados técnicos de cada acesso (como o endereço IP e o tipo de navegador) para entregar as páginas e proteger o site contra ataques. Não usamos esses dados para identificar leitores nem para medir audiência individual.</p>
+    <p>As fontes tipográficas são servidas pelo próprio app, sem chamadas a serviços de terceiros.</p>
+
+    <h2>Links para outros sites</h2>
+    <p>Cada texto recomendado leva ao site do veículo que o publicou. Ao abrir esse link, você passa a estar sujeito à política de privacidade daquele site, que não controlamos.</p>
+
+    <h2>Assinaturas</h2>
+    <p>Quando o Suplemento passar a ter assinatura paga, guardaremos apenas o necessário para dar acesso a quem assina (como o e-mail da conta). O pagamento será processado por um serviço especializado, e não teremos acesso ao número do seu cartão. Esta página será atualizada antes disso, com o nome do serviço e os dados envolvidos.</p>
+
+    <h2>Seus direitos</h2>
+    <p>Pela Lei Geral de Proteção de Dados (Lei 13.709/2018), você pode pedir a qualquer momento para saber que dados temos sobre você, corrigi-los ou apagá-los.</p>
+
+    <h2>Contato</h2>
+    <p>Para falar com a redação sobre privacidade, responda a qualquer edição do Suplemento enviada por e-mail ou escreva pela página <a href="https://suplemento.substack.com">suplemento.substack.com</a>.</p>
+
+    <p class="discreto">Versão de 23 de novembro de 2026. Expediente: Redação Suplemento</p>
+  </section>
+</main>
+</div>
+</body>
+</html>
