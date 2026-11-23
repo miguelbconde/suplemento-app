@@ -44,3 +44,9 @@ Cada edição e cada verbete têm endereço fixo, que continua valendo depois qu
 - `#/arquivo`, `#/guardados`, `#/sobre`.
 
 A ficha de compartilhamento (título, descrição e `icons/compartilhar.png`, 1200×630) é a mesma para todos os links. Ficha própria por verbete exigiria um Worker que monte as etiquetas no servidor; fica para depois.
+
+## Modos de leitura
+
+Três modos, em ciclo pelo botão do topo, e o app lembra a escolha: **Azulejo** (claro padrão: branco, cobalto e tangerina), **Papel** (o claro de jornal) e **Noite** (azul meia-noite). Com o celular em modo escuro e nenhuma escolha feita, o app abre na Noite.
+
+As listas (Hoje e Edição) trazem citação e resumo de cada texto; a tela do verbete acrescenta a ficha, o "Na mesma semana" e o botão para o original.
