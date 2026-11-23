@@ -9,6 +9,7 @@
  *   #/v/<id>                verbete da edição mais recente
  *   #/n/<data>              edição de uma data (AAAA-MM-DD), endereço fixo
  *   #/n/<data>/v/<id>       verbete de uma edição, endereço fixo (é o que se compartilha)
+ *   #/dia/<data>            os cinco destaques de outro dia da semana
  *   #/arquivo  #/guardados  #/sobre
  */
 (function () {
@@ -27,7 +28,9 @@
   var atual = null;       // edição mais recente
   var ed = null;          // edição em vista
   var hojeIds = [];       // destaques do dia (só da edição mais recente)
-  var hojeData = null;    // data (AAAA-MM-DD) do cardápio mostrado
+  var hojeData = null;    // data (AAAA-MM-DD) do cardápio de hoje
+  var diaVisto = null;    // dia escolhido na faixa dos dias
+  var idsVistos = [];     // destaques do dia escolhido
 
   /* ---------- utilidades ---------- */
 
@@ -64,6 +67,13 @@
     var s = new Intl.DateTimeFormat('pt-BR', o).format(d);
     return s.charAt(0).toUpperCase() + s.slice(1);
   }
+  function dataCurta(iso) {
+    var s = new Intl.DateTimeFormat('pt-BR', { timeZone: 'UTC', weekday: 'short', day: 'numeric', month: 'short' }).format(new Date(iso + 'T12:00:00Z'));
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  }
+  function diaSemana(iso) {
+    return new Intl.DateTimeFormat('pt-BR', { timeZone: 'UTC', weekday: 'long' }).format(new Date(iso + 'T12:00:00Z')).replace('-feira', '');
+  }
   function ddmm(iso) { return iso.slice(8, 10) + '/' + iso.slice(5, 7); }
 
   var guardadosChave = 'suplemento:guardados';
@@ -86,31 +96,30 @@
     partilhar: '<svg width="14" height="16" viewBox="0 0 14 16" aria-hidden="true"><path d="M7 10V1.5M3.5 5 7 1.5 10.5 5M2 8v6.5h10V8" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>'
   };
 
-  // Três modos, em ciclo: azulejo (claro, padrão) → papel → noite
-  var TEMAS = ['azulejo', 'papel', 'noite'];
+  // Três modos, lado a lado: papel, azulejo (claro, padrão) e noite
+  var TEMAS = ['papel', 'azulejo', 'noite'];
   var NOMES_TEMA = { azulejo: 'Modo azulejo', papel: 'Modo papel', noite: 'Modo noturno' };
   var CORES_BARRA = { azulejo: '#FFFFFF', papel: '#F4F0E6', noite: '#0D121D' };
-  ICONES.papel = '<svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 2.5h7l3 3v10H4z M11 2.5v3h3 M6.5 9h5M6.5 12h5" fill="none" stroke-width="1.4" stroke-linejoin="round"/></svg>';
+  ICONES.papel = '<svg width="16" height="16" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 2.5h7l3 3v10H4z M11 2.5v3h3 M6.5 9h5M6.5 12h5" fill="none" stroke-width="1.4" stroke-linejoin="round"/></svg>';
+  var ICONE_TEMA = { papel: ICONES.papel, azulejo: ICONES.sol, noite: ICONES.lua };
   function temaAtual() { return document.documentElement.dataset.tema || 'azulejo'; }
-  function proximoTema() { return TEMAS[(TEMAS.indexOf(temaAtual()) + 1) % TEMAS.length]; }
   function botaoTema() {
-    var prox = proximoTema();
-    var icone = prox === 'papel' ? ICONES.papel : prox === 'noite' ? ICONES.lua : ICONES.sol;
-    return '<button type="button" class="icone" data-acao="tema" aria-label="Mudar para ' + NOMES_TEMA[prox].toLowerCase() + '">' + icone + '</button>';
+    var t = temaAtual();
+    return '<span class="modos" role="group" aria-label="Modo de leitura">' + TEMAS.map(function (x) {
+      return '<button type="button" data-acao="tema" data-tema="' + x + '" aria-pressed="' + (x === t) + '" aria-label="' + NOMES_TEMA[x] + '">' + ICONE_TEMA[x] + '</button>';
+    }).join('') + '</span>';
   }
   function pintarBarra() {
     var cor = CORES_BARRA[temaAtual()];
     document.querySelectorAll('meta[name="theme-color"]').forEach(function (m) { m.setAttribute('content', cor); });
   }
   pintarBarra();
-  function trocarTema() {
-    var t = proximoTema();
+  function trocarTema(t) {
+    if (!t || t === temaAtual()) return;
     if (t === 'azulejo') delete document.documentElement.dataset.tema; else document.documentElement.dataset.tema = t;
     try { localStorage.setItem('suplemento:tema', t); } catch (e) {}
     pintarBarra();
-    var b = document.querySelector('[data-acao="tema"]');
-    if (b) b.outerHTML = botaoTema();
-    aviso(NOMES_TEMA[t]);
+    document.querySelectorAll('.modos button').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.tema === t); });
   }
 
   /* ---------- dados ---------- */
@@ -145,8 +154,21 @@
     } else {
       hojeData = hoje < datas[0] ? datas[0] : datas[datas.length - 1];
     }
+    hojeIds = idsDoDia(hojeData);
+    diaVisto = hojeData; idsVistos = hojeIds;
+  }
+  function idsDoDia(d) {
     var ids = atual.verbetes.map(function (v) { return v.id; });
-    hojeIds = (dias[hojeData] || []).filter(function (id) { return ids.indexOf(id) >= 0; });
+    return ((atual.destaques_por_dia || {})[d] || []).filter(function (id) { return ids.indexOf(id) >= 0; });
+  }
+  function rotaDia() { return diaVisto === hojeData ? '#/' : '#/dia/' + diaVisto; }
+  function faixaDias() {
+    var datas = Object.keys(atual.destaques_por_dia || {}).sort();
+    return '<nav class="dias" aria-label="Dias da edição">' + datas.map(function (d) {
+      var sem = new Intl.DateTimeFormat('pt-BR', { timeZone: 'UTC', weekday: 'short' }).format(new Date(d + 'T12:00:00Z')).replace('.', '');
+      return '<a href="' + (d === hojeData ? '#/' : '#/dia/' + d) + '"' + (d === diaVisto ? ' aria-current="true"' : '') + (d === hojeData ? ' class="hoje"' : '') +
+        ' aria-label="' + esc(dataLonga(d, true)) + (d === hojeData ? ', hoje' : '') + '">' + sem + '<b>' + Number(d.slice(8)) + '</b></a>';
+    }).join('') + '</nav>';
   }
 
   function marcas(v) {
@@ -193,17 +215,20 @@
     var dow = new Date(hoje + 'T12:00:00Z').getUTCDay();
     var quarta = somaDias(hoje, ((3 - dow + 7) % 7) || 7);
     app.innerHTML =
-      cabeca(dataLonga(hoje, true), '') +
+      cabeca(dataCurta(hoje), '') +
       '<div class="vazio"><p>O primeiro número do app sai na quarta, ' + esc(dataLonga(quarta)) + '.</p>' +
       '<p class="discreto">Enquanto isso, a edição sai toda quarta em <a href="https://suplemento.substack.com">suplemento.substack.com</a>.</p></div>' + pe();
   }
 
-  function telaHoje() {
+  function telaHoje(dia) {
     navAtiva('hoje');
     ed = atual;
-    var itens = hojeIds.map(function (id, i) {
+    diaVisto = dia && atual.destaques_por_dia && atual.destaques_por_dia[dia] ? dia : hojeData;
+    idsVistos = idsDoDia(diaVisto);
+    var ehHoje = diaVisto === hojeData;
+    var itens = idsVistos.map(function (id, i) {
       var v = verbete(id), s = secao(v.secao);
-      return '<a class="item-dia" href="#/v/' + v.id + '">' +
+      return '<a class="item-dia' + (v.secao === 'repare' ? ' em-destaque' : '') + '" href="#/v/' + v.id + '">' +
         '<span class="num" aria-hidden="true">' + (i + 1) + '</span>' +
         '<div class="corpo"><span class="rubrica">' + esc(s ? s.nome : '') + '</span>' +
         '<p class="citacao-lista">“' + md(v.citacao) + '”</p>' +
@@ -211,12 +236,12 @@
         '<span class="meta">' + linhaMeta(v) + '</span></div></a>';
     }).join('');
     app.innerHTML =
-      cabeca(dataLonga(hojeData, true), 'Nº ' + ed.numero) +
-      '<section class="secao-dia"><div class="titulo"><h2>Cinco leituras para hoje</h2>' +
-      '<span class="meta">de ' + ed.verbetes.length + ' na edição</span></div>' + itens + '</section>' +
+      cabeca(dataCurta(hojeISO()), 'Nº ' + ed.numero) + faixaDias() +
+      '<section class="secao-dia"><div class="titulo"><h2>' + (ehHoje ? 'Cinco leituras para hoje' : 'As cinco de ' + diaSemana(diaVisto)) + '</h2>' +
+      (ehHoje ? '<span class="meta">de ' + ed.verbetes.length + ' na edição</span>' : '') + '</div>' + itens + '</section>' +
       '<a class="chamada-edicao" href="#/edicao"><span class="rubrica" style="color:var(--cinza)">A edição inteira</span>' +
       '<span class="grande">Nº ' + ed.numero + ' · ' + esc(ed.titulo) + ' →</span></a>' +
-      '<p class="rodape-dia">Amanhã, outras cinco. A edição não sai daqui.</p>' + pe();
+      '<p class="rodape-dia">' + (ehHoje ? 'Amanhã, outras cinco. A edição não sai daqui.' : '<a href="#/">Voltar às cinco de hoje</a>') + '</p>' + pe();
   }
 
   function telaVerbete(id) {
@@ -224,13 +249,13 @@
     if (!v) { location.replace(rotaEdicao()); return; }
     navAtiva(null);
     var s = secao(v.secao);
-    var noDia = ehAtual() ? hojeIds.indexOf(id) : -1;
+    var noDia = ehAtual() ? idsVistos.indexOf(id) : -1;
     var ordem = ed.verbetes.map(function (x) { return x.id; });
     var pos, proxId, rotuloProx;
     if (noDia >= 0) {
-      pos = (noDia + 1) + ' de ' + hojeIds.length;
-      proxId = hojeIds[noDia + 1];
-      rotuloProx = proxId ? 'A seguir, ' + (noDia + 2) + ' de ' + hojeIds.length : null;
+      pos = (noDia + 1) + ' de ' + idsVistos.length;
+      proxId = idsVistos[noDia + 1];
+      rotuloProx = proxId ? 'A seguir, ' + (noDia + 2) + ' de ' + idsVistos.length : null;
     } else {
       var k = ordem.indexOf(id);
       pos = (k + 1) + ' de ' + ordem.length;
@@ -248,7 +273,7 @@
       prox = '<a class="seguinte" href="' + rotaVerbete(p.id) + '"><span class="rubrica" style="color:var(--cinza)">' + rotuloProx + '</span>' +
         '<span class="citacao-lista">“' + md(p.citacao) + '” →</span><span class="meta">' + linhaMeta(p) + '</span></a>';
     }
-    var voltar = noDia >= 0 ? ['#/', 'Hoje'] : [rotaEdicao(), ehAtual() ? 'Edição' : 'Nº ' + ed.numero];
+    var voltar = noDia >= 0 ? [rotaDia(), diaVisto === hojeData ? 'Hoje' : diaSemana(diaVisto).replace(/^./, function (c) { return c.toUpperCase(); })] : [rotaEdicao(), ehAtual() ? 'Edição' : 'Nº ' + ed.numero];
     var antiga = ehAtual() ? '' : '<p class="aviso-antiga">Da edição nº ' + ed.numero + ', de ' + esc(dataLonga(ed.data, false, true)) + '.</p>';
     app.innerHTML =
       topo(voltar[0], voltar[1], pos) + antiga +
@@ -280,15 +305,15 @@
         '<span class="meta">' + vs.length + (vs.length === 1 ? ' texto' : ' textos') + '</span></div>' +
         (s.linha_do_fio ? '<p class="fio-semana">' + md(s.linha_do_fio) + '</p>' : '') +
         vs.map(function (v) {
-          return '<a class="item-edicao" href="' + rotaVerbete(v.id) + '"><p class="citacao-lista">“' + md(v.citacao) + '”</p>' +
+          return '<a class="item-edicao' + (v.secao === 'repare' ? ' em-destaque' : '') + '" href="' + rotaVerbete(v.id) + '"><p class="citacao-lista">“' + md(v.citacao) + '”</p>' +
             '<p class="resumo-lista">' + mdTexto(v.resumo) + '</p>' +
             '<span class="meta">' + linhaMeta(v) + '</span></a>';
         }).join('') + '</section>';
     }).join('');
     var voltar = ehAtual() ? ['#/', 'Hoje'] : ['#/arquivo', 'Edições anteriores'];
     app.innerHTML =
-      topo(voltar[0], voltar[1], esc(dataLonga(ed.data, true))) +
-      '<div class="capa-edicao"><span class="rubrica" style="color:var(--cinza)">Nº ' + ed.numero + '</span>' +
+      topo(voltar[0], voltar[1]) +
+      '<div class="capa-edicao"><span class="rubrica" style="color:var(--cinza)">Nº ' + ed.numero + ' · ' + esc(dataLonga(ed.data, false, true)) + '</span>' +
       '<h1>' + esc(ed.titulo) + '</h1><div class="fio-duplo"></div>' +
       '<p class="abertura">' + md(ed.abertura) + '</p></div>' +
       '<nav class="indice" aria-label="Seções da edição">' + chips + '</nav>' + blocos +
@@ -387,7 +412,7 @@
       return;
     }
     var acao = b.dataset.acao, id = app.dataset.verbete, v = verbete(id);
-    if (acao === 'tema') trocarTema();
+    if (acao === 'tema') trocarTema(b.dataset.tema);
     if (acao === 'guardar' && v) {
       var g = lerGuardados(), i = g.map(function (x) { return x.id; }).indexOf(id);
       if (i >= 0) { g.splice(i, 1); aviso('Tirado dos guardados'); }
@@ -433,6 +458,7 @@
     ed = atual;
     if (h.indexOf('v/') === 0) telaVerbete(h.slice(2));
     else if (h.indexOf('edicao') === 0) telaEdicao();
+    else if ((m = h.match(/^dia\/(\d{4}-\d{2}-\d{2})/))) telaHoje(m[1]);
     else telaHoje();
     window.scrollTo(0, 0);
   }
@@ -464,7 +490,7 @@
     }
     rotear();
   }).catch(function () {
-    app.innerHTML = cabeca(dataLonga(hojeISO(), true), '') + '<div class="vazio"><p>Não consegui carregar a edição agora.</p><p class="discreto">Confira a conexão e tente de novo.</p></div>';
+    app.innerHTML = cabeca(dataCurta(hojeISO()), '') + '<div class="vazio"><p>Não consegui carregar a edição agora.</p><p class="discreto">Confira a conexão e tente de novo.</p></div>';
   });
 
   if ('serviceWorker' in navigator) {

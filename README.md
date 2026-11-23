@@ -47,6 +47,14 @@ A ficha de compartilhamento (título, descrição e `icons/compartilhar.png`, 12
 
 ## Modos de leitura
 
-Três modos, em ciclo pelo botão do topo, e o app lembra a escolha: **Azulejo** (claro padrão: branco, cobalto e tangerina), **Papel** (o claro de jornal) e **Noite** (azul meia-noite). Com o celular em modo escuro e nenhuma escolha feita, o app abre na Noite.
+Três modos, escolhidos no seletor do topo, e o app lembra a escolha: **Azulejo** (claro padrão: branco, cobalto e tangerina), **Papel** (o claro de jornal) e **Noite** (azul meia-noite). Com o celular em modo escuro e nenhuma escolha feita, o app abre na Noite.
 
 As listas (Hoje e Edição) trazem citação e resumo de cada texto; a tela do verbete acrescenta a ficha, o "Na mesma semana" e o botão para o original.
+
+## Tipografia
+
+Textos (citações, resumos, abertura) na **Newsreader**; nome do app em Newsreader; títulos de tela, rótulos, navegação e metadados na **Archivo** (Omnibus-Type). As duas são servidas pelo próprio app (`app/fonts/`, licença OFL).
+
+## Hoje
+
+Uma faixa com os sete dias da edição (quarta a terça) fica sob o cabeçalho: o dia de hoje vem marcado, e tocar em outro mostra as cinco daquele dia (`#/dia/AAAA-MM-DD`). O texto do Repare aparece em destaque nas listas.

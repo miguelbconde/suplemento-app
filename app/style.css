@@ -1,4 +1,21 @@
-/* Suplemento — app (direção A, "tradição revista") */
+/* Suplemento — app. Textos na Newsreader; títulos, rótulos e navegação na Archivo (Omnibus-Type) */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url(fonts/archivo-latin-wght-normal.woff2) format('woff2-variations');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url(fonts/archivo-latin-ext-wght-normal.woff2) format('woff2-variations');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
 
 @font-face {
   font-family: 'Newsreader';
@@ -43,7 +60,7 @@
   --rubrica: #C8440E;
   --cobalto: #1F3FD1;
   --tangerina: #E2531A;
-  --sem-serifa: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --sem-serifa: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   color-scheme: light;
 }
 :root[data-tema="papel"] {
@@ -294,3 +311,57 @@ body.previa .pagina, .exemplo .pagina { padding-top: 0; }
 .resumo-lista strong { font-weight: 600; }
 :root[data-tema="noite"] .resumo-lista { line-height: 1.62; }
 :root[data-tema="noite"] .resumo-lista strong { color: #EE8E6C; }
+
+/* ---- Archivo nos títulos e na navegação (todos os modos) ---- */
+.navegacao a, .topo, .topo-dir, .voltar, .dias, .modos, .indice button, .botao, .botao-principal, .aviso, .faixa-previa, .links-pe { font-family: var(--sem-serifa); }
+.voltar { font-size: 15px; }
+/* no Azulejo, também títulos de tela e metadados */
+:root:not([data-tema]) .capa-edicao h1,
+:root:not([data-tema]) .secao-dia h2,
+:root:not([data-tema]) .chamada-edicao .grande,
+:root:not([data-tema]) .subtitulo-bloco { font-family: var(--sem-serifa); font-style: normal; font-weight: 600; letter-spacing: -0.02em; }
+:root:not([data-tema]) .capa-edicao h1 { font-size: 32px; line-height: 1.1; }
+:root:not([data-tema]) .secao-dia h2 { font-size: 21px; }
+:root:not([data-tema]) .chamada-edicao .grande { font-size: 18px; }
+:root:not([data-tema]) .meta, :root:not([data-tema]) .ficha, :root:not([data-tema]) .prazos .data { font-family: var(--sem-serifa); font-size: 13px; }
+:root:not([data-tema]) .meta em, :root:not([data-tema]) .ficha em { font-family: 'Newsreader', serif; font-size: 14px; }
+:root:not([data-tema]) .ficha dt { font-style: normal; }
+
+/* ---- seletor de modo: três botões lado a lado ---- */
+.modos { display: inline-flex; border: 1px solid var(--fio); border-radius: 999px; padding: 2px; gap: 2px; margin-left: 6px; }
+.modos button { width: 38px; height: 34px; display: inline-flex; align-items: center; justify-content: center; border: 0; border-radius: 999px; background: none; cursor: pointer; padding: 0; }
+.modos button svg { stroke: var(--cinza); }
+.modos button[aria-pressed="true"] { background: var(--tinta); }
+.modos button[aria-pressed="true"] svg { stroke: var(--papel); }
+:root:not([data-tema]) .modos button[aria-pressed="true"] { background: var(--cobalto); }
+:root:not([data-tema]) .modos button[aria-pressed="true"] svg { stroke: #fff; }
+:root:not([data-tema]) .cabeca .modos { border-color: rgba(255,255,255,.4); }
+:root:not([data-tema]) .cabeca .modos button svg { stroke: #C9D3FF; }
+:root:not([data-tema]) .cabeca .modos button[aria-pressed="true"] { background: #fff; }
+:root:not([data-tema]) .cabeca .modos button[aria-pressed="true"] svg { stroke: var(--cobalto); }
+:root[data-tema="noite"] .cabeca .modos button[aria-pressed="true"] { background: var(--tinta); }
+
+/* ---- faixa dos dias da edição ---- */
+.dias { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; padding: 16px 16px 0; }
+.dias a { min-height: 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; border-radius: 12px; border: 1px solid transparent; color: var(--cinza); font-size: 12px; }
+.dias a b { font-size: 19px; font-weight: 600; color: var(--tinta); font-variant-numeric: tabular-nums; }
+.dias a.hoje b { color: var(--rubrica); }
+.dias a.hoje::after { content: ""; width: 4px; height: 4px; border-radius: 50%; background: var(--rubrica); }
+.dias a[aria-current="true"] { background: var(--tinta); color: var(--papel); }
+.dias a[aria-current="true"] b { color: var(--papel); }
+.dias a[aria-current="true"].hoje::after { background: var(--papel); }
+:root:not([data-tema]) .dias a[aria-current="true"] { background: var(--cobalto); color: #DCE3FF; }
+:root:not([data-tema]) .dias a[aria-current="true"] b { color: #fff; }
+:root:not([data-tema]) .dias a.hoje::after { background: var(--tangerina); }
+.secao-dia .rotulo-dia { display: block; font-family: var(--sem-serifa); font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rubrica); margin-bottom: 6px; }
+
+/* ---- Repare em destaque nas listas ---- */
+:root:not([data-tema]) .em-destaque { background: var(--papel-2); border-left: 4px solid var(--tangerina); border-top-color: transparent !important; margin: 0 -22px; padding-left: 18px; padding-right: 22px; }
+:root:not([data-tema]) .item-dia.em-destaque { margin-top: 0; }
+:root:not([data-tema]) .em-destaque + .item-dia, :root:not([data-tema]) .em-destaque + .item-edicao { border-top-color: transparent; }
+:root[data-tema="papel"] .em-destaque .rubrica::after, :root[data-tema="noite"] .em-destaque .rubrica::after { content: " ·  destaque da semana"; letter-spacing: 0.06em; text-transform: none; font-style: italic; font-weight: 400; color: var(--cinza); }
+
+.cabeca .linha-data > span:first-child, .topo-dir > span { white-space: nowrap; }
+.modos button { width: 34px; height: 32px; }
+:root:not([data-tema]) .em-destaque { border-left-color: var(--tangerina) !important; border-bottom-color: transparent !important; }
+:root:not([data-tema]) .item-edicao.em-destaque { margin-top: 8px; }
