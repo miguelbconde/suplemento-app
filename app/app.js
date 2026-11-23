@@ -76,7 +76,7 @@
     return '<button type="button" class="icone" data-acao="tema" aria-label="' + (noite ? 'Modo diurno' : 'Modo noturno') + '">' + (noite ? ICONES.sol : ICONES.lua) + '</button>';
   }
   function pintarBarra() {
-    var cor = document.documentElement.dataset.tema === 'noite' ? '#1F2A3F' : '#F4F0E6';
+    var cor = document.documentElement.dataset.tema === 'noite' ? '#0D121D' : '#F4F0E6';
     document.querySelectorAll('meta[name="theme-color"]').forEach(function (m) { m.setAttribute('content', cor); });
   }
   pintarBarra();

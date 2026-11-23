@@ -43,13 +43,13 @@
   color-scheme: light;
 }
 :root[data-tema="noite"] {
-  /* noite "tinta azul, anil": azul aberto, letra cor de papel, coral como rubrica */
-  --papel: #26324A;
-  --papel-2: #2F3D58;
-  --tinta: #EFE8D8;
-  --cinza: #B4BBCB;
-  --fio: #42506E;
-  --rubrica: #F29A79;
+  /* noite "tinta azul, meia-noite": azul profundo, letra cor de papel, coral como rubrica */
+  --papel: #121826;
+  --papel-2: #1B2335;
+  --tinta: #E6DECD;
+  --cinza: #A3AABA;
+  --fio: #2F3850;
+  --rubrica: #EE8E6C;
   color-scheme: dark;
 }
 
@@ -200,24 +200,24 @@ body.previa .pagina, .exemplo .pagina { padding-top: 0; }
 
 /* noite: superfícies, nomes e links */
 :root[data-tema="noite"] .cabeca,
-:root[data-tema="noite"] .navegacao { background: #1F2A3F; }
+:root[data-tema="noite"] .navegacao { background: #0D121D; }
 :root[data-tema="noite"] .chamada-edicao,
 :root[data-tema="noite"] .mesma-semana,
-:root[data-tema="noite"] .indice { background: #2F3D58; }
+:root[data-tema="noite"] .indice { background: #1B2335; }
 :root[data-tema="noite"] .cabeca { padding-bottom: 18px; }
-:root[data-tema="noite"] .indice button { background: #26324A; }
-:root[data-tema="noite"] .botao-principal { background: #EFE8D8; color: #26324A; }
-:root[data-tema="noite"] .botao-principal svg { stroke: #26324A; }
-:root[data-tema="noite"] .nome { color: #F29A79; font-weight: 600; }
+:root[data-tema="noite"] .indice button { background: #121826; }
+:root[data-tema="noite"] .botao-principal { background: #E6DECD; color: #121826; }
+:root[data-tema="noite"] .botao-principal svg { stroke: #121826; }
+:root[data-tema="noite"] .nome { color: #EE8E6C; font-weight: 600; }
 :root[data-tema="noite"] .resumo strong,
-:root[data-tema="noite"] .mesma-semana strong:not(:first-child) { color: #F29A79; }
+:root[data-tema="noite"] .mesma-semana strong:not(:first-child) { color: #EE8E6C; }
 :root[data-tema="noite"] .resumo { line-height: 1.68; letter-spacing: 0.005em; }
 :root[data-tema="noite"] .mesma-semana a,
 :root[data-tema="noite"] .capa-edicao .abertura a,
 :root[data-tema="noite"] .linha a,
 :root[data-tema="noite"] .prazos a,
 :root[data-tema="noite"] .vazio a {
-  color: #F29A79;
+  color: #EE8E6C;
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
