@@ -34,13 +34,26 @@
 }
 
 :root {
+  /* claro "azulejo": branco, cobalto e tangerina (o padrão) */
+  --papel: #FFFFFF;
+  --papel-2: #EEF1FC;
+  --tinta: #14182B;
+  --cinza: #5A6078;
+  --fio: #D9DDEA;
+  --rubrica: #C8440E;
+  --cobalto: #1F3FD1;
+  --tangerina: #E2531A;
+  --sem-serifa: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color-scheme: light;
+}
+:root[data-tema="papel"] {
+  /* papel: o claro de jornal */
   --papel: #F4F0E6;
   --papel-2: #EFEADD;
   --tinta: #1D1B17;
   --cinza: #5E584C;
   --fio: #CFC8B8;
   --rubrica: #A6261C;
-  color-scheme: light;
 }
 :root[data-tema="noite"] {
   /* noite "tinta azul, meia-noite": azul profundo, letra cor de papel, coral como rubrica */
@@ -234,3 +247,44 @@ body.previa .pagina, .exemplo .pagina { padding-top: 0; }
 .sobre p.destaque { font-size: 23px; line-height: 1.3; font-style: italic; margin: 8px 0 22px; }
 .sobre h2 { margin: 30px 0 10px; padding-bottom: 8px; border-bottom: 2px solid var(--tinta); font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rubrica); font-weight: 600; }
 .sobre a { color: var(--rubrica); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+/* azulejo: só quando não há tema escolhido (papel e noite mantêm o desenho de jornal) */
+:root:not([data-tema]) .rubrica,
+:root:not([data-tema]) .bloco-cab h2,
+:root:not([data-tema]) .sobre h2,
+:root:not([data-tema]) .cabeca .linha-data,
+:root:not([data-tema]) .navegacao a { font-family: var(--sem-serifa); letter-spacing: 0.08em; }
+:root:not([data-tema]) .navegacao a { letter-spacing: 0.01em; font-size: 14px; }
+:root:not([data-tema]) .cabeca { background: var(--cobalto); color: #fff; padding-bottom: 18px; }
+:root:not([data-tema]) .cabeca .linha-data { color: #C9D3FF; border-bottom-color: rgba(255,255,255,.45); }
+:root:not([data-tema]) .cabeca .lema { color: #C9D3FF; }
+:root:not([data-tema]) .cabeca .icone svg { stroke: #fff; }
+:root:not([data-tema]) .cabeca .fio-duplo::before,
+:root:not([data-tema]) .cabeca .fio-duplo::after { border-top-color: #fff; }
+:root:not([data-tema]) .citacao-lista,
+:root:not([data-tema]) .verbete .citacao,
+:root:not([data-tema]) .capa-edicao h1 { color: var(--cobalto); }
+:root:not([data-tema]) .item-dia .num,
+:root:not([data-tema]) .verbete .aspas,
+:root:not([data-tema]) .resumo::first-letter { color: var(--tangerina); }
+:root:not([data-tema]) .verbete .assinatura::before { border-top-color: var(--tangerina); }
+:root:not([data-tema]) .nome { color: var(--rubrica); font-weight: 600; }
+:root:not([data-tema]) .botao-principal { background: var(--cobalto); color: #fff; border-radius: 10px; }
+:root:not([data-tema]) .botao-principal svg { stroke: #fff; }
+:root:not([data-tema]) .botao { border-color: var(--cobalto); color: var(--cobalto); border-radius: 10px; }
+:root:not([data-tema]) .botao svg { stroke: var(--cobalto); }
+:root:not([data-tema]) .botao[aria-pressed="true"] svg path { fill: var(--tangerina); stroke: var(--tangerina); }
+:root:not([data-tema]) .chamada-edicao { border: 0; background: var(--papel-2); border-left: 4px solid var(--tangerina); }
+:root:not([data-tema]) .chamada-edicao .grande { color: var(--cobalto); }
+:root:not([data-tema]) .mesma-semana { border-left: 4px solid var(--cobalto); }
+:root:not([data-tema]) .indice button { border-color: var(--cobalto); color: var(--cobalto); font-family: var(--sem-serifa); font-size: 13px; }
+:root:not([data-tema]) .bloco-cab,
+:root:not([data-tema]) .sobre h2 { border-bottom-color: var(--cobalto); }
+:root:not([data-tema]) .item-dia:first-of-type,
+:root:not([data-tema]) .item-dia:last-of-type { border-color: var(--cobalto); }
+:root:not([data-tema]) .navegacao { border-top-color: var(--fio); }
+:root:not([data-tema]) .navegacao a[aria-current="page"] { color: var(--cobalto); border-top-color: var(--tangerina); }
+:root:not([data-tema]) .ficha { border-color: var(--fio); }
+:root:not([data-tema]) .aviso { background: var(--cobalto); color: #fff; border-radius: 10px; }
+:root:not([data-tema]) .faixa-previa { background: var(--tinta); color: #fff; }
+:root:not([data-tema]) .cabeca .topo-dir { color: #C9D3FF; }

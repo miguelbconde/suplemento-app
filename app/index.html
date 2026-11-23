@@ -16,7 +16,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Suplemento — “Quem desconfia, fica sábio”. O melhor da semana em livros, artes e ideias.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#F4F0E6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0D121D" media="(prefers-color-scheme: dark)">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -33,6 +33,7 @@
   try {
     var t = localStorage.getItem('suplemento:tema');
     if (t === 'noite' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) document.documentElement.dataset.tema = 'noite';
+    else if (t === 'papel') document.documentElement.dataset.tema = 'papel';
   } catch (e) {}
 </script>
 </head>

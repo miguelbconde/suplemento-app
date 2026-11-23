@@ -84,22 +84,31 @@
     partilhar: '<svg width="14" height="16" viewBox="0 0 14 16" aria-hidden="true"><path d="M7 10V1.5M3.5 5 7 1.5 10.5 5M2 8v6.5h10V8" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>'
   };
 
+  // Três modos, em ciclo: azulejo (claro, padrão) → papel → noite
+  var TEMAS = ['azulejo', 'papel', 'noite'];
+  var NOMES_TEMA = { azulejo: 'Modo azulejo', papel: 'Modo papel', noite: 'Modo noturno' };
+  var CORES_BARRA = { azulejo: '#FFFFFF', papel: '#F4F0E6', noite: '#0D121D' };
+  ICONES.papel = '<svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 2.5h7l3 3v10H4z M11 2.5v3h3 M6.5 9h5M6.5 12h5" fill="none" stroke-width="1.4" stroke-linejoin="round"/></svg>';
+  function temaAtual() { return document.documentElement.dataset.tema || 'azulejo'; }
+  function proximoTema() { return TEMAS[(TEMAS.indexOf(temaAtual()) + 1) % TEMAS.length]; }
   function botaoTema() {
-    var noite = document.documentElement.dataset.tema === 'noite';
-    return '<button type="button" class="icone" data-acao="tema" aria-label="' + (noite ? 'Modo diurno' : 'Modo noturno') + '">' + (noite ? ICONES.sol : ICONES.lua) + '</button>';
+    var prox = proximoTema();
+    var icone = prox === 'papel' ? ICONES.papel : prox === 'noite' ? ICONES.lua : ICONES.sol;
+    return '<button type="button" class="icone" data-acao="tema" aria-label="Mudar para ' + NOMES_TEMA[prox].toLowerCase() + '">' + icone + '</button>';
   }
   function pintarBarra() {
-    var cor = document.documentElement.dataset.tema === 'noite' ? '#0D121D' : '#F4F0E6';
+    var cor = CORES_BARRA[temaAtual()];
     document.querySelectorAll('meta[name="theme-color"]').forEach(function (m) { m.setAttribute('content', cor); });
   }
   pintarBarra();
   function trocarTema() {
-    var noite = document.documentElement.dataset.tema !== 'noite';
-    if (noite) document.documentElement.dataset.tema = 'noite'; else delete document.documentElement.dataset.tema;
-    try { localStorage.setItem('suplemento:tema', noite ? 'noite' : 'dia'); } catch (e) {}
+    var t = proximoTema();
+    if (t === 'azulejo') delete document.documentElement.dataset.tema; else document.documentElement.dataset.tema = t;
+    try { localStorage.setItem('suplemento:tema', t); } catch (e) {}
     pintarBarra();
     var b = document.querySelector('[data-acao="tema"]');
     if (b) b.outerHTML = botaoTema();
+    aviso(NOMES_TEMA[t]);
   }
 
   /* ---------- dados ---------- */
