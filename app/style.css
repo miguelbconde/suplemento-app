@@ -43,27 +43,15 @@
   color-scheme: light;
 }
 :root[data-tema="noite"] {
-  /* tom cinza: página em cinza frio, boxes mais claros (a luz fica neles), tinta preta e uma terceira cor, o azul */
-  --papel: #C5C7C9;
-  --papel-2: #D7D9DB;
-  --tinta: #0E0E0E;
-  --cinza: #3C3E41;
-  --fio: #9A9DA1;
-  --rubrica: #1A3E96;
-  color-scheme: light;
+  /* noite "tinta azul, anil": azul aberto, letra cor de papel, coral como rubrica */
+  --papel: #26324A;
+  --papel-2: #2F3D58;
+  --tinta: #EFE8D8;
+  --cinza: #B4BBCB;
+  --fio: #42506E;
+  --rubrica: #F29A79;
+  color-scheme: dark;
 }
-:root[data-tema="noite"] .cabeca,
-:root[data-tema="noite"] .chamada-edicao,
-:root[data-tema="noite"] .mesma-semana,
-:root[data-tema="noite"] .indice,
-:root[data-tema="noite"] .navegacao {
-  background-color: #D7D9DB;
-}
-:root[data-tema="noite"] .cabeca { padding-bottom: 18px; }
-:root[data-tema="noite"] .indice button { background: #C5C7C9; }
-:root[data-tema="noite"] .botao-principal { background: #1A3E96; color: #F1F1EC; }
-:root[data-tema="noite"] .botao-principal svg { stroke: #F1F1EC; }
-:root[data-tema="noite"] .navegacao a[aria-current="page"] { border-top-color: #1A3E96; }
 
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -205,34 +193,34 @@ button { font: inherit; color: inherit; }
   @keyframes entra { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 }
 
-/* tom cinza: links em azul, sublinhados */
-:root[data-tema="noite"] .mesma-semana a,
-:root[data-tema="noite"] .capa-edicao .abertura a,
-:root[data-tema="noite"] .bloco a.link-rubrica,
-:root[data-tema="noite"] .linha a,
-:root[data-tema="noite"] .prazos a,
-:root[data-tema="noite"] .vazio a {
-  color: #1A3E96;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
-}
-
 /* faixa de prévia (só enquanto não há edição publicada) */
 .faixa-previa { display: none; }
 body.previa .faixa-previa, .exemplo .faixa-previa { display: block; padding: calc(8px + env(safe-area-inset-top)) 16px 8px; background: var(--tinta); color: var(--papel); font-size: 13px; text-align: center; letter-spacing: 0.02em; }
 body.previa .pagina, .exemplo .pagina { padding-top: 0; }
 
-/* tom cinza, rodada 4: cabeçalho preto, chamadas em branco (itálico e negrito),
-   texto de apoio em preto e nomes em laranja */
-:root[data-tema="noite"] .cabeca {
-  --tinta: #F2F2EE;
-  --cinza: #C9C9C5;
-  background: #0E0E0E;
-  color: var(--tinta);
+/* noite: superfícies, nomes e links */
+:root[data-tema="noite"] .cabeca,
+:root[data-tema="noite"] .navegacao { background: #1F2A3F; }
+:root[data-tema="noite"] .chamada-edicao,
+:root[data-tema="noite"] .mesma-semana,
+:root[data-tema="noite"] .indice { background: #2F3D58; }
+:root[data-tema="noite"] .cabeca { padding-bottom: 18px; }
+:root[data-tema="noite"] .indice button { background: #26324A; }
+:root[data-tema="noite"] .botao-principal { background: #EFE8D8; color: #26324A; }
+:root[data-tema="noite"] .botao-principal svg { stroke: #26324A; }
+:root[data-tema="noite"] .nome { color: #F29A79; font-weight: 600; }
+:root[data-tema="noite"] .resumo strong,
+:root[data-tema="noite"] .mesma-semana strong:not(:first-child) { color: #F29A79; }
+:root[data-tema="noite"] .resumo { line-height: 1.68; letter-spacing: 0.005em; }
+:root[data-tema="noite"] .mesma-semana a,
+:root[data-tema="noite"] .capa-edicao .abertura a,
+:root[data-tema="noite"] .linha a,
+:root[data-tema="noite"] .prazos a,
+:root[data-tema="noite"] .vazio a {
+  color: #F29A79;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
 }
-:root[data-tema="noite"] .citacao-lista { color: #FFFFFF; font-weight: 650; }
-:root[data-tema="noite"] .meta { color: #0E0E0E; }
-:root[data-tema="noite"] .nome { color: #8A3A00; font-weight: 600; }
-:root[data-tema="noite"] .verbete .assinatura span { color: #0E0E0E; }
-:root[data-tema="noite"] .resumo strong { color: #A84800; }
+/* itens da edição são links, mas leem como texto */
+.bloco a.item-edicao { color: var(--tinta); }

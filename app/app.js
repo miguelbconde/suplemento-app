@@ -64,7 +64,7 @@
 
   var ICONES = {
     voltar: '<svg width="10" height="16" viewBox="0 0 10 16" aria-hidden="true"><path d="M8 2 2 8l6 6" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-    lua: '<svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="6.8" fill="none" stroke-width="1.5"/><path d="M9 2.2a6.8 6.8 0 0 1 0 13.6z" stroke="none" fill="currentColor"/></svg>',
+    lua: '<svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M14.5 11.2A6.5 6.5 0 0 1 6.8 3.5a6.5 6.5 0 1 0 7.7 7.7z" fill="none" stroke-width="1.5" stroke-linejoin="round"/></svg>',
     sol: '<svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="3.4" fill="none" stroke-width="1.5"/><path d="M9 1.5v2M9 14.5v2M1.5 9h2M14.5 9h2M3.7 3.7l1.4 1.4M12.9 12.9l1.4 1.4M3.7 14.3l1.4-1.4M12.9 5.1l1.4-1.4" stroke-width="1.5" stroke-linecap="round"/></svg>',
     fora: '<svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2h8v8M12 2 2 12" fill="none" stroke-width="1.5" stroke-linecap="round"/></svg>',
     guardar: '<svg width="12" height="16" viewBox="0 0 12 16" aria-hidden="true"><path d="M1.5 1.5h9v13L6 11l-4.5 3.5z" fill="none" stroke-width="1.4" stroke-linejoin="round"/></svg>',
@@ -73,10 +73,10 @@
 
   function botaoTema() {
     var noite = document.documentElement.dataset.tema === 'noite';
-    return '<button type="button" class="icone" data-acao="tema" aria-label="' + (noite ? 'Voltar ao papel' : 'Tom cinza') + '">' + (noite ? ICONES.sol : ICONES.lua) + '</button>';
+    return '<button type="button" class="icone" data-acao="tema" aria-label="' + (noite ? 'Modo diurno' : 'Modo noturno') + '">' + (noite ? ICONES.sol : ICONES.lua) + '</button>';
   }
   function pintarBarra() {
-    var cor = document.documentElement.dataset.tema === 'noite' ? '#C5C7C9' : '#F4F0E6';
+    var cor = document.documentElement.dataset.tema === 'noite' ? '#1F2A3F' : '#F4F0E6';
     document.querySelectorAll('meta[name="theme-color"]').forEach(function (m) { m.setAttribute('content', cor); });
   }
   pintarBarra();
