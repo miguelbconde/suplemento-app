@@ -1,7 +1,15 @@
-/* Suplemento — app v1
- * Lê as edições em JSON (formato 1.0, ver /formato no repositório) e monta
- * quatro telas: Hoje (cinco destaques do dia), Edição, Verbete e Guardados.
- * Sem dependências, sem rastreadores. Rotas por hash: #/, #/edicao, #/v/<id>, #/guardados.
+/* Suplemento — app v1.1
+ * Lê as edições em JSON (formato 1.0, ver /formato no repositório).
+ * Telas: Hoje (cinco destaques do dia), Edição, Verbete, Guardados, Edições anteriores e Sobre.
+ * Sem dependências, sem rastreadores.
+ *
+ * Rotas (hash):
+ *   #/                      hoje, edição mais recente
+ *   #/edicao                edição mais recente inteira
+ *   #/v/<id>                verbete da edição mais recente
+ *   #/n/<data>              edição de uma data (AAAA-MM-DD), endereço fixo
+ *   #/n/<data>/v/<id>       verbete de uma edição, endereço fixo (é o que se compartilha)
+ *   #/arquivo  #/guardados  #/sobre
  */
 (function () {
   'use strict';
@@ -13,8 +21,12 @@
   var BASE = EXEMPLO ? 'exemplo/' : 'edicoes/';
   var LINGUAS = { pt: 'português', en: 'inglês', es: 'espanhol', fr: 'francês', it: 'italiano', de: 'alemão' };
   var app = document.getElementById('app');
-  var ed = null;          // edição corrente
-  var hojeIds = [];       // destaques do dia
+
+  var lista = [];         // edições publicadas: [{data, numero, titulo}], da mais recente para a mais antiga
+  var cache = {};         // data -> edição carregada
+  var atual = null;       // edição mais recente
+  var ed = null;          // edição em vista
+  var hojeIds = [];       // destaques do dia (só da edição mais recente)
   var hojeData = null;    // data (AAAA-MM-DD) do cardápio mostrado
 
   /* ---------- utilidades ---------- */
@@ -42,10 +54,11 @@
     var d = new Date(iso + 'T12:00:00Z'); d.setUTCDate(d.getUTCDate() + n);
     return d.toISOString().slice(0, 10);
   }
-  function dataLonga(iso, comDia) {
+  function dataLonga(iso, comDia, comAno) {
     var d = new Date(iso + 'T12:00:00Z');
     var o = { timeZone: 'UTC', day: 'numeric', month: 'long' };
     if (comDia) o.weekday = 'long';
+    if (comAno) o.year = 'numeric';
     var s = new Intl.DateTimeFormat('pt-BR', o).format(d);
     return s.charAt(0).toUpperCase() + s.slice(1);
   }
@@ -97,24 +110,32 @@
       return r.json();
     });
   }
+  function carregarEdicao(data) {
+    if (cache[data]) return Promise.resolve(cache[data]);
+    return buscar(BASE + data + '.json').then(function (e) { cache[data] = e; return e; });
+  }
 
   function verbete(id) { return ed && ed.verbetes.filter(function (v) { return v.id === id; })[0]; }
   function secao(id) { return ed && ed.secoes.filter(function (s) { return s.id === id; })[0]; }
+  function ehAtual() { return ed && atual && ed.data === atual.data; }
+  function rotaVerbete(id) { return ehAtual() ? '#/v/' + id : '#/n/' + ed.data + '/v/' + id; }
+  function rotaEdicao() { return ehAtual() ? '#/edicao' : '#/n/' + ed.data; }
 
   function escolherDia() {
-    var dias = ed.destaques_por_dia || {};
+    var dias = atual.destaques_por_dia || {};
     var datas = Object.keys(dias).sort();
     var hoje = hojeISO();
     if (EXEMPLO) {
       // no exemplo, o dia da semana de hoje escolhe o cardápio correspondente da edição
       var dow = new Date(hoje + 'T12:00:00Z').getUTCDay();          // 0 = domingo
-      hojeData = somaDias(ed.data, (dow - 3 + 7) % 7);              // edição sai na quarta
+      hojeData = somaDias(atual.data, (dow - 3 + 7) % 7);           // a edição sai na quarta
     } else if (dias[hoje]) {
       hojeData = hoje;
     } else {
       hojeData = hoje < datas[0] ? datas[0] : datas[datas.length - 1];
     }
-    hojeIds = (dias[hojeData] || []).filter(verbete);
+    var ids = atual.verbetes.map(function (v) { return v.id; });
+    hojeIds = (dias[hojeData] || []).filter(function (id) { return ids.indexOf(id) >= 0; });
   }
 
   function marcas(v) {
@@ -143,6 +164,18 @@
       if (a.dataset.rota === rota) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
     });
   }
+  function topo(voltarHref, voltarTxt, direita) {
+    return '<div class="topo"><a class="voltar" href="' + voltarHref + '">' + ICONES.voltar + esc(voltarTxt) + '</a>' +
+      '<div class="topo-dir">' + (direita ? '<span>' + direita + '</span>' : '') + botaoTema() + '</div></div>';
+  }
+  function cabeca(dataTxt, numTxt) {
+    return '<header class="cabeca">' +
+      '<div class="linha-data"><span>' + esc(dataTxt) + '</span><span class="topo-dir">' + (numTxt ? '<span>' + esc(numTxt) + '</span>' : '') + botaoTema() + '</span></div>' +
+      '<h1>Suplemento</h1><p class="lema">“Quem desconfia, fica sábio”</p><div class="fio-duplo"></div></header>';
+  }
+  function pe() {
+    return '<p class="links-pe"><a href="#/arquivo">Edições anteriores</a><span aria-hidden="true"> · </span><a href="#/sobre">Sobre o Suplemento</a></p>';
+  }
 
   function telaVazia() {
     var hoje = hojeISO();
@@ -151,17 +184,12 @@
     app.innerHTML =
       cabeca(dataLonga(hoje, true), '') +
       '<div class="vazio"><p>O primeiro número do app sai na quarta, ' + esc(dataLonga(quarta)) + '.</p>' +
-      '<p class="discreto">Enquanto isso, a edição sai toda quarta em <a href="https://suplemento.substack.com">suplemento.substack.com</a>.</p></div>';
-  }
-
-  function cabeca(dataTxt, numTxt) {
-    return '<header class="cabeca">' +
-      '<div class="linha-data"><span>' + esc(dataTxt) + '</span><span class="topo-dir">' + (numTxt ? '<span>' + esc(numTxt) + '</span>' : '') + botaoTema() + '</span></div>' +
-      '<h1>Suplemento</h1><p class="lema">“Quem desconfia, fica sábio”</p><div class="fio-duplo"></div></header>';
+      '<p class="discreto">Enquanto isso, a edição sai toda quarta em <a href="https://suplemento.substack.com">suplemento.substack.com</a>.</p></div>' + pe();
   }
 
   function telaHoje() {
     navAtiva('hoje');
+    ed = atual;
     var itens = hojeIds.map(function (id, i) {
       var v = verbete(id), s = secao(v.secao);
       return '<a class="item-dia" href="#/v/' + v.id + '">' +
@@ -176,15 +204,15 @@
       '<span class="meta">de ' + ed.verbetes.length + ' na edição</span></div>' + itens + '</section>' +
       '<a class="chamada-edicao" href="#/edicao"><span class="rubrica" style="color:var(--cinza)">A edição inteira</span>' +
       '<span class="grande">Nº ' + ed.numero + ' · ' + esc(ed.titulo) + ' →</span></a>' +
-      '<p class="rodape-dia">Amanhã, outras cinco. A edição não sai daqui.</p>';
+      '<p class="rodape-dia">Amanhã, outras cinco. A edição não sai daqui.</p>' + pe();
   }
 
   function telaVerbete(id) {
     var v = verbete(id);
-    if (!v) { location.hash = '#/'; return; }
+    if (!v) { location.replace(rotaEdicao()); return; }
     navAtiva(null);
     var s = secao(v.secao);
-    var noDia = hojeIds.indexOf(id);
+    var noDia = ehAtual() ? hojeIds.indexOf(id) : -1;
     var ordem = ed.verbetes.map(function (x) { return x.id; });
     var pos, proxId, rotuloProx;
     if (noDia >= 0) {
@@ -205,12 +233,13 @@
     var prox = '';
     if (proxId) {
       var p = verbete(proxId);
-      prox = '<a class="seguinte" href="#/v/' + p.id + '"><span class="rubrica" style="color:var(--cinza)">' + rotuloProx + '</span>' +
+      prox = '<a class="seguinte" href="' + rotaVerbete(p.id) + '"><span class="rubrica" style="color:var(--cinza)">' + rotuloProx + '</span>' +
         '<span class="citacao-lista">“' + md(p.citacao) + '” →</span><span class="meta">' + linhaMeta(p) + '</span></a>';
     }
+    var voltar = noDia >= 0 ? ['#/', 'Hoje'] : [rotaEdicao(), ehAtual() ? 'Edição' : 'Nº ' + ed.numero];
+    var antiga = ehAtual() ? '' : '<p class="aviso-antiga">Da edição nº ' + ed.numero + ', de ' + esc(dataLonga(ed.data, false, true)) + '.</p>';
     app.innerHTML =
-      '<div class="topo"><a class="voltar" href="' + (noDia >= 0 ? '#/' : '#/edicao') + '">' + ICONES.voltar + (noDia >= 0 ? 'Hoje' : 'Edição') + '</a>' +
-      '<div class="topo-dir"><span>' + pos + '</span>' + botaoTema() + '</div></div>' +
+      topo(voltar[0], voltar[1], pos) + antiga +
       '<article class="verbete"><span class="rubrica">' + esc(s ? s.nome : '') + '</span>' +
       '<div class="citacao-bloco"><span class="aspas" aria-hidden="true">“</span><p class="citacao">' + md(v.citacao) + '</p></div>' +
       '<div class="assinatura"><span>' + (quem(v) ? '<span class="nome">' + esc(quem(v)) + '</span>' : veiculoHTML(v)) + '</span></div>' +
@@ -222,11 +251,11 @@
       prox +
       '<p class="nota-legal">Citação traduzida pela redação. Trecho curto, com autor e origem, para crítica e divulgação.</p>';
     app.dataset.verbete = id;
-    window.scrollTo(0, 0);
+    document.title = semMarcas(v.citacao).slice(0, 60) + ' — Suplemento';
   }
 
   function telaEdicao() {
-    navAtiva('edicao');
+    navAtiva(ehAtual() ? 'edicao' : null);
     var chips = ed.secoes.map(function (s) {
       return '<button type="button" data-ir="' + s.id + '">' + esc(s.nome) + '</button>';
     }).join('');
@@ -239,12 +268,13 @@
         '<span class="meta">' + vs.length + (vs.length === 1 ? ' texto' : ' textos') + '</span></div>' +
         (s.linha_do_fio ? '<p class="fio-semana">' + md(s.linha_do_fio) + '</p>' : '') +
         vs.map(function (v) {
-          return '<a class="item-edicao" href="#/v/' + v.id + '"><p class="citacao-lista">“' + md(v.citacao) + '”</p>' +
+          return '<a class="item-edicao" href="' + rotaVerbete(v.id) + '"><p class="citacao-lista">“' + md(v.citacao) + '”</p>' +
             '<span class="meta">' + linhaMeta(v) + '</span></a>';
         }).join('') + '</section>';
     }).join('');
+    var voltar = ehAtual() ? ['#/', 'Hoje'] : ['#/arquivo', 'Edições anteriores'];
     app.innerHTML =
-      '<div class="topo"><a class="voltar" href="#/">' + ICONES.voltar + 'Hoje</a><div class="topo-dir"><span>' + esc(dataLonga(ed.data, true)) + '</span>' + botaoTema() + '</div></div>' +
+      topo(voltar[0], voltar[1], esc(dataLonga(ed.data, true))) +
       '<div class="capa-edicao"><span class="rubrica" style="color:var(--cinza)">Nº ' + ed.numero + '</span>' +
       '<h1>' + esc(ed.titulo) + '</h1><div class="fio-duplo"></div>' +
       '<p class="abertura">' + md(ed.abertura) + '</p></div>' +
@@ -253,7 +283,8 @@
       '<p>Riobaldo, em <em>Grande sertão: veredas</em>, de Guimarães Rosa (Nova Fronteira, 2006, p. 125).</p>' +
       '<p>As citações são traduzidas pela redação: trechos curtos, com autor e origem, para fins de crítica e divulgação (Lei 9.610/98, art. 46, III).</p>' +
       '<p>Como fazemos: a curadoria das fontes, a escolha dos textos e a edição e redação finais de cada número são feitas pela nossa redação. Na listagem, resumo e tradução iniciais de textos publicados na semana, contamos com uma ajuda da inteligência artificial.</p>' +
-      '<p>Expediente: Redação Suplemento</p></footer>';
+      '<p>Expediente: Redação Suplemento</p></footer>' + pe();
+    document.title = 'Nº ' + ed.numero + ' · ' + ed.titulo + ' — Suplemento';
   }
 
   function blocoLancamentos(s) {
@@ -278,19 +309,58 @@
     return '<section class="bloco" id="s-' + s.id + '"><div class="bloco-cab"><h2>' + esc(s.nome) + '</h2></div>' + n + '</section>';
   }
 
+  function telaArquivo() {
+    navAtiva(null);
+    var itens = lista.map(function (x, i) {
+      return '<a class="item-edicao" href="' + (i === 0 ? '#/edicao' : '#/n/' + x.data) + '">' +
+        '<span class="rubrica" style="color:var(--cinza)">Nº ' + esc(x.numero) + (i === 0 ? ' · a desta semana' : '') + '</span>' +
+        '<p class="citacao-lista" style="font-style:normal">' + esc(x.titulo) + '</p>' +
+        '<span class="meta">' + esc(dataLonga(x.data, true, true)) + '</span></a>';
+    }).join('');
+    app.innerHTML = topo('#/', 'Hoje') +
+      '<div class="capa-edicao"><h1>Edições anteriores</h1><div class="fio-duplo"></div>' +
+      '<p class="abertura discreto">Cada edição fica aqui, inteira, com endereço próprio. Um texto compartilhado continua abrindo depois que a semana passa.</p></div>' +
+      '<section class="bloco" style="padding-top:8px">' + (itens || '<div class="vazio"><p>Ainda não há edições anteriores.</p></div>') + '</section>' + pe();
+    document.title = 'Edições anteriores — Suplemento';
+  }
+
+  function telaSobre() {
+    navAtiva(null);
+    app.innerHTML = topo('#/', 'Hoje') +
+      '<div class="capa-edicao"><span class="rubrica" style="color:var(--cinza)">Sobre</span><h1>Suplemento</h1><div class="fio-duplo"></div></div>' +
+      '<section class="sobre">' +
+      '<p class="destaque">O melhor da semana em livros, artes e ideias, lido a partir do Brasil.</p>' +
+      '<p>Toda quarta, o <em>Suplemento</em> reúne os textos mais instigantes publicados na semana em revistas, jornais, blogs e periódicos, daqui e do mundo: ensaios, críticas, entrevistas, um artigo acadêmico. Cada texto chega com uma citação traduzida e um resumo curto, em português, e um toque leva ao original.</p>' +
+      '<p>A ideia vem de longe. Os suplementos literários da imprensa brasileira, como o Suplemento Literário d’<em>O Estado de S. Paulo</em>, planejado por Antonio Candido, o Suplemento Dominical do <em>Jornal do Brasil</em>, o <em>Suplemento Literário de Minas Gerais</em>, criado por Murilo Rubião, o <em>Folhetim</em> e o <em>Mais!</em>, puseram gerações de leitores em dia com o que se pensava e se escrevia. O <em>Suplemento</em> quer ser a versão contemporânea desse gesto: seleção exigente, hierarquia, vontade de formar repertório. E atenção às vozes que ainda circulam pouco por aqui.</p>' +
+      '<h2>Como fazemos</h2>' +
+      '<p>A curadoria das fontes, a escolha dos textos e a edição e redação finais de cada número são feitas pela nossa redação. Na listagem, resumo e tradução iniciais de textos publicados na semana, contamos com uma ajuda da inteligência artificial.</p>' +
+      '<p>Recomendamos textos em português, inglês, espanhol, francês, italiano e alemão, as línguas que conseguimos ler e conferir. Só citamos o que lemos.</p>' +
+      '<h2>Citações</h2>' +
+      '<p>As citações são trechos curtos, traduzidos pela redação, sempre com autor e origem, para fins de crítica e divulgação (Lei 9.610/98, art. 46, III). Os textos pertencem a seus autores e veículos; o <em>Suplemento</em> só aponta o caminho.</p>' +
+      '<h2>Privacidade</h2>' +
+      '<p>Este app não tem anúncios nem rastreadores, e não pede cadastro. O que você guarda e o modo de leitura que escolhe ficam só no seu aparelho.</p>' +
+      '<h2>O lema</h2>' +
+      '<p>“Quem desconfia, fica sábio” é uma frase dita por Riobaldo no <em>Grande sertão: veredas</em>, de Guimarães Rosa. A frase aparece na página 125 da edição comemorativa dos 50 anos do livro, publicada em 2006 pela editora Nova Fronteira.</p>' +
+      '<h2>Contato</h2>' +
+      '<p>O <em>Suplemento</em> também sai toda quarta por e-mail, de graça, em <a href="https://suplemento.substack.com" target="_blank" rel="noopener">suplemento.substack.com</a>. Para falar com a redação, basta responder a qualquer edição.</p>' +
+      '<p class="discreto">Expediente: Redação Suplemento</p>' +
+      '</section>' + pe();
+    document.title = 'Sobre — Suplemento';
+  }
+
   function telaGuardados() {
     navAtiva('guardados');
     var g = lerGuardados();
     var corpo = g.length ? g.map(function (x) {
-      var atual = ed && verbete(x.id);
-      var destino = atual ? '#/v/' + x.id : x.url;
-      var fora = atual ? '' : ' target="_blank" rel="noopener"';
+      var destino = x.data ? '#/n/' + x.data + '/v/' + x.id : (atual && atual.verbetes.some(function (v) { return v.id === x.id; }) ? '#/v/' + x.id : x.url);
+      var fora = destino === x.url ? ' target="_blank" rel="noopener"' : '';
       return '<a class="item-edicao" href="' + esc(destino) + '"' + fora + '><p class="citacao-lista">“' + md(x.citacao) + '”</p>' +
         '<span class="meta">' + esc(x.meta) + ' · Nº ' + x.numero + '</span></a>';
     }).join('') : '<div class="vazio"><p>Nada guardado ainda.</p><p class="discreto">Toque em “Guardar” num verbete para voltar a ele quando quiser, mesmo depois que a edição mudar.</p></div>';
-    app.innerHTML = '<div class="topo"><a class="voltar" href="#/">' + ICONES.voltar + 'Hoje</a><div class="topo-dir">' + botaoTema() + '</div></div>' +
+    app.innerHTML = topo('#/', 'Hoje') +
       '<div class="capa-edicao"><h1>Guardados</h1><div class="fio-duplo"></div></div>' +
       '<section class="bloco" style="padding-top:8px">' + corpo + '</section>';
+    document.title = 'Guardados — Suplemento';
   }
 
   /* ---------- ações ---------- */
@@ -309,7 +379,7 @@
       var g = lerGuardados(), i = g.map(function (x) { return x.id; }).indexOf(id);
       if (i >= 0) { g.splice(i, 1); aviso('Tirado dos guardados'); }
       else {
-        g.unshift({ id: id, numero: ed.numero, citacao: v.citacao, url: v.url, meta: semMarcas(quem(v) ? quem(v) + ' · ' + v.veiculo : v.veiculo) });
+        g.unshift({ id: id, data: ed.data, numero: ed.numero, citacao: v.citacao, url: v.url, meta: semMarcas(quem(v) ? quem(v) + ' · ' + v.veiculo : v.veiculo) });
         aviso('Guardado');
       }
       gravarGuardados(g);
@@ -318,7 +388,8 @@
     }
     if (acao === 'partilhar' && v) {
       var texto = '“' + semMarcas(v.citacao) + '” — ' + semMarcas(v.veiculo) + ', no Suplemento';
-      var url = location.origin + location.pathname + location.search + '#/v/' + id;
+      // endereço fixo: continua valendo depois que a edição muda
+      var url = location.origin + location.pathname + location.search + '#/n/' + ed.data + '/v/' + id;
       if (navigator.share) navigator.share({ title: 'Suplemento', text: texto, url: url }).catch(function () {});
       else if (navigator.clipboard) navigator.clipboard.writeText(texto + '\n' + url).then(function () { aviso('Link copiado'); });
     }
@@ -328,31 +399,56 @@
 
   function rotear() {
     delete app.dataset.verbete;
+    document.title = 'Suplemento';
     var h = location.hash.replace(/^#\/?/, '');
-    if (h.indexOf('guardados') === 0) return telaGuardados();
-    if (!ed) return telaVazia();
-    if (h.indexOf('v/') === 0) return telaVerbete(h.slice(2));
-    if (h.indexOf('edicao') === 0) { telaEdicao(); window.scrollTo(0, 0); return; }
-    telaHoje(); window.scrollTo(0, 0);
+    var m;
+    if (h.indexOf('guardados') === 0) { telaGuardados(); return window.scrollTo(0, 0); }
+    if (h.indexOf('sobre') === 0) { telaSobre(); return window.scrollTo(0, 0); }
+    if (!atual) { telaVazia(); return; }
+    if (h.indexOf('arquivo') === 0) { telaArquivo(); return window.scrollTo(0, 0); }
+    if ((m = h.match(/^n\/(\d{4}-\d{2}-\d{2})(?:\/v\/([\w-]+))?/))) {
+      var existe = lista.some(function (x) { return x.data === m[1]; });
+      if (!existe) { location.replace('#/arquivo'); return; }
+      return carregarEdicao(m[1]).then(function (e) {
+        ed = e;
+        if (m[2]) telaVerbete(m[2]); else telaEdicao();
+        window.scrollTo(0, 0);
+      }).catch(function () {
+        app.innerHTML = topo('#/', 'Hoje') + '<div class="vazio"><p>Não consegui abrir essa edição agora.</p><p class="discreto">Confira a conexão e tente de novo.</p></div>';
+      });
+    }
+    ed = atual;
+    if (h.indexOf('v/') === 0) telaVerbete(h.slice(2));
+    else if (h.indexOf('edicao') === 0) telaEdicao();
+    else telaHoje();
+    window.scrollTo(0, 0);
   }
   window.addEventListener('hashchange', rotear);
 
-  // Enquanto não houver edição publicada, o endereço principal mostra o nº 2 como prévia.
-  function carregar(base) {
+  // index.json: {"edicoes": [{"data": "AAAA-MM-DD", "numero": N, "titulo": "..."}]} (aceita também só as datas)
+  function carregarLista(base) {
     return buscar(base + 'index.json').then(function (idx) {
-      var lista = (idx.edicoes || []).slice().sort();
-      if (!lista.length) return null;
-      return buscar(base + lista[lista.length - 1] + '.json');
+      return (idx.edicoes || []).map(function (x) { return typeof x === 'string' ? { data: x, numero: '', titulo: '' } : x; })
+        .sort(function (a, b) { return a.data < b.data ? 1 : -1; });
     });
   }
-  carregar(BASE).then(function (e) {
-    if (e || EXEMPLO) return e;
+  // Enquanto não houver edição publicada, o endereço principal mostra o nº 2 como prévia.
+  carregarLista(BASE).then(function (l) {
+    if (l.length || EXEMPLO) return l;
     EXEMPLO = true; BASE = 'exemplo/';
     document.body.classList.add('previa');
-    return carregar(BASE);
+    return carregarLista(BASE);
+  }).then(function (l) {
+    lista = l;
+    if (!lista.length) return null;
+    return carregarEdicao(lista[0].data);
   }).then(function (e) {
-    ed = e;
-    if (ed) escolherDia();
+    atual = e; ed = e;
+    if (atual) {
+      lista[0].numero = lista[0].numero || atual.numero;
+      lista[0].titulo = lista[0].titulo || atual.titulo;
+      escolherDia();
+    }
     rotear();
   }).catch(function () {
     app.innerHTML = cabeca(dataLonga(hojeISO(), true), '') + '<div class="vazio"><p>Não consegui carregar a edição agora.</p><p class="discreto">Confira a conexão e tente de novo.</p></div>';

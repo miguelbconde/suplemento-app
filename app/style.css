@@ -224,3 +224,13 @@ body.previa .pagina, .exemplo .pagina { padding-top: 0; }
 }
 /* itens da edição são links, mas leem como texto */
 .bloco a.item-edicao { color: var(--tinta); }
+
+/* pé com links, aviso de edição antiga, página Sobre */
+.links-pe { margin: 26px 22px 8px; text-align: center; font-size: 15px; color: var(--cinza); }
+.links-pe a { color: var(--cinza); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; display: inline-block; min-height: 44px; line-height: 44px; }
+.aviso-antiga { margin: 4px 24px 0; padding: 8px 12px; background: var(--papel-2); font-size: 14px; font-style: italic; color: var(--cinza); }
+.sobre { padding: 8px 22px 0; }
+.sobre p { margin: 0 0 16px; font-size: 18px; line-height: 1.6; }
+.sobre p.destaque { font-size: 23px; line-height: 1.3; font-style: italic; margin: 8px 0 22px; }
+.sobre h2 { margin: 30px 0 10px; padding-bottom: 8px; border-bottom: 2px solid var(--tinta); font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rubrica); font-weight: 600; }
+.sobre a { color: var(--rubrica); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }

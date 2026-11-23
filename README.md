@@ -15,7 +15,7 @@ A edição sai toda quarta em [suplemento.substack.com](https://suplemento.subst
 
 ## Publicar uma edição
 
-1. Salvar a edição em `app/edicoes/AAAA-MM-DD.json` e acrescentar a data em `app/edicoes/index.json`.
+1. Salvar a edição em `app/edicoes/AAAA-MM-DD.json` e acrescentar a entrada em `app/edicoes/index.json`: `{"data": "AAAA-MM-DD", "numero": N, "titulo": "..."}`. As edições anteriores continuam no ar, na tela "Edições anteriores".
 2. Validar: `python formato/validar.py app/edicoes/AAAA-MM-DD.json` (requer `pip install jsonschema`).
 3. Fazer o commit só se não houver erros. Avisos não bloqueiam. A Cloudflare publica em seguida.
 
@@ -33,3 +33,14 @@ A Cloudflare (Workers Static Assets) publica a pasta `app/` a cada commit na `ma
 ## Direitos
 
 Resumos, abertura e seleção são da Redação Suplemento. As citações são trechos curtos dos textos recomendados, com indicação de autor e origem, para fins de crítica e divulgação (Lei 9.610/98, art. 46, III). Os textos originais pertencem aos seus autores e veículos.
+
+## Endereços
+
+Cada edição e cada verbete têm endereço fixo, que continua valendo depois que a semana passa:
+
+- `#/n/AAAA-MM-DD`: a edição de uma data;
+- `#/n/AAAA-MM-DD/v/<id>`: um verbete (é o link que o botão Compartilhar manda);
+- `#/`, `#/edicao`, `#/v/<id>`: a edição mais recente;
+- `#/arquivo`, `#/guardados`, `#/sobre`.
+
+A ficha de compartilhamento (título, descrição e `icons/compartilhar.png`, 1200×630) é a mesma para todos os links. Ficha própria por verbete exigiria um Worker que monte as etiquetas no servidor; fica para depois.
