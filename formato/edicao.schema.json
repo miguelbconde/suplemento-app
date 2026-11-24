@@ -56,7 +56,7 @@
     },
     "topicos": {
       "type": "array",
-      "description": "Formato 1.1. Os tópicos na ordem da edição (14, contando Repare e Para ler com calma). Cada um reúne de 1 a 3 verbetes: o primeiro é o principal, os outros entram como 'E também'.",
+      "description": "Formato 1.1. Os tópicos na ordem da edição: até 14, distribuídos pelas 5 seções (Repare, Para ler já, Livros, A contrapelo, Para ler com calma); a Estante acadêmica também usa um tópico, fora da conta. Cada um reúne de 1 a 3 verbetes: o primeiro é o principal, os outros entram como 'E também'.",
       "items": {
         "$ref": "#/$defs/topico"
       },

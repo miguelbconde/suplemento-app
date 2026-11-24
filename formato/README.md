@@ -25,7 +25,7 @@ Exemplos: [`app/exemplo/2026-11-18.json`](../app/exemplo/2026-11-18.json), o nº
 
 ### Tópicos (1.1, desde o nº 3)
 
-A edição se organiza em **14 tópicos**, contando Repare e Para ler com calma (a Estante acadêmica, as Notas e Lançamentos e prazos ficam à parte). Cada tópico reúne de 1 a 3 textos sobre o mesmo assunto:
+A edição se organiza em **até 14 tópicos**, distribuídos pelas 5 seções (Repare, Para ler já, Livros, A contrapelo, Para ler com calma), com **até 20 textos**. A Estante acadêmica também é um tópico, fora da conta; Notas e Lançamentos e prazos não usam tópicos. Cada tópico reúne de 1 a 3 textos sobre o mesmo assunto:
 
 - `id`: `n3-t01`, `n3-t02`… Fixo depois de publicado.
 - `secao`: a seção do tópico; todos os seus verbetes ficam nela.
@@ -67,9 +67,9 @@ Avisos, que só sinalizam:
 - menos de 3/4 dos textos abertos;
 - menos de 40% fora do eixo Europa Ocidental–América do Norte;
 - tópicos (ou verbetes, no 1.0) que nunca aparecem em destaque;
-- no 1.1: número de tópicos diferente de 14, mais de 20 textos, mais de 4 tópicos com mais de um texto.
+- no 1.1: mais de 14 tópicos nas 5 seções, mais de 20 textos, mais de 4 tópicos com mais de um texto.
 
 ## Em aberto
 
-- **A regra de repetição dos destaques.** São 35 vagas na semana para 14 tópicos: cada um aparece duas ou três vezes. O exemplo apenas percorre a edição em ordem, cinco por dia, e começa a quarta pelo Repare.
+- **A regra de repetição dos destaques.** São 35 vagas na semana para até 14 tópicos (mais a Estante): cada um aparece duas ou três vezes. O exemplo apenas percorre a edição em ordem, cinco por dia, e começa a quarta pelo Repare.
 - **Onde fica o conteúdo dos assinantes.** O repositório e o site são públicos. Quando o app passar a ser pago, as seções `assinantes` saem do arquivo público e vão para um serviço com login (Workers e KV ou D1 da Cloudflare). O campo `acesso` de cada seção já marca o corte.

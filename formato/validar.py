@@ -70,8 +70,8 @@ def main(caminho):
         for vid in ids:
             if onde[vid] == 0: erros.append(f"{vid}: fora de todos os tópicos")
             elif onde[vid] > 1: erros.append(f"{vid}: em mais de um tópico")
-        contados = [t for t in topicos if t["secao"] not in ("estante-academica",)]
-        if len(contados) != 14: avisos.append(f"{len(contados)} tópicos (a edição tem 14, contando Repare e Para ler com calma)")
+        contados = [t for t in topicos if t["secao"] in ("repare", "para-ler-ja", "livros", "a-contrapelo", "para-ler-com-calma")]
+        if len(contados) > 14: avisos.append(f"{len(contados)} tópicos nas 5 seções (máximo da casa: 14)")
         if len(verbetes) > 20: avisos.append(f"{len(verbetes)} textos (teto da casa: 20)")
         multi = sum(len(t["verbetes"]) > 1 for t in topicos)
         if multi > 4: avisos.append(f"{multi} tópicos com mais de um texto (máximo da casa: 4)")
