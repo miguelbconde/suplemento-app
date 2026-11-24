@@ -30,7 +30,7 @@ def main(caminho):
     for v in verbetes:
         if not v["id"].startswith(pref): erros.append(f"{v['id']}: id não começa com {pref}")
         if v["secao"] not in secoes: erros.append(f"{v['id']}: seção '{v['secao']}' não declarada")
-        if v["secao"] == "repare" and v["acesso_fonte"] != "aberto":
+        if v["secao"] == "repare" and v.get("papel") != "tambem" and v["acesso_fonte"] != "aberto":
             erros.append(f"{v['id']}: o texto do Repare tem de ser aberto")
 
     for veic, n in Counter(v["veiculo"] for v in verbetes).items():
@@ -44,6 +44,40 @@ def main(caminho):
         if fora / len(verbetes) < 0.40:
             avisos.append(f"só {fora} de {len(verbetes)} fora do eixo Europa Ocidental–América do Norte (piso: 40%)")
 
+    # formato 1.1: tópicos de 1 a 3 textos
+    topicos = ed.get("topicos")
+    if ed.get("formato") == "1.1" and not topicos:
+        erros.append("formato 1.1 sem tópicos")
+    tids = []
+    if topicos:
+        por_id = {v["id"]: v for v in verbetes}
+        tids = [t["id"] for t in topicos]
+        for i, n in Counter(tids).items():
+            if n > 1: erros.append(f"tópico repetido: {i}")
+        tpref = f"n{ed.get('numero')}-t"
+        onde = Counter()
+        for t in topicos:
+            if not t["id"].startswith(tpref): erros.append(f"{t['id']}: id não começa com {tpref}")
+            if t["secao"] not in secoes: erros.append(f"{t['id']}: seção '{t['secao']}' não declarada")
+            for k, vid in enumerate(t["verbetes"]):
+                onde[vid] += 1
+                v = por_id.get(vid)
+                if not v:
+                    erros.append(f"{t['id']}: verbete inexistente {vid}"); continue
+                if v["secao"] != t["secao"]: erros.append(f"{vid}: seção diferente da do tópico {t['id']}")
+                if k == 0 and v.get("papel") == "tambem": erros.append(f"{vid}: o primeiro texto de {t['id']} tem de ser o principal")
+                if k > 0 and v.get("papel") != "tambem": erros.append(f"{vid}: em {t['id']}, só o primeiro texto é principal (use papel 'tambem')")
+        for vid in ids:
+            if onde[vid] == 0: erros.append(f"{vid}: fora de todos os tópicos")
+            elif onde[vid] > 1: erros.append(f"{vid}: em mais de um tópico")
+        contados = [t for t in topicos if t["secao"] not in ("estante-academica",)]
+        if len(contados) != 14: avisos.append(f"{len(contados)} tópicos (a edição tem 14, contando Repare e Para ler com calma)")
+        if len(verbetes) > 20: avisos.append(f"{len(verbetes)} textos (teto da casa: 20)")
+        multi = sum(len(t["verbetes"]) > 1 for t in topicos)
+        if multi > 4: avisos.append(f"{multi} tópicos com mais de um texto (máximo da casa: 4)")
+    elif any(v.get("papel") == "tambem" for v in verbetes):
+        erros.append("verbete 'tambem' numa edição sem tópicos")
+
     dias = ed.get("destaques_por_dia", {})
     try:
         d0 = dt.date.fromisoformat(ed["data"])
@@ -53,11 +87,13 @@ def main(caminho):
     except (KeyError, ValueError):
         pass
     vezes = Counter()
+    validos = tids if topicos else ids
     for dia, lista in dias.items():
         for i in lista:
-            if i not in ids: erros.append(f"destaque de {dia}: id inexistente {i}")
+            if i not in validos:
+                erros.append(f"destaque de {dia}: id inexistente {i}" + (" (no formato 1.1, use ids de tópico)" if topicos and i in ids else ""))
             vezes[i] += 1
-    for i in ids:
+    for i in validos:
         if vezes[i] == 0: avisos.append(f"{i} nunca aparece em destaque")
 
     def pendentes(x, caminho=""):
@@ -72,7 +108,7 @@ def main(caminho):
 
     for a in avisos: print("aviso:", a)
     for e in erros: print("ERRO:", e)
-    print(f"{len(verbetes)} verbetes, {len(erros)} erro(s), {len(avisos)} aviso(s)")
+    print(f"{len(verbetes)} verbetes" + (f" em {len(topicos)} tópicos" if topicos else "") + f", {len(erros)} erro(s), {len(avisos)} aviso(s)")
     return 1 if erros else 0
 
 if __name__ == "__main__":

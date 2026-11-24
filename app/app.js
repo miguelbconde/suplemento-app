@@ -1,5 +1,6 @@
 /* Suplemento — app v1.1
- * Lê as edições em JSON (formato 1.0, ver /formato no repositório).
+ * Lê as edições em JSON (formatos 1.0 e 1.1, ver /formato no repositório).
+ * No 1.1 a edição se organiza em tópicos: um texto principal e até dois "E também".
  * Telas: Hoje (cinco destaques do dia), Edição, Verbete, Guardados, Edições anteriores e Sobre.
  * Sem dependências, sem rastreadores.
  *
@@ -138,6 +139,25 @@
   function verbete(id) { return ed && ed.verbetes.filter(function (v) { return v.id === id; })[0]; }
   function secao(id) { return ed && ed.secoes.filter(function (s) { return s.id === id; })[0]; }
   function ehAtual() { return ed && atual && ed.data === atual.data; }
+
+  // Tópicos (formato 1.1). Numa edição 1.0, cada verbete vira um tópico sem título.
+  function topicosDe(e) {
+    if (e.topicos && e.topicos.length) return e.topicos;
+    return e.verbetes.map(function (v) { return { id: v.id, secao: v.secao, titulo: '', verbetes: [v.id] }; });
+  }
+  function topicoDoVerbete(e, id) {
+    return topicosDe(e).filter(function (t) { return t.verbetes.indexOf(id) >= 0; })[0];
+  }
+  function ehTambem(v) { return v.papel === 'tambem'; }
+  function frase(v) { return v.citacao || v.linha || ''; }   // o que representa o texto numa lista ou num compartilhamento
+  function tambemHTML(t, rota) {
+    var outros = t.verbetes.slice(1).map(verbete).filter(Boolean);
+    if (!outros.length) return '';
+    return '<div class="tambem"><span class="rubrica-tambem">E também</span>' + outros.map(function (o) {
+      return '<a class="tambem-item" href="' + rota(o.id) + '"><span class="tambem-linha">' + mdTexto(o.linha || o.resumo) + '</span>' +
+        '<span class="meta">' + linhaMeta(o) + '</span></a>';
+    }).join('') + '</div>';
+  }
   function rotaVerbete(id) { return ehAtual() ? '#/v/' + id : '#/n/' + ed.data + '/v/' + id; }
   function rotaEdicao() { return ehAtual() ? '#/edicao' : '#/n/' + ed.data; }
 
@@ -158,7 +178,7 @@
     diaVisto = hojeData; idsVistos = hojeIds;
   }
   function idsDoDia(d) {
-    var ids = atual.verbetes.map(function (v) { return v.id; });
+    var ids = topicosDe(atual).map(function (t) { return t.id; }).concat(atual.verbetes.map(function (v) { return v.id; }));
     return ((atual.destaques_por_dia || {})[d] || []).filter(function (id) { return ids.indexOf(id) >= 0; });
   }
   function rotaDia() { return diaVisto === hojeData ? '#/' : '#/dia/' + diaVisto; }
@@ -226,19 +246,24 @@
     diaVisto = dia && atual.destaques_por_dia && atual.destaques_por_dia[dia] ? dia : hojeData;
     idsVistos = idsDoDia(diaVisto);
     var ehHoje = diaVisto === hojeData;
+    var tops = topicosDe(atual);
     var itens = idsVistos.map(function (id, i) {
-      var v = verbete(id), s = secao(v.secao);
-      return '<a class="item-dia' + (v.secao === 'repare' ? ' em-destaque' : '') + '" href="#/v/' + v.id + '">' +
+      var t = tops.filter(function (x) { return x.id === id; })[0] || topicoDoVerbete(atual, id);
+      var v = verbete(t ? t.verbetes[0] : id), s = secao(v.secao);
+      var rub = esc(s ? s.nome : '');
+      var nomeTop = t && t.titulo ? '<span class="titulo-topico">' + esc(t.titulo) + '</span>' : '';
+      var mais = t && t.id === id ? tambemHTML(t, function (x) { return '#/v/' + x; }) : '';
+      return '<div class="item-dia' + (v.secao === 'repare' ? ' em-destaque' : '') + '">' +
         '<span class="num" aria-hidden="true">' + (i + 1) + '</span>' +
-        '<div class="corpo"><span class="rubrica">' + esc(s ? s.nome : '') + '</span>' +
+        '<div class="corpo"><a class="cobre" href="#/v/' + v.id + '"><span class="rubrica">' + rub + '</span>' + nomeTop +
         '<p class="citacao-lista">“' + md(v.citacao) + '”</p>' +
         '<p class="resumo-lista">' + mdTexto(v.resumo) + '</p>' +
-        '<span class="meta">' + linhaMeta(v) + '</span></div></a>';
+        '<span class="meta">' + linhaMeta(v) + '</span></a>' + mais + '</div></div>';
     }).join('');
     app.innerHTML =
       cabeca(dataCurta(hojeISO()), 'Nº ' + ed.numero) + faixaDias() +
       '<section class="secao-dia"><div class="titulo"><h2>' + (ehHoje ? 'Cinco leituras para hoje' : 'As cinco de ' + diaSemana(diaVisto)) + '</h2>' +
-      (ehHoje ? '<span class="meta">de ' + ed.verbetes.length + ' na edição</span>' : '') + '</div>' + itens + '</section>' +
+      (ehHoje ? '<span class="meta">de ' + topicosDe(ed).length + ' na edição</span>' : '') + '</div>' + itens + '</section>' +
       '<a class="chamada-edicao" href="#/edicao"><span class="rubrica" style="color:var(--cinza)">A edição inteira</span>' +
       '<span class="grande">Nº ' + ed.numero + ' · ' + esc(ed.titulo) + ' →</span></a>' +
       '<p class="rodape-dia">' + (ehHoje ? 'Amanhã, outras cinco. A edição não sai daqui.' : '<a href="#/">Voltar às cinco de hoje</a>') + '</p>' + pe();
@@ -265,30 +290,36 @@
     var guardado = lerGuardados().some(function (g) { return g.id === id; });
     var lingua = LINGUAS[v.lingua] + (v.lingua_original ? ', original em ' + esc(v.lingua_original) : '');
     var acesso = v.acesso_fonte === 'aberto' ? 'aberto' : v.acesso_fonte === 'paywall' ? 'para assinantes do veículo' : (v.nota_acesso ? esc(v.nota_acesso) : 'acesso limitado');
+    var top = topicoDoVerbete(ed, id);
+    var tituloTop = top && top.titulo ? '<span class="rubrica-topico"> · ' + esc(top.titulo) + '</span>' : '';
+    var mais = top && !ehTambem(v) ? tambemHTML(top, rotaVerbete) : '';
+    var principal = top && ehTambem(v) ? verbete(top.verbetes[0]) : null;
+    var volta = principal ? '<a class="tambem-volta" href="' + rotaVerbete(principal.id) + '"><span class="rubrica-tambem">No mesmo tópico</span>' +
+      '<span class="citacao-lista">“' + md(principal.citacao) + '” →</span><span class="meta">' + linhaMeta(principal) + '</span></a>' : '';
     var mesma = v.na_mesma_semana ? '<div class="mesma-semana"><strong>Na mesma semana.</strong> ' + md(v.na_mesma_semana.texto) +
       ' <a href="' + esc(v.na_mesma_semana.url) + '" target="_blank" rel="noopener">Ler em <em>' + esc(v.na_mesma_semana.veiculo) + '</em> →</a></div>' : '';
     var prox = '';
     if (proxId) {
       var p = verbete(proxId);
       prox = '<a class="seguinte" href="' + rotaVerbete(p.id) + '"><span class="rubrica" style="color:var(--cinza)">' + rotuloProx + '</span>' +
-        '<span class="citacao-lista">“' + md(p.citacao) + '” →</span><span class="meta">' + linhaMeta(p) + '</span></a>';
+        '<span class="citacao-lista">' + (p.citacao ? '“' + md(p.citacao) + '”' : mdTexto(p.linha)) + ' →</span><span class="meta">' + linhaMeta(p) + '</span></a>';
     }
     var voltar = noDia >= 0 ? [rotaDia(), diaVisto === hojeData ? 'Hoje' : diaSemana(diaVisto).replace(/^./, function (c) { return c.toUpperCase(); })] : [rotaEdicao(), ehAtual() ? 'Edição' : 'Nº ' + ed.numero];
     var antiga = ehAtual() ? '' : '<p class="aviso-antiga">Da edição nº ' + ed.numero + ', de ' + esc(dataLonga(ed.data, false, true)) + '.</p>';
     app.innerHTML =
       topo(voltar[0], voltar[1], pos) + antiga +
-      '<article class="verbete"><span class="rubrica">' + esc(s ? s.nome : '') + '</span>' +
-      '<div class="citacao-bloco"><span class="aspas" aria-hidden="true">“</span><p class="citacao">' + md(v.citacao) + '</p></div>' +
+      '<article class="verbete' + (ehTambem(v) ? ' verbete-tambem' : '') + '"><span class="rubrica">' + esc(s ? s.nome : '') + tituloTop + '</span>' +
+      (v.citacao ? '<div class="citacao-bloco"><span class="aspas" aria-hidden="true">“</span><p class="citacao">' + md(v.citacao) + '</p></div>' : '') +
       '<div class="assinatura"><span>' + (quem(v) ? '<span class="nome">' + esc(quem(v)) + '</span>' : veiculoHTML(v)) + '</span></div>' +
-      '<p class="resumo">' + md(v.resumo) + '</p>' + mesma +
+      '<p class="resumo">' + md(v.resumo || v.linha) + '</p>' + mesma + mais + volta +
       '<dl class="ficha"><dt>Onde</dt><dd>' + veiculoHTML(v) + '</dd><dt>Língua</dt><dd>' + lingua + '</dd><dt>Acesso</dt><dd>' + acesso + '</dd></dl>' +
       '<a class="botao-principal" href="' + esc(v.url) + '" target="_blank" rel="noopener">Ler em <em>' + esc(v.veiculo) + '</em>' + ICONES.fora + '</a>' +
       '<div class="botoes"><button type="button" class="botao" data-acao="guardar" aria-pressed="' + guardado + '">' + ICONES.guardar + '<span>' + (guardado ? 'Guardado' : 'Guardar') + '</span></button>' +
       '<button type="button" class="botao" data-acao="partilhar">' + ICONES.partilhar + 'Compartilhar</button></div></article>' +
       prox +
-      '<p class="nota-legal">Citação traduzida pela redação. Trecho curto, com autor e origem, para crítica e divulgação.</p>';
+      (v.citacao ? '<p class="nota-legal">Citação traduzida pela redação. Trecho curto, com autor e origem, para crítica e divulgação.</p>' : '');
     app.dataset.verbete = id;
-    document.title = semMarcas(v.citacao).slice(0, 60) + ' — Suplemento';
+    document.title = semMarcas(frase(v)).slice(0, 60) + ' — Suplemento';
   }
 
   function telaEdicao() {
@@ -299,15 +330,23 @@
     var blocos = ed.secoes.map(function (s) {
       if (s.id === 'lancamentos-e-prazos') return blocoLancamentos(s);
       if (s.id === 'notas') return blocoNotas(s);
-      var vs = ed.verbetes.filter(function (v) { return v.secao === s.id; });
-      if (!vs.length) return '';
+      var ts = topicosDe(ed).filter(function (t) { return t.secao === s.id; });
+      if (!ts.length) return '';
+      var nTextos = ts.reduce(function (a, t) { return a + t.verbetes.length; }, 0);
+      var conta = ed.topicos && ed.topicos.length && nTextos !== ts.length
+        ? ts.length + (ts.length === 1 ? ' tópico' : ' tópicos') + ', ' + nTextos + ' textos'
+        : nTextos + (nTextos === 1 ? ' texto' : ' textos');
       return '<section class="bloco" id="s-' + s.id + '"><div class="bloco-cab"><h2>' + esc(s.nome) + '</h2>' +
-        '<span class="meta">' + vs.length + (vs.length === 1 ? ' texto' : ' textos') + '</span></div>' +
+        '<span class="meta">' + conta + '</span></div>' +
         (s.linha_do_fio ? '<p class="fio-semana">' + md(s.linha_do_fio) + '</p>' : '') +
-        vs.map(function (v) {
-          return '<a class="item-edicao' + (v.secao === 'repare' ? ' em-destaque' : '') + '" href="' + rotaVerbete(v.id) + '"><p class="citacao-lista">“' + md(v.citacao) + '”</p>' +
+        ts.map(function (t) {
+          var v = verbete(t.verbetes[0]);
+          if (!v) return '';
+          return '<div class="item-edicao' + (v.secao === 'repare' ? ' em-destaque' : '') + '">' +
+            '<a class="cobre" href="' + rotaVerbete(v.id) + '">' + (t.titulo ? '<span class="titulo-topico">' + esc(t.titulo) + '</span>' : '') +
+            '<p class="citacao-lista">“' + md(v.citacao) + '”</p>' +
             '<p class="resumo-lista">' + mdTexto(v.resumo) + '</p>' +
-            '<span class="meta">' + linhaMeta(v) + '</span></a>';
+            '<span class="meta">' + linhaMeta(v) + '</span></a>' + tambemHTML(t, rotaVerbete) + '</div>';
         }).join('') + '</section>';
     }).join('');
     var voltar = ehAtual() ? ['#/', 'Hoje'] : ['#/arquivo', 'Edições anteriores'];
@@ -417,7 +456,7 @@
       var g = lerGuardados(), i = g.map(function (x) { return x.id; }).indexOf(id);
       if (i >= 0) { g.splice(i, 1); aviso('Tirado dos guardados'); }
       else {
-        g.unshift({ id: id, data: ed.data, numero: ed.numero, citacao: v.citacao, url: v.url, meta: semMarcas(quem(v) ? quem(v) + ' · ' + v.veiculo : v.veiculo) });
+        g.unshift({ id: id, data: ed.data, numero: ed.numero, citacao: frase(v), url: v.url, meta: semMarcas(quem(v) ? quem(v) + ' · ' + v.veiculo : v.veiculo) });
         aviso('Guardado');
       }
       gravarGuardados(g);
@@ -425,7 +464,7 @@
       b.querySelector('span').textContent = i < 0 ? 'Guardado' : 'Guardar';
     }
     if (acao === 'partilhar' && v) {
-      var texto = '“' + semMarcas(v.citacao) + '” — ' + semMarcas(v.veiculo) + ', no Suplemento';
+      var texto = (v.citacao ? '“' + semMarcas(v.citacao) + '”' : semMarcas(v.linha)) + ' — ' + semMarcas(v.veiculo) + ', no Suplemento';
       // endereço fixo: continua valendo depois que a edição muda
       var url = location.origin + location.pathname + location.search + '#/n/' + ed.data + '/v/' + id;
       if (navigator.share) navigator.share({ title: 'Suplemento', text: texto, url: url }).catch(function () {});

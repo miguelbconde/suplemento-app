@@ -1,6 +1,6 @@
 /* Suplemento — service worker: o app abre sem internet.
  * Casca do app: do cache, atualizada em segundo plano. Edições (JSON): primeiro da rede, cache como reserva. */
-var VERSAO = 'suplemento-v16';
+var VERSAO = 'suplemento-v17';
 var CASCA = ['./', 'index.html', 'style.css', 'app.js', 'manifest.webmanifest',
   'fonts/newsreader-latin-opsz-normal.woff2', 'fonts/newsreader-latin-opsz-italic.woff2', 'fonts/archivo-latin-wght-normal.woff2',
   'icons/icon-192.png', 'icons/apple-touch-icon.png'];

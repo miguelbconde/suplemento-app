@@ -365,3 +365,27 @@ body.previa .pagina, .exemplo .pagina { padding-top: 0; }
 .modos button { width: 34px; height: 32px; }
 :root:not([data-tema]) .em-destaque { border-left-color: var(--tangerina) !important; border-bottom-color: transparent !important; }
 :root:not([data-tema]) .item-edicao.em-destaque { margin-top: 8px; }
+
+/* tópicos (formato 1.1): um texto principal e até dois "E também" */
+.cobre { display: flex; flex-direction: column; gap: 8px; color: var(--tinta); }
+.item-dia .cobre { gap: 10px; }
+.item-dia .titulo-topico { margin-top: -6px; }
+.cobre:active, .tambem-item:active, .tambem-volta:active { opacity: 0.7; }
+.item-edicao:active, .item-dia:active { opacity: 1; }
+.bloco a.cobre, .bloco a.tambem-item { color: var(--tinta); text-decoration: none; }
+.rubrica-topico { color: var(--cinza); }
+.titulo-topico { font-family: var(--sem-serifa); font-size: 13px; font-weight: 600; letter-spacing: 0.02em; color: var(--rubrica); }
+.tambem { margin-top: 12px; padding-left: 14px; border-left: 2px solid var(--fio); display: flex; flex-direction: column; }
+.rubrica-tambem { font-family: var(--sem-serifa); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cinza); }
+.tambem-item { display: flex; flex-direction: column; gap: 3px; padding: 9px 0; min-height: 44px; color: var(--tinta); }
+.tambem-item + .tambem-item { border-top: 1px dotted var(--fio); }
+.tambem-linha { font-size: 16px; line-height: 1.45; }
+.tambem-linha strong { font-weight: 600; }
+.verbete .tambem { margin-top: 26px; }
+.tambem-volta { margin-top: 26px; padding: 14px 0 0; border-top: 1px solid var(--fio); display: flex; flex-direction: column; gap: 6px; color: var(--tinta); }
+.tambem-volta .citacao-lista { font-size: 19px; }
+.verbete-tambem .resumo { font-size: 22px; line-height: 1.45; margin-top: 6px; }
+.verbete-tambem .resumo::first-letter, :root:not([data-tema]) .verbete-tambem .resumo::first-letter, :root[data-tema] .verbete-tambem .resumo::first-letter { float: none; font-size: inherit; line-height: inherit; padding: 0; color: inherit; font-weight: inherit; }
+:root:not([data-tema]) .tambem { border-left-color: var(--cobalto); }
+:root:not([data-tema]) .titulo-topico { color: var(--cobalto); }
+:root[data-tema="noite"] .tambem-linha strong { color: #EE8E6C; }

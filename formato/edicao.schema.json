@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://suplemento.substack.com/formato/edicao.schema.json",
   "title": "Edição do Suplemento",
-  "description": "Uma edição semanal do Suplemento. Fonte única: o app lê este arquivo e o HTML do Substack é gerado a partir dele. Formato 1.0, de 22/11/2026 (revisto no mesmo dia com o nº 2 real).",
+  "description": "Uma edição semanal do Suplemento. Fonte única: o app lê este arquivo e o HTML do Substack é gerado a partir dele. Formato 1.0, de 22/11/2026; formato 1.1, de 24/11/2026, organiza a edição em tópicos (de 1 a 3 textos cada).",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -17,7 +17,11 @@
   ],
   "properties": {
     "formato": {
-      "const": "1.0"
+      "enum": [
+        "1.0",
+        "1.1"
+      ],
+      "description": "1.1: a edição se organiza em tópicos (campo topicos)."
     },
     "numero": {
       "type": "integer",
@@ -50,6 +54,14 @@
       },
       "minItems": 1
     },
+    "topicos": {
+      "type": "array",
+      "description": "Formato 1.1. Os tópicos na ordem da edição (14, contando Repare e Para ler com calma). Cada um reúne de 1 a 3 verbetes: o primeiro é o principal, os outros entram como 'E também'.",
+      "items": {
+        "$ref": "#/$defs/topico"
+      },
+      "minItems": 1
+    },
     "verbetes": {
       "type": "array",
       "items": {
@@ -79,7 +91,7 @@
     },
     "destaques_por_dia": {
       "type": "object",
-      "description": "Home do app: para cada dia (quarta a terça), até 5 ids de verbete, na ordem de exibição.",
+      "description": "Home do app: para cada dia (quarta a terça), até 5 ids, na ordem de exibição. No formato 1.1, ids de tópico (n3-t01); no 1.0, ids de verbete.",
       "propertyNames": {
         "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
       },
@@ -152,8 +164,6 @@
       "required": [
         "id",
         "secao",
-        "citacao",
-        "resumo",
         "veiculo",
         "url",
         "lingua",
@@ -283,13 +293,50 @@
                 "de"
               ]
             }
-          }
+          },
+          "description": "Formato 1.0: complemento do Repare. No 1.1, use um verbete 'tambem' no tópico."
         },
         "assinatura": {
           "type": "string",
           "description": "Como a autoria aparece para o leitor, quando o campo autor não basta (entrevistas): 'Georges Didi-Huberman, em conversa com Sara Cohen'. Sem ela, o app mostra o autor."
+        },
+        "papel": {
+          "enum": [
+            "principal",
+            "tambem"
+          ],
+          "description": "Formato 1.1. 'tambem': texto secundário do tópico, numa linha, sem citação nem resumo longo. Sem o campo, vale 'principal'."
+        },
+        "linha": {
+          "$ref": "#/$defs/texto",
+          "description": "Formato 1.1, para papel 'tambem': uma linha (até 25 palavras) dizendo o que é e por que ler."
         }
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "papel": {
+                "const": "tambem"
+              }
+            },
+            "required": [
+              "papel"
+            ]
+          },
+          "then": {
+            "required": [
+              "linha"
+            ]
+          },
+          "else": {
+            "required": [
+              "citacao",
+              "resumo"
+            ]
+          }
+        }
+      ]
     },
     "item_com_link": {
       "type": "object",
@@ -383,6 +430,41 @@
         "rotulo_link": {
           "type": "string",
           "description": "Texto do link no fim da linha: 'ler', 'edital', 'chamada', o nome do site."
+        }
+      }
+    },
+    "topico": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "secao",
+        "titulo",
+        "verbetes"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^n\\d+-t\\d{2}$",
+          "description": "Ex.: n3-t01. Fixo depois de publicado."
+        },
+        "secao": {
+          "type": "string",
+          "description": "id de uma das seções da edição; os verbetes do tópico ficam na mesma seção."
+        },
+        "titulo": {
+          "type": "string",
+          "description": "Nome do tópico, da redação, de 2 a 6 palavras: 'A crítica, para quê'."
+        },
+        "verbetes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "maxItems": 3,
+          "uniqueItems": true,
+          "description": "ids dos verbetes; o primeiro é o principal."
         }
       }
     }
