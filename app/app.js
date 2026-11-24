@@ -1,7 +1,7 @@
 /* Suplemento — app v1.1
  * Lê as edições em JSON (formatos 1.0 e 1.1, ver /formato no repositório).
  * No 1.1 a edição se organiza em tópicos: um texto principal e até dois "E também".
- * Telas: Hoje (os destaques do dia: três tópicos desde o nº 3), Edição, Verbete, Guardados, Edições anteriores e Sobre.
+ * Telas: Hoje (o destaque do dia: três tópicos nos dias úteis, a Estante no sábado, as Notas no domingo), Edição, Verbete, Guardados, Edições anteriores e Sobre.
  * Sem dependências, sem rastreadores.
  *
  * Rotas (hash):
@@ -179,6 +179,7 @@
   }
   function idsDoDia(d) {
     var ids = topicosDe(atual).map(function (t) { return t.id; }).concat(atual.verbetes.map(function (v) { return v.id; }));
+    ids.push('notas');   // domingo: Notas da semana e prazos
     return ((atual.destaques_por_dia || {})[d] || []).filter(function (id) { return ids.indexOf(id) >= 0; });
   }
   function rotaDia() { return diaVisto === hojeData ? '#/' : '#/dia/' + diaVisto; }
@@ -250,6 +251,7 @@
     var ehHoje = diaVisto === hojeData;
     var tops = topicosDe(atual);
     var itens = idsVistos.map(function (id, i) {
+      if (id === 'notas') return cartaoNotas();
       var t = tops.filter(function (x) { return x.id === id; })[0] || topicoDoVerbete(atual, id);
       var v = verbete(t ? t.verbetes[0] : id), s = secao(v.secao);
       var rub = esc(s ? s.nome : '');
@@ -264,11 +266,32 @@
     }).join('');
     app.innerHTML =
       cabeca(dataCurta(hojeISO()), 'Nº ' + ed.numero) + faixaDias() +
-      '<section class="secao-dia"><div class="titulo"><h2>' + (ehHoje ? QUANTAS[idsVistos.length] + ' para hoje' : 'As ' + NUMERAL[idsVistos.length] + ' de ' + diaSemana(diaVisto)) + '</h2>' +
-      (ehHoje ? '<span class="meta">de ' + topicosDe(ed).length + ' na edição</span>' : '') + '</div>' + itens + '</section>' +
+      '<section class="secao-dia"><div class="titulo"><h2>' + tituloDia(idsVistos, ehHoje, diaVisto) + '</h2>' +
+      (ehHoje && idsVistos[0] !== 'notas' ? '<span class="meta">de ' + topicosDe(ed).length + ' na edição</span>' : '') + '</div>' + itens + '</section>' +
       '<a class="chamada-edicao" href="#/edicao"><span class="rubrica" style="color:var(--cinza)">A edição inteira</span>' +
       '<span class="grande">Nº ' + ed.numero + ' · ' + esc(ed.titulo) + ' →</span></a>' +
-      '<p class="rodape-dia">' + (ehHoje ? 'Amanhã, outras ' + NUMERAL[hojeIds.length] + '. A edição não sai daqui.' : '<a href="#/">Voltar às ' + NUMERAL[hojeIds.length] + ' de hoje</a>') + '</p>' + pe();
+      '<p class="rodape-dia">' + (ehHoje ? 'Amanhã tem mais. A edição inteira não sai daqui.' : '<a href="#/">Voltar a hoje</a>') + '</p>' + pe();
+  }
+  function tituloDia(ids, ehHoje, dia) {
+    if (ids[0] === 'notas') return ehHoje ? 'As notas da semana' : 'As notas de ' + diaSemana(dia);
+    var n = ids.length;
+    if (ehHoje) return QUANTAS[n] + ' para hoje';
+    return n === 1 ? 'A leitura de ' + diaSemana(dia) : 'As ' + NUMERAL[n] + ' de ' + diaSemana(dia);
+  }
+  // Domingo: as notas da semana e os prazos, num cartão só
+  function cartaoNotas() {
+    var n = (ed.notas || []).map(function (x) {
+      var link = x.url && x.url.indexOf('⟨') < 0 ? ' <a href="' + esc(x.url) + '" target="_blank" rel="noopener">' + esc(x.rotulo_link || 'ler') + ' →</a>' : '';
+      return '<p class="linha"><strong>' + md(x.titulo) + '</strong> ' + md(x.texto) + link + '</p>';
+    }).join('');
+    var p = (ed.prazos || []).map(function (x) {
+      var data = x.prazo === 'fluxo contínuo' ? 'contínuo' : ddmm(x.prazo);
+      return '<li><span class="data">' + data + '</span><span>' + md(x.promotor) + ', ' + md(x.nome) +
+        ' <a href="' + esc(x.url) + '" target="_blank" rel="noopener">' + esc(x.rotulo_link || 'ver') + ' →</a></span></li>';
+    }).join('');
+    return '<div class="item-dia item-notas"><span class="num" aria-hidden="true">✦</span><div class="corpo bloco">' +
+      '<span class="rubrica">Notas da semana</span>' + n +
+      (p ? '<span class="rubrica" style="margin-top:14px">Prazos</span><ul class="prazos">' + p + '</ul>' : '') + '</div></div>';
   }
 
   function telaVerbete(id) {

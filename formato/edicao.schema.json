@@ -56,7 +56,7 @@
     },
     "topicos": {
       "type": "array",
-      "description": "Formato 1.1. Os tópicos na ordem da edição: até 14, distribuídos pelas 5 seções (Repare, Para ler já, Livros, A contrapelo, Para ler com calma); a Estante acadêmica também usa um tópico, fora da conta. Cada um reúne de 1 a 3 verbetes: o primeiro é o principal, os outros entram como 'E também'.",
+      "description": "Formato 1.1. Os tópicos na ordem da edição: 15 nas 5 seções (Repare, Para ler já, Livros, A contrapelo, Para ler com calma), com até 20 textos, mais o tópico da Estante acadêmica, fora da conta. Cada um reúne de 1 a 3 verbetes: o primeiro é o principal, os outros entram como 'E também'.",
       "items": {
         "$ref": "#/$defs/topico"
       },
@@ -91,7 +91,7 @@
     },
     "destaques_por_dia": {
       "type": "object",
-      "description": "Home do app: para cada dia (quarta a terça), os ids na ordem de exibição. No formato 1.1, 3 ids de tópico por dia (n3-t01), e o primeiro de cada dia útil é o da versão gratuita; no 1.0, até 5 ids de verbete.",
+      "description": "Home do app: para cada dia (quarta a terça), os ids na ordem de exibição. No formato 1.1: nos dias úteis, 3 tópicos das 5 seções, cada um uma única vez na semana (o primeiro é o da versão gratuita); no sábado, o tópico da Estante acadêmica; no domingo, \"notas\" (Notas da semana e prazos). No 1.0, até 5 ids de verbete.",
       "propertyNames": {
         "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
       },

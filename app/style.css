@@ -389,3 +389,8 @@ body.previa .pagina, .exemplo .pagina { padding-top: 0; }
 :root:not([data-tema]) .tambem { border-left-color: var(--cobalto); }
 :root:not([data-tema]) .titulo-topico { color: var(--cobalto); }
 :root[data-tema="noite"] .tambem-linha strong { color: #EE8E6C; }
+
+/* domingo: notas e prazos no cartão do dia */
+.item-notas .corpo { padding: 0; gap: 6px; }
+.item-notas .linha:first-of-type { border-top: 0; }
+.item-notas .num { font-size: 22px; }

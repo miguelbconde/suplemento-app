@@ -8,6 +8,8 @@ import json, sys, datetime as dt
 from collections import Counter
 from pathlib import Path
 
+SECOES_TOPICOS = ("repare", "para-ler-ja", "livros", "a-contrapelo", "para-ler-com-calma")
+
 def main(caminho):
     ed = json.loads(Path(caminho).read_text(encoding="utf-8"))
     erros, avisos = [], []
@@ -70,8 +72,8 @@ def main(caminho):
         for vid in ids:
             if onde[vid] == 0: erros.append(f"{vid}: fora de todos os tópicos")
             elif onde[vid] > 1: erros.append(f"{vid}: em mais de um tópico")
-        contados = [t for t in topicos if t["secao"] in ("repare", "para-ler-ja", "livros", "a-contrapelo", "para-ler-com-calma")]
-        if len(contados) > 14: avisos.append(f"{len(contados)} tópicos nas 5 seções (máximo da casa: 14)")
+        contados = [t for t in topicos if t["secao"] in SECOES_TOPICOS]
+        if len(contados) != 15: avisos.append(f"{len(contados)} tópicos nas 5 seções (a edição tem 15: 3 por dia útil)")
         if len(verbetes) > 20: avisos.append(f"{len(verbetes)} textos (teto da casa: 20)")
         multi = sum(len(t["verbetes"]) > 1 for t in topicos)
         if multi > 4: avisos.append(f"{multi} tópicos com mais de um texto (máximo da casa: 4)")
@@ -87,17 +89,37 @@ def main(caminho):
     except (KeyError, ValueError):
         pass
     vezes = Counter()
-    validos = tids if topicos else ids
+    validos = (tids + ["notas"]) if topicos else ids
     for dia, lista in dias.items():
         for i in lista:
             if i not in validos:
                 erros.append(f"destaque de {dia}: id inexistente {i}" + (" (no formato 1.1, use ids de tópico)" if topicos and i in ids else ""))
             vezes[i] += 1
-    for i in validos:
-        if vezes[i] == 0: avisos.append(f"{i} nunca aparece em destaque")
     if topicos:
+        # 1.1: dias úteis com 3 tópicos das 5 seções, cada um uma vez; sábado, a Estante; domingo, as Notas
+        estante = [t["id"] for t in topicos if t["secao"] == "estante-academica"]
+        secao_de = {t["id"]: t["secao"] for t in topicos}
+        try:
+            d0 = dt.date.fromisoformat(ed["data"])
+            sab, dom = str(d0 + dt.timedelta(3)), str(d0 + dt.timedelta(4))
+        except (KeyError, ValueError):
+            sab = dom = None
         for dia, lista in sorted(dias.items()):
-            if len(lista) != 3: avisos.append(f"destaques de {dia}: {len(lista)} tópicos (a casa usa 3 por dia; na versão gratuita vale o primeiro, de quarta a terça, sem sábado e domingo)")
+            if dia == sab:
+                if lista != estante[:1]: erros.append(f"sábado ({dia}): só o tópico da Estante acadêmica ({', '.join(estante) or 'nenhum'})")
+            elif dia == dom:
+                if lista != ["notas"]: erros.append(f"domingo ({dia}): só \"notas\" (Notas da semana e prazos)")
+            else:
+                if len(lista) != 3: avisos.append(f"destaques de {dia}: {len(lista)} tópicos (dia útil tem 3; na versão gratuita vale o primeiro)")
+                for i in lista:
+                    if secao_de.get(i) not in SECOES_TOPICOS: erros.append(f"destaque de {dia}: {i} não é tópico das 5 seções")
+        for i, n in vezes.items():
+            if n > 1: erros.append(f"{i} aparece {n} vezes nos destaques (cada tópico entra uma única vez na semana)")
+        for t in topicos:
+            if t["secao"] in SECOES_TOPICOS and vezes[t["id"]] == 0: avisos.append(f"{t['id']} nunca aparece em destaque")
+    else:
+        for i in validos:
+            if vezes[i] == 0: avisos.append(f"{i} nunca aparece em destaque")
 
     def pendentes(x, caminho=""):
         if isinstance(x, dict):
