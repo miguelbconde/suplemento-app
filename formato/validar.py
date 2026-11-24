@@ -95,6 +95,9 @@ def main(caminho):
             vezes[i] += 1
     for i in validos:
         if vezes[i] == 0: avisos.append(f"{i} nunca aparece em destaque")
+    if topicos:
+        for dia, lista in sorted(dias.items()):
+            if len(lista) != 3: avisos.append(f"destaques de {dia}: {len(lista)} tópicos (a casa usa 3 por dia; na versão gratuita vale o primeiro, de quarta a terça, sem sábado e domingo)")
 
     def pendentes(x, caminho=""):
         if isinstance(x, dict):

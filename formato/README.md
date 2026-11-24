@@ -17,7 +17,7 @@ Arquivos desta pasta:
 | `topicos` | **1.1.** Os tópicos na ordem da edição (ver abaixo). |
 | `verbetes` | Um objeto por texto recomendado (ver abaixo). |
 | `lancamentos`, `prazos`, `notas` | Listas curtas, cada item com `url` e `rotulo_link` (o texto do link: "ler", "edital", "Euronews"). As notas têm `titulo`, a abertura em negrito ("Chile."). Os prazos têm `nova_na_semana` para as chamadas que entraram na semana. O mural completo de editais terá arquivo próprio. |
-| `destaques_por_dia` | A home do app: de quarta a terça, até 5 ids por dia, na ordem de exibição. No 1.1, ids de **tópico** (`n3-t01`); no 1.0, de verbete. |
+| `destaques_por_dia` | A home do app: de quarta a terça, os ids na ordem de exibição. No 1.1, **3 tópicos por dia** (`n3-t01`); o primeiro de cada dia útil (quarta, quinta, sexta, segunda e terça) é o destaque da versão gratuita, que não muda no sábado e no domingo. No 1.0, até 5 verbetes por dia. |
 
 O lema, o rodapé, o expediente e a linha "Todas as chamadas abertas da área estão na página Editais e prazos" são fixos e ficam na configuração do app, não em cada edição. As marcas de língua e acesso (*[Em inglês]*, *[paywall]*) também não vão no resumo: são geradas a partir de `lingua`, `nota_acesso` e `acesso_fonte`.
 
@@ -34,7 +34,7 @@ A edição se organiza em **até 14 tópicos**, distribuídos pelas 5 seções (
 
 O principal é um verbete completo (citação e resumo). Os outros levam `papel: "tambem"` e uma `linha` no lugar de citação e resumo: até 25 palavras, dizendo o que é e por que ler, com o nome central em negrito. As marcas de língua e acesso continuam saindo de `lingua`, `nota_acesso` e `acesso_fonte`. Cada texto segue sendo um verbete com id próprio, endereço fixo e lugar no registro; as metas da casa (veículos, acesso, eixo) contam texto por texto.
 
-No app, a tela Hoje mostra 5 **tópicos** por dia; a Edição agrupa cada seção por tópico, com o título do tópico, o principal e a faixa "E também"; a tela de um texto "E também" mostra a linha e leva de volta ao principal. O `na_mesma_semana` do 1.0 continua lido, mas no 1.1 o complemento do Repare entra como "E também".
+No app, a tela Hoje mostra 3 **tópicos** por dia; a Edição agrupa cada seção por tópico, com o título do tópico, o principal e a faixa "E também"; a tela de um texto "E também" mostra a linha e leva de volta ao principal. O `na_mesma_semana` do 1.0 continua lido, mas no 1.1 o complemento do Repare entra como "E também".
 
 ### Verbete
 
@@ -67,9 +67,9 @@ Avisos, que só sinalizam:
 - menos de 3/4 dos textos abertos;
 - menos de 40% fora do eixo Europa Ocidental–América do Norte;
 - tópicos (ou verbetes, no 1.0) que nunca aparecem em destaque;
-- no 1.1: mais de 14 tópicos nas 5 seções, mais de 20 textos, mais de 4 tópicos com mais de um texto.
+- no 1.1: mais de 14 tópicos nas 5 seções, mais de 20 textos, mais de 4 tópicos com mais de um texto, dia com número de destaques diferente de 3.
 
 ## Em aberto
 
-- **A regra de repetição dos destaques.** São 35 vagas na semana para até 14 tópicos (mais a Estante): cada um aparece duas ou três vezes. O exemplo apenas percorre a edição em ordem, cinco por dia, e começa a quarta pelo Repare.
+- **A regra de repetição dos destaques.** São 21 vagas na semana (3 por dia) para até 15 tópicos (14 mais a Estante): todos aparecem ao menos uma vez e uns seis voltam num segundo dia. A versão gratuita mostra 1 por dia útil (5 na semana): o primeiro de cada dia. Falta decidir quais tópicos repetem e quais vão para a gratuita (a sugestão é o Repare na quarta). O exemplo do 1.1 percorre os tópicos em ordem, três por dia.
 - **Onde fica o conteúdo dos assinantes.** O repositório e o site são públicos. Quando o app passar a ser pago, as seções `assinantes` saem do arquivo público e vão para um serviço com login (Workers e KV ou D1 da Cloudflare). O campo `acesso` de cada seção já marca o corte.

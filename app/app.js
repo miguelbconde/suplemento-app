@@ -1,7 +1,7 @@
 /* Suplemento — app v1.1
  * Lê as edições em JSON (formatos 1.0 e 1.1, ver /formato no repositório).
  * No 1.1 a edição se organiza em tópicos: um texto principal e até dois "E também".
- * Telas: Hoje (cinco destaques do dia), Edição, Verbete, Guardados, Edições anteriores e Sobre.
+ * Telas: Hoje (os destaques do dia: três tópicos desde o nº 3), Edição, Verbete, Guardados, Edições anteriores e Sobre.
  * Sem dependências, sem rastreadores.
  *
  * Rotas (hash):
@@ -10,7 +10,7 @@
  *   #/v/<id>                verbete da edição mais recente
  *   #/n/<data>              edição de uma data (AAAA-MM-DD), endereço fixo
  *   #/n/<data>/v/<id>       verbete de uma edição, endereço fixo (é o que se compartilha)
- *   #/dia/<data>            os cinco destaques de outro dia da semana
+ *   #/dia/<data>            os destaques de outro dia da semana
  *   #/arquivo  #/guardados  #/sobre
  */
 (function () {
@@ -240,6 +240,8 @@
       '<p class="discreto">Enquanto isso, a edição sai toda quarta em <a href="https://suplemento.substack.com">suplemento.substack.com</a>.</p></div>' + pe();
   }
 
+  var NUMERAL = ['', 'uma', 'duas', 'três', 'quatro', 'cinco'];
+  var QUANTAS = ['', 'Uma leitura', 'Duas leituras', 'Três leituras', 'Quatro leituras', 'Cinco leituras'];
   function telaHoje(dia) {
     navAtiva('hoje');
     ed = atual;
@@ -262,11 +264,11 @@
     }).join('');
     app.innerHTML =
       cabeca(dataCurta(hojeISO()), 'Nº ' + ed.numero) + faixaDias() +
-      '<section class="secao-dia"><div class="titulo"><h2>' + (ehHoje ? 'Cinco leituras para hoje' : 'As cinco de ' + diaSemana(diaVisto)) + '</h2>' +
+      '<section class="secao-dia"><div class="titulo"><h2>' + (ehHoje ? QUANTAS[idsVistos.length] + ' para hoje' : 'As ' + NUMERAL[idsVistos.length] + ' de ' + diaSemana(diaVisto)) + '</h2>' +
       (ehHoje ? '<span class="meta">de ' + topicosDe(ed).length + ' na edição</span>' : '') + '</div>' + itens + '</section>' +
       '<a class="chamada-edicao" href="#/edicao"><span class="rubrica" style="color:var(--cinza)">A edição inteira</span>' +
       '<span class="grande">Nº ' + ed.numero + ' · ' + esc(ed.titulo) + ' →</span></a>' +
-      '<p class="rodape-dia">' + (ehHoje ? 'Amanhã, outras cinco. A edição não sai daqui.' : '<a href="#/">Voltar às cinco de hoje</a>') + '</p>' + pe();
+      '<p class="rodape-dia">' + (ehHoje ? 'Amanhã, outras ' + NUMERAL[hojeIds.length] + '. A edição não sai daqui.' : '<a href="#/">Voltar às ' + NUMERAL[hojeIds.length] + ' de hoje</a>') + '</p>' + pe();
   }
 
   function telaVerbete(id) {

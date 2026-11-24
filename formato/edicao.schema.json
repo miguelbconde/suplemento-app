@@ -91,7 +91,7 @@
     },
     "destaques_por_dia": {
       "type": "object",
-      "description": "Home do app: para cada dia (quarta a terça), até 5 ids, na ordem de exibição. No formato 1.1, ids de tópico (n3-t01); no 1.0, ids de verbete.",
+      "description": "Home do app: para cada dia (quarta a terça), os ids na ordem de exibição. No formato 1.1, 3 ids de tópico por dia (n3-t01), e o primeiro de cada dia útil é o da versão gratuita; no 1.0, até 5 ids de verbete.",
       "propertyNames": {
         "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
       },
