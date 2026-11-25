@@ -73,8 +73,6 @@ def main(src, dst):
         out.append('<h2>' + s['nome'] + '</h2>\n')
         if s.get('linha_do_fio'): out.append('<p><em>' + md(s['linha_do_fio']) + '</em></p>\n')
         for t in tops:
-            if len(tops) > 1 or sid not in ('repare','para-ler-com-calma','estante-academica'):
-                out.append('<h3>' + md(t['titulo']) + '</h3>\n')
             k = 0
             for vid in t['verbetes']:
                 v = V[vid]
