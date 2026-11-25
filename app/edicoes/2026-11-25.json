@@ -1,0 +1,724 @@
+{
+ "formato": "1.1",
+ "numero": 3,
+ "data": "2026-11-25",
+ "titulo": "“Você pode, e isso adoece”",
+ "subtitulo": "Epidemia de ansiedade, quem conta na história (da Guiné-Bissau ao Panthéon), a livraria como infraestrutura da leitura, a música drone, os faxes de Malcolm e Roth e mais.",
+ "url_substack": "https://suplemento.substack.com/p/n-3-voce-pode-e-isso-adoece",
+ "abertura": "Em entrevista à *Revista Ñ*, do *Clarín*, a antropóloga Paula Sibilia vê na promessa de que tudo é possível uma explicação para a ansiedade epidêmica do presente. Mas os limites não somem: mudam de lugar. Às vezes estão na própria história, que decide quem conta: as mulheres que lutaram pela libertação da Guiné-Bissau, as camponesas do Piemonte gravadas por Nuto Revelli, as “vidas minúsculas” que uma exposição leva ao Panthéon, em Paris. Também o bolso, quem não sabe, tem limites todos seus: a Festa do Livro da USP, aberta hoje, deve lotar mais uma vez com seus irresistíveis descontos de 50%, enquanto livreiros reclamam de concorrência desigual. Na Europa, um relatório leva essa discussão para outras estantes e propõe pensar a livraria como infraestrutura da leitura. No Saara, outro tipo de comércio ajudou a traçar limites geopolíticos: o colonialismo inventou fronteiras a partir das rotas de um deserto que nunca foi vazio. Quem traça os limites, e para quem, é a pergunta que atravessa a edição.",
+ "secoes": [
+  {
+   "id": "repare",
+   "nome": "Repare",
+   "acesso": "aberto"
+  },
+  {
+   "id": "para-ler-ja",
+   "nome": "Para ler já",
+   "acesso": "aberto"
+  },
+  {
+   "id": "livros",
+   "nome": "Livros",
+   "acesso": "aberto"
+  },
+  {
+   "id": "a-contrapelo",
+   "nome": "A contrapelo",
+   "acesso": "aberto"
+  },
+  {
+   "id": "para-ler-com-calma",
+   "nome": "Para ler com calma",
+   "acesso": "assinantes"
+  },
+  {
+   "id": "estante-academica",
+   "nome": "Da estante acadêmica",
+   "acesso": "assinantes"
+  },
+  {
+   "id": "lancamentos-e-prazos",
+   "nome": "Lançamentos e prazos",
+   "acesso": "assinantes"
+  },
+  {
+   "id": "notas",
+   "nome": "Notas da semana",
+   "acesso": "aberto"
+  }
+ ],
+ "topicos": [
+  {
+   "id": "n3-t02",
+   "secao": "repare",
+   "titulo": "Quem conta",
+   "verbetes": [
+    "n3-02",
+    "n3-23",
+    "n3-24",
+    "n3-03"
+   ]
+  },
+  {
+   "id": "n3-t03",
+   "secao": "para-ler-ja",
+   "titulo": "A China que escreve das fábricas",
+   "verbetes": [
+    "n3-04",
+    "n3-05"
+   ]
+  },
+  {
+   "id": "n3-t04",
+   "secao": "para-ler-ja",
+   "titulo": "A crítica, para quê",
+   "verbetes": [
+    "n3-06"
+   ]
+  },
+  {
+   "id": "n3-t05",
+   "secao": "para-ler-ja",
+   "titulo": "Literatura negra no acervo do JB",
+   "verbetes": [
+    "n3-07"
+   ]
+  },
+  {
+   "id": "n3-t06",
+   "secao": "para-ler-ja",
+   "titulo": "Gaza nas telas",
+   "verbetes": [
+    "n3-08"
+   ]
+  },
+  {
+   "id": "n3-t07",
+   "secao": "para-ler-ja",
+   "titulo": "Peleshian e a montagem a distância",
+   "verbetes": [
+    "n3-09"
+   ]
+  },
+  {
+   "id": "n3-t08",
+   "secao": "para-ler-ja",
+   "titulo": "Janet Delaney e os salões de cabeleireiro",
+   "verbetes": [
+    "n3-10",
+    "n3-11"
+   ]
+  },
+  {
+   "id": "n3-t09",
+   "secao": "para-ler-ja",
+   "titulo": "Música drone, o som que se dissolve",
+   "verbetes": [
+    "n3-12"
+   ]
+  },
+  {
+   "id": "n3-t10",
+   "secao": "para-ler-ja",
+   "titulo": "Paula Sibilia e o eu sem limites",
+   "verbetes": [
+    "n3-13"
+   ]
+  },
+  {
+   "id": "n3-t11",
+   "secao": "livros",
+   "titulo": "Cynthia Rimsky",
+   "verbetes": [
+    "n3-14"
+   ]
+  },
+  {
+   "id": "n3-t12",
+   "secao": "livros",
+   "titulo": "O Oriente de Elsa Morante",
+   "verbetes": [
+    "n3-15"
+   ]
+  },
+  {
+   "id": "n3-t13",
+   "secao": "a-contrapelo",
+   "titulo": "A livraria como infraestrutura da leitura",
+   "verbetes": [
+    "n3-16",
+    "n3-17",
+    "n3-18"
+   ]
+  },
+  {
+   "id": "n3-t14",
+   "secao": "a-contrapelo",
+   "titulo": "O Saara nunca foi fronteira",
+   "verbetes": [
+    "n3-19"
+   ]
+  },
+  {
+   "id": "n3-t15",
+   "secao": "a-contrapelo",
+   "titulo": "Libertários e autoritários",
+   "verbetes": [
+    "n3-20"
+   ]
+  },
+  {
+   "id": "n3-t16",
+   "secao": "para-ler-com-calma",
+   "titulo": "Tóibín lê Thomas Mann",
+   "verbetes": [
+    "n3-21"
+   ]
+  },
+  {
+   "id": "n3-t17",
+   "secao": "estante-academica",
+   "titulo": "O sublime, o diário e o exílio",
+   "verbetes": [
+    "n3-22"
+   ]
+  }
+ ],
+ "verbetes": [
+  {
+   "id": "n3-02",
+   "secao": "repare",
+   "citacao": "Na Guiné-Bissau, dizemos que as mulheres precisam lutar contra dois colonialismos.",
+   "resumo": "Nos onze anos de guerrilha contra Portugal na Guiné-Bissau e em Cabo Verde, as mulheres combateram em duas frentes: o colonizador e o preconceito dos próprios camaradas. *The Moon Will Not Burn Us* (Cassava Republic), de **Ricci Shryock**, reúne essas histórias, e **Rose Nneoma Abba** lê o livro atenta ao que o PAIGC construiu ainda durante a guerra: escolas, formação, um Estado em ensaio. A terra explorada pela política colonial aparece como aliada dos combatentes. Amílcar Cabral, como alguém que não inventou a raiva anticolonial, mas usou seus privilégios para organizá-la. E uma pergunta atravessa o livro: o que se ama mais, o país ou os filhos?",
+   "conferencia": "In Guinea-Bissau, we say that women must fight against two colonialisms. (fala de Carmen Pereira)",
+   "autor": "Rose Nneoma Abba",
+   "figura": "Mulheres na luta de libertação da Guiné-Bissau; The Moon Will Not Burn Us, de Ricci Shryock",
+   "veiculo": "Africa Is a Country",
+   "url": "https://africasacountry.com/2026/11/labors-of-liberation",
+   "lingua": "en",
+   "acesso_fonte": "aberto",
+   "area": [
+    "história",
+    "gênero"
+   ],
+   "regiao": "Áfricas",
+   "assinatura": "Carmen Pereira, citada por Rose Nneoma Abba"
+  },
+  {
+   "id": "n3-03",
+   "secao": "repare",
+   "papel": "tambem",
+   "linha": "O trabalho dessas mulheres tem lugar na teoria: para **Nancy Fraser**, o lucro depende também do cuidado, mal pago ou não pago, e do trabalho expropriado. Os bastidores, diz ela, devem passar para o primeiro plano.",
+   "autor": "Afonso Dias Ramos (entrevista)",
+   "figura": "Nancy Fraser",
+   "veiculo": "Electra",
+   "url": "https://electramagazine.fundacaoedp.pt/editions/edicao-34/nancy-fraser-os-bastidores-devem-passar-para-o-primeiro-plano",
+   "lingua": "pt",
+   "acesso_fonte": "aberto",
+   "area": [
+    "filosofia política",
+    "gênero"
+   ],
+   "regiao": "América do Norte",
+   "assinatura": "Nancy Fraser, em conversa com Afonso Dias Ramos",
+   "regiao_obs": "veículo português"
+  },
+  {
+   "id": "n3-23",
+   "secao": "repare",
+   "papel": "tambem",
+   "linha": "Outras mulheres que ninguém ouvia: entre 1977 e 1982, **Nuto Revelli** gravou camponesas do Piemonte; Édith de la Héronnière lê os 107 depoimentos de *Le maillon fort* (Nous).",
+   "autor": "Édith de la Héronnière",
+   "figura": "Nuto Revelli, Le maillon fort. Vies de femmes paysannes",
+   "veiculo": "En attendant Nadeau",
+   "url": "https://www.en-attendant-nadeau.fr/2026/11/24/vies-majuscules/",
+   "lingua": "fr",
+   "acesso_fonte": "aberto",
+   "area": [
+    "história oral",
+    "gênero"
+   ],
+   "regiao": "Europa Ocidental"
+  },
+  {
+   "id": "n3-24",
+   "secao": "repare",
+   "papel": "tambem",
+   "linha": "A mesma pergunta no templo dos grandes homens: a exposição *Vies minuscules* leva vidas comuns para baixo da cúpula do Panthéon, em Paris. Por Paul Bernard-Nouraud.",
+   "autor": "Paul Bernard-Nouraud",
+   "figura": "Exposição Vies minuscules (Centre Pompidou, Panthéon)",
+   "veiculo": "En attendant Nadeau",
+   "url": "https://www.en-attendant-nadeau.fr/2026/11/24/vies-minuscules/",
+   "lingua": "fr",
+   "acesso_fonte": "aberto",
+   "area": [
+    "artes visuais"
+   ],
+   "regiao": "Europa Ocidental"
+  },
+  {
+   "id": "n3-04",
+   "secao": "para-ler-ja",
+   "citacao": "Se a Renascença do Dongbei ainda existe, é como exercício de marca.",
+   "resumo": "Nos anos 1990, o fechamento das estatais do Nordeste chinês deixou uma multidão sem emprego nem rede de proteção. Os filhos desses operários viraram escritores: Ban Yu, Shuang Xuetao e Zheng Zhi, os “Três Espadachins de Tiexi”, fizeram da ruína industrial uma ficção que, na pandemia, jovens urbanos leram como espelho da própria precariedade. **Andrew Rule** conta o que veio depois: séries de TV, adaptações cortadas ou adiadas, o Prêmio Lu Xun para Ban Yu em 2026 e a entrada do grupo numa lista oficial de autores para promover no exterior. O Estado agora quer o prestígio do movimento. Os três, enquanto isso, já mudaram de assunto.",
+   "conferencia": "To the extent that the Dongbei Renaissance still exists, it is as a branding exercise",
+   "autor": "Andrew Rule",
+   "figura": "Renascença do Dongbei: Ban Yu, Shuang Xuetao, Zheng Zhi",
+   "veiculo": "China Books Review",
+   "url": "https://chinabooksreview.com/2026/11/19/dongbei-renaissance/",
+   "lingua": "en",
+   "acesso_fonte": "aberto",
+   "area": [
+    "literatura"
+   ],
+   "regiao": "Ásia"
+  },
+  {
+   "id": "n3-05",
+   "secao": "para-ler-ja",
+   "papel": "tambem",
+   "linha": "**Federico Picerni** acompanha o Grupo Literário de Picun, de escritores migrantes em Pequim: as instituições ruíram, a escrita continua. Resenha de Luka Lei Zhang.",
+   "autor": "Luka Lei Zhang",
+   "figura": "Chinese Worker Writers, de Federico Picerni",
+   "veiculo": "positions politics",
+   "url": "https://positionspolitics.org/luka-lei-zhang-reviews-federico-picerni-chinese-worker-writers-the-social-and-textual-practice-of-the-picun-literature-group/",
+   "lingua": "en",
+   "acesso_fonte": "aberto",
+   "area": [
+    "literatura"
+   ],
+   "regiao": "Ásia"
+  },
+  {
+   "id": "n3-06",
+   "secao": "para-ler-ja",
+   "citacao": "Não é preciso ser muito desconfiado para farejar que uma fórmula assim se presta a toda sorte de tramoias.",
+   "resumo": "Para **Ignacio Echevarría**, o Planeta, o Nadal e os demais prêmios que editoras dão a livros que elas mesmas vão vender são uma anomalia que a Espanha naturalizou. Nasceram sob o franquismo como alternativa à cultura oficial e sobreviveram porque o mercado os sustenta. A editora é júri e vendedora, os originais às vezes chegam escolhidos de antemão, e imprensa, crítica e leitores emprestam a credibilidade. Depois de Franco, o Planeta passou a premiar escritores de esquerda e comprou, com isso, prestígio. A farpa mais afiada fica para o fim: alguns vencedores recentes, diz ele, não fazem feio diante de um texto de máquina.",
+   "conferencia": "No hace falta ser muy suspicaz para barruntar que una fórmula así da ocasión a todo tipo de tejemanejes.",
+   "autor": "Ignacio Echevarría",
+   "figura": "Prêmios literários comerciais na Espanha",
+   "veiculo": "Revista de Libros",
+   "url": "https://www.revistadelibros.com/la-noria-incesante-de-los-premios/",
+   "lingua": "es",
+   "acesso_fonte": "aberto",
+   "area": [
+    "crítica",
+    "mercado editorial"
+   ],
+   "regiao": "Europa Ocidental"
+  },
+  {
+   "id": "n3-07",
+   "secao": "para-ler-ja",
+   "citacao": "Levantei o tapete para que fossem vistas.",
+   "resumo": "Uma busca por “literatura negra” no acervo do *Jornal do Brasil* devolve quase nada nas sete primeiras décadas do século 20, e a menção mais antiga, de 1942, trata de autores norte-americanos. **Mariana Moreira** parte desse vazio para refazer o caminho das escritoras negras no Brasil: os *Cadernos Negros*, a Mazza Edições, fundada por **Maria Mazzarello** em 1981 e casa de *Ponciá Vicêncio*, e a geração de Cidinha da Silva, Calila das Mercês e Mel Duarte. No meio do caminho, a recusa de *A cena em sombras*, de Leda Maria Martins, por uma grande editora em 1993. Hoje, mulheres pretas e pardas são 30% de quem compra livros. Resta saber o que mudou do lado de quem publica.",
+   "conferencia": "Levantei o tapete para que fossem vistas (fala de Cidinha da Silva)",
+   "autor": "Mariana Moreira",
+   "figura": "Escritoras negras e mercado editorial no Brasil",
+   "veiculo": "Quatro Cinco Um",
+   "url": "https://quatrocincoum.com.br/reportagens/bagagem-literaria/nossos-livros-vem-de-longe/",
+   "lingua": "pt",
+   "acesso_fonte": "aberto",
+   "area": [
+    "literatura",
+    "mercado editorial"
+   ],
+   "regiao": "Brasil",
+   "assinatura": "Cidinha da Silva, na reportagem de Mariana Moreira"
+  },
+  {
+   "id": "n3-08",
+   "secao": "para-ler-ja",
+   "citacao": "Contar o genocídio na voz dos algozes; disputar a escuta pública a partir daí.",
+   "resumo": "Em *NAZA*, os israelenses Yuval Abraham e Rachel Szor põem 24 ex-agentes de inteligência para descrever, com rosto e voz alterados, a logística da destruição de Gaza. Quase não há imagens dela: só terraços de Tel Aviv à noite. O título é a sigla hebraica para “dano colateral”. **Gabriel Giorgi** lê o documentário, coproduzido por *The Guardian*, *+972* e *Local Call*, como uma aposta: fazer ouvir a barbárie de dentro da máquina, para disputar o consenso israelense. E não esconde o risco dessa aposta, um filme sobre Gaza sem vozes palestinas.",
+   "conferencia": "Contar el genocidio en la voz de los victimarios; disputar la escucha pública desde ahí.",
+   "autor": "Gabriel Giorgi",
+   "figura": "NAZA, documentário de Yuval Abraham e Rachel Szor",
+   "veiculo": "Revista Otra Parte",
+   "url": "https://www.revistaotraparte.com/discusion/naza-y-el-holocausto-de-los-gamers/",
+   "lingua": "es",
+   "acesso_fonte": "aberto",
+   "area": [
+    "cinema"
+   ],
+   "regiao": "América Latina",
+   "regiao_obs": "veículo argentino; tema: Gaza"
+  },
+  {
+   "id": "n3-09",
+   "secao": "para-ler-ja",
+   "citacao": "Mãos que carregam um caixão parecem galhos de árvore; uma multidão balança como um oceano.",
+   "resumo": "Em 1971, o cineasta armênio **Artavazd Peleshian** formulou a “montagem a distância”. Em vez de colar imagens, como Eisenstein, ele as separava e intercalava outros fragmentos, espalhando o sentido por uma rede de ecos. **Daniel Schwartz** e **Armand Yervant Tufenkian** mostram como essa técnica dá forma à vida coletiva nos filmes, recém-restaurados. Em *Nós* (1969), o povo armênio e seus planaltos. Em *As estações do ano* (1975), pastores, animais e terreno num só corpo. Em *Nosso século* (1982), o cosmos como organismo vivo. Com Jean-Luc Nancy, os autores sugerem uma comunidade que se junta sem se fundir.",
+   "conferencia": "Hands bearing a coffin resemble the limbs of trees; a crowd sways like an ocean.",
+   "autor": "Daniel Schwartz e Armand Yervant Tufenkian",
+   "figura": "Artavazd Peleshian",
+   "veiculo": "e-flux",
+   "url": "https://www.e-flux.com/notes/6783560/on-distance-community-and-landscape-in-the-films-of-artavazd-peleshyan",
+   "lingua": "en",
+   "acesso_fonte": "aberto",
+   "area": [
+    "cinema"
+   ],
+   "regiao": "Europa (margens)",
+   "regiao_obs": "Armênia"
+  },
+  {
+   "id": "n3-10",
+   "secao": "para-ler-ja",
+   "citacao": "O salão é um lugar de consumo, um espaço de sociabilidade e, de certo modo, de reparação.",
+   "resumo": "Em 1980, nos últimos dias antes de se aposentar, o pai de **Janet Delaney** percorria os salões de beleza de Los Angeles vendendo produtos, e a filha o fotografou. Mais de quatro décadas depois, as imagens saem em *Too Many Products, Too Much Pressure* (Deadbeat Club), entremeadas de diálogos, monólogos e lembranças, inclusive da mãe. **Emilia Edwards** mostra como foto e texto, ali, não se explicam: se atritam. O vendedor que empurra mercadoria é também quem escuta e cuida, e o salão, território das mulheres, vira lugar de convívio e conserto. Por baixo de tudo, a dificuldade de medir uma vida pelo trabalho.",
+   "conferencia": "La peluquería es un lugar de consumo, un espacio de sociabilidad y, en cierto modo, de reparación.",
+   "autor": "Emilia Edwards",
+   "figura": "Janet Delaney, Too Many Products, Too Much Pressure",
+   "veiculo": "Revista Santiago",
+   "url": "https://revistasantiago.cl/narrativas-visuales/janet-delaney-las-peluquerias-y-la-memoria-familiar/",
+   "lingua": "es",
+   "acesso_fonte": "aberto",
+   "area": [
+    "fotografia"
+   ],
+   "regiao": "América Latina",
+   "regiao_obs": "veículo chileno"
+  },
+  {
+   "id": "n3-11",
+   "secao": "para-ler-ja",
+   "papel": "tambem",
+   "linha": "Em Manágua, **Alondra**, mulher trans e ex-presa política, formou-se em direito mas não pode advogar com o próprio nome; hoje atende num salão em casa.",
+   "autor": "Francisca Bonilla",
+   "figura": "Mulheres trans na Nicarágua",
+   "veiculo": "Revista Anfibia",
+   "url": "https://www.revistaanfibia.com/el-salon-de-belleza-ultimo-refugio-de-la-identidad-trans-en-nicaragua/",
+   "lingua": "es",
+   "acesso_fonte": "aberto",
+   "area": [
+    "crônica",
+    "gênero"
+   ],
+   "regiao": "América Latina",
+   "regiao_obs": "Nicarágua"
+  },
+  {
+   "id": "n3-12",
+   "secao": "para-ler-ja",
+   "citacao": "Antes e além de um gênero, o drone é um conceito.",
+   "resumo": "Uma nota sustentada, quase imóvel, que desfaz a estrutura da música e convida à imersão. **Antonio Francesco Perozzi** segue a música drone desde a Nova York dos anos 1960, de La Monte Young, Marian Zazeela e Tony Conrad, com a lição indiana de Pran Nath, até Éliane Radigue, Kali Malone e Tim Hecker. No caminho, passa pelo Velvet Underground e pelo *Metal Machine Music* de Lou Reed, pelo krautrock, pelo metal ritual do Sunn O))) e até pela cítara prolongada de “Tomorrow Never Knows”. A pergunta que atravessa tudo: esse som aponta para algo além da experiência comum, ou esvazia todo sentido?",
+   "conferencia": "perché prima e oltre che un genere il drone è un concetto",
+   "autor": "Antonio Francesco Perozzi",
+   "figura": "Música drone",
+   "veiculo": "Le parole e le cose",
+   "url": "https://www.leparoleelecose.it/cupio-dissolvi-la-musica-drone-e-lincognita/",
+   "lingua": "it",
+   "acesso_fonte": "aberto",
+   "area": [
+    "música"
+   ],
+   "regiao": "Europa Ocidental"
+  },
+  {
+   "id": "n3-13",
+   "secao": "para-ler-ja",
+   "citacao": "Antes nos reprimiam; hoje nos dizem ‘você pode’, e isso nos adoece.",
+   "resumo": "Antes, a sociedade reprimia. Hoje estimula: oferece um catálogo para nos otimizarmos em tudo, e a culpa por não conseguir é nossa. Em entrevista a Héctor Pavón, a antropóloga argentina **Paula Sibilia**, que vive no Rio e escreveu *O show do eu*, liga a ansiedade do presente a essa promessa sem limites. As redes venderam igualdade e entregaram hostilidade. Agora a inteligência artificial oferece dispensar até o esforço de agradar aos outros. Nem a morte escapa: Laurie Anderson diz que continua a compor com Lou Reed. Só que os limites continuam lá, e daí vem a frustração. Sibilia prepara o terceiro livro de sua “trilogia do eu”, com um título que já é diagnóstico: *Yo me basto a mí mismo*.",
+   "conferencia": "Antes nos reprimían; hoy nos dicen ‘vos podés’ y eso nos enferma (destaque da página, atribuído a Sibilia)",
+   "autor": "Héctor Pavón (entrevista)",
+   "figura": "Paula Sibilia",
+   "veiculo": "Revista Ñ",
+   "url": "https://www.clarin.com/revista-n/paula-sibilia-aceleramos-audios-dormimos-tratando-acompanar-vertigo-imposible_0_zj0zibY5hN.html",
+   "lingua": "es",
+   "acesso_fonte": "parcial",
+   "area": [
+    "ideias",
+    "tecnologia"
+   ],
+   "regiao": "América Latina",
+   "assinatura": "Paula Sibilia, em conversa com Héctor Pavón",
+   "nota_acesso": "o site do Clarín libera um número limitado de textos",
+   "regiao_obs": "veículo argentino; autora vive no Brasil"
+  },
+  {
+   "id": "n3-14",
+   "secao": "livros",
+   "citacao": "Não escrevo para que tudo fique claro, mas para que algo se abra.",
+   "resumo": "Recém-premiada com o Prêmio Nacional de Literatura do Chile, **Cynthia Rimsky** foi à Universidad Diego Portales lançar a nova edição de *Los perplejos* (Anagrama) e conversar com Ariel Florencia Richards. Diz que não escreve livros, constrói livros. Diz também que o que lhe interessa é reescrever, e que aprendeu com a artista Sybil Brintrup a tratar as palavras como objetos que se deslocam. Escreve-se como se aprendeu a ler: daí a linhagem que reivindica, de Juan Emar e Enrique Lihn a Claudia Donoso. E uma recusa simpática: ela não quer ser autoridade, nem escritora famosa, nem “o Prêmio Nacional”.",
+   "conferencia": "No escribo para que todo sea claro, sino para que algo se abra. (Cynthia Rimsky)",
+   "autor": "Sebastián Duarte Rojas",
+   "figura": "Cynthia Rimsky",
+   "veiculo": "Revista Santiago",
+   "url": "https://revistasantiago.cl/literatura/cynthia-rimsky-uno-escribe-como-lee-como-aprendio-a-leer/",
+   "lingua": "es",
+   "acesso_fonte": "aberto",
+   "area": [
+    "literatura"
+   ],
+   "regiao": "América Latina",
+   "veiculo_complemento": "texto de Sebastián Duarte Rojas",
+   "assinatura": "Cynthia Rimsky, no texto de Sebastián Duarte Rojas",
+   "regiao_obs": "Chile"
+  },
+  {
+   "id": "n3-15",
+   "secao": "livros",
+   "citacao": "Ó Baruch! Sinto muito por você, mas aqui você não ENTENDEU.",
+   "resumo": "Depois das viagens à China, em 1957, e à Índia, em 1961, **Elsa Morante** não escreveu nenhum livro sobre elas. O Oriente entrou por outro caminho: pelos livros que ela passou a ler, cujas margens encheu de notas sobre budismo, taoísmo, zen e haicai, ao lado de Platão, Espinosa e Simone Weil. São essas notas que **Angela Borghesi** estuda em *Sulle rive del Gange* (Quodlibet), para mostrar uma leitora sistemática, e não uma xamã. Para Massimo Schilirò, o livro de Borghesi ilumina a obra tardia da romancista, de *Il mondo salvato dai ragazzini*, que ela considerava seu melhor livro, ao pequeno Useppe de *A história*. O Oriente de Morante, afinal, foi uma viagem filosófica.",
+   "conferencia": "O Baruch! me ne dolgo per te, ma qui tu non hai CAPITO (anotação de Morante no seu exemplar da Ética de Spinoza)",
+   "autor": "Massimo Schilirò",
+   "figura": "Elsa Morante; Sulle rive del Gange, de Angela Borghesi",
+   "veiculo": "Doppiozero",
+   "url": "https://www.doppiozero.com/angela-borghesi-loriente-di-elsa-morante",
+   "lingua": "it",
+   "acesso_fonte": "aberto",
+   "area": [
+    "literatura"
+   ],
+   "regiao": "Europa Ocidental",
+   "assinatura": "Elsa Morante, na margem da Ética de Spinoza"
+  },
+  {
+   "id": "n3-16",
+   "secao": "a-contrapelo",
+   "citacao": "Movimento, relações e laços comunitários que duram mais do que o próprio vale.",
+   "resumo": "Na Europa, a **livraria de bairro** vem sendo tratada como peça da infraestrutura que forma leitores, e não só como comércio. É o argumento do relatório do RISE, projeto da federação europeia de livreiros (EIBF), que reúne as políticas que sustentam essa ideia. São elas o preço fixo do livro, os vales culturais para jovens que excluem as grandes plataformas e exigem retirada na loja, e os programas que põem pediatras para dar livros a bebês. No Brasil, a conversa ainda gira em torno do desconto: a Lei Cortez aprovada no Senado em 2024, a Amazon, as feiras com 50% de desconto. A da USP abre nesta quarta. O relatório sugere que talvez a pergunta esteja errada.",
+   "conferencia": "generating footfall, relationships, and community connections that outlast the voucher itself (relatório, p. 24)",
+   "autor": "RISE / EIBF",
+   "figura": "Livrarias e formação de leitores; RISE Reading Promotion Toolkit",
+   "veiculo": "RISE / EIBF",
+   "url": "https://risebookselling.eu/reading-promotion-toolkit",
+   "lingua": "en",
+   "acesso_fonte": "aberto",
+   "area": [
+    "mercado editorial",
+    "leitura"
+   ],
+   "regiao": "Europa Ocidental"
+  },
+  {
+   "id": "n3-17",
+   "secao": "a-contrapelo",
+   "papel": "tambem",
+   "linha": "Na Convenção Nacional de Livrarias, **Alexandre Martins Fontes**, presidente da ANL, chamou a Festa do Livro da USP de “desserviço”; Edusp e Editora 34 discordaram.",
+   "autor": "Beatriz Sardinha",
+   "figura": "Feiras de desconto e livrarias",
+   "veiculo": "PublishNews",
+   "url": "https://www.publishnews.com.br/materias/2026/09/03/feiras-de-descontos-provocam-debates-reais-na-convencao-nacional-de-livrarias",
+   "lingua": "pt",
+   "acesso_fonte": "aberto",
+   "area": [
+    "mercado editorial"
+   ],
+   "regiao": "Brasil",
+   "veiculo_complemento": "Beatriz Sardinha, 3/9"
+  },
+  {
+   "id": "n3-18",
+   "secao": "a-contrapelo",
+   "papel": "tambem",
+   "linha": "Dono de um sebo numa cidade pequena tcheca, **Jakub Vaníček** defende a loja como lugar de conversa sem pressa, onde opiniões firmes balançam.",
+   "autor": "Jakub Vaníček",
+   "figura": "Sebos tchecos",
+   "veiculo": "Eurozine",
+   "url": "https://www.eurozine.com/a-maze-where-people-meet/",
+   "lingua": "en",
+   "acesso_fonte": "aberto",
+   "area": [
+    "livrarias"
+   ],
+   "regiao": "Europa (margens)",
+   "lingua_original": "tcheco",
+   "veiculo_complemento": "tradução de Julia Sherwood",
+   "regiao_obs": "República Tcheca"
+  },
+  {
+   "id": "n3-19",
+   "secao": "a-contrapelo",
+   "citacao": "Por isso o vazio nunca é uma descrição inocente.",
+   "resumo": "Chamar o Saara de vazio não é só cometer um erro de geografia. É uma forma de apagamento que permite ignorar as rotas, as trocas e as obrigações que sustentam a vida ali, e apresentar cada intervenção de fora como a primeira chegada da ordem. **Fabrizio Floris** parte de *Shifting Sands*, história humana do deserto escrita pela antropóloga **Judith Scheele**. Para ela, o colonialismo endureceu em fronteiras caminhos antigos, que os Estados independentes herdaram. Do Fezzan, na Líbia, a Assamaka, na divisa entre Argélia e Níger, o texto chega à política de agora: expulsões de migrantes, a lei nigerina revogada em 2023, a Aliança dos Estados do Sahel apertando o controle das passagens. Resta saber quem decide o que é comércio, tráfico ou ameaça.",
+   "conferencia": "This is why emptiness is never an innocent description.",
+   "autor": "Fabrizio Floris",
+   "figura": "Saara; Shifting Sands, de Judith Scheele",
+   "veiculo": "Africa Is a Country",
+   "url": "https://africasacountry.com/2026/11/the-sahara-was-never-a-border",
+   "lingua": "en",
+   "acesso_fonte": "aberto",
+   "area": [
+    "história",
+    "migração"
+   ],
+   "regiao": "Áfricas"
+  },
+  {
+   "id": "n3-20",
+   "secao": "a-contrapelo",
+   "citacao": "As ideias contam; as redes que as fazem circular contam tanto quanto elas.",
+   "resumo": "Antes de Milei, houve setenta anos de fundações, *think tanks* e militantes. Em *Los dueños de la libertad* (Penguin Random House), **Soledad Vallejos** reconstitui essa rede, da Sociedade Mont Pèlerin à Atlas Network, seguindo pessoas em vez de países. **Stéphanie Alenda** elogia a distância crítica do livro. Há libertários que rejeitam Bolsonaro e Milei, mas os mais influentes juntam liberalismo econômico e conservadorismo religioso, num mundo muito masculino. E o próprio Hayek teve suas ambivalências com a democracia. O enigma é o Chile, quase ausente da genealogia: talvez porque ali as ideias já estavam dentro do Estado desde a ditadura.",
+   "conferencia": "Les idées comptent ; les réseaux qui les font circuler comptent tout autant",
+   "autor": "Stéphanie Alenda",
+   "figura": "Libertarismo na América do Sul; Los dueños de la libertad, de Soledad Vallejos",
+   "veiculo": "La Vie des idées",
+   "url": "https://laviedesidees.fr/Le-libertarisme-en-Amerique-du-Sud",
+   "lingua": "fr",
+   "acesso_fonte": "aberto",
+   "area": [
+    "política das ideias"
+   ],
+   "regiao": "América Latina",
+   "regiao_obs": "veículo francês"
+  },
+  {
+   "id": "n3-21",
+   "secao": "para-ler-com-calma",
+   "citacao": "Havia na imaginação dele uma selvageria que os ternos não acompanhavam.",
+   "resumo": "Faz trinta anos que **Colm Tóibín** escreve sobre **Thomas Mann** e sua família. A conversa com Andrew Marzoni vem a propósito de *Fatherland*, filme de Paweł Pawlikowski que nasceu como adaptação de *The Magician*, o romance de Tóibín, e se afastou dele, e dos fatos, no caminho. Sobram histórias. Uma é a viagem a Los Angeles que ele só aceitou fazer se o deixassem entrar na casa dos Mann. Outra, a escrivaninha que atravessou o Atlântico para que o escritório, de porta fechada, virasse uma pequena Alemanha. E há o pacto com o leitor: os fatos não se mexem, e o diálogo se inventa num inglês dos anos 1920, à maneira da Brett Ashley de Hemingway. Quando um jornalista alemão lhe pergunta como é “queerizar” Mann, Tóibín devolve: não foi ele quem escreveu *Morte em Veneza*, nem os diários. Mas o que mais lhe interessa é a mudança: o monarquista de 1914 que, em 1942, percorria os Estados Unidos prometendo a vitória da democracia. E, para quem pergunta como ninguém viu Hitler chegando, ele tem uma comparação pronta, e bem atual.",
+   "conferencia": "There was a wildness in his imagination that was not matched by his suits. (Colm Tóibín)",
+   "autor": "Andrew Marzoni (entrevista)",
+   "figura": "Colm Tóibín e Thomas Mann",
+   "veiculo": "The Paris Review",
+   "url": "https://www.theparisreview.org/blog/2026/11/20/fatherland-colm-toibin-on-thomas-mann/",
+   "lingua": "en",
+   "acesso_fonte": "aberto",
+   "area": [
+    "literatura"
+   ],
+   "regiao": "América do Norte",
+   "assinatura": "Colm Tóibín, em conversa com Andrew Marzoni"
+  },
+  {
+   "id": "n3-22",
+   "secao": "estante-academica",
+   "citacao": "A natureza foi transformada pelo horror da história.",
+   "resumo": "Em 1844, uma viajante inglesa admirava do conforto do quarto uma tempestade “sublime” nos Pireneus. Em fevereiro de 1939, **María Zambrano** viu descer pelos mesmos passos a multidão de republicanos a caminho da França. **Raquel Fernández Menéndez** parte desse contraste para devolver ao sublime a dimensão do espaço, que a teoria, de Lyotard aos estudos do Holocausto, deixou em segundo plano. Lê três diários do exílio republicano espanhol. O de Zambrano faz da dor uma forma de saber. O de Zenobia Camprubí encontra no mar de Havana beleza e terror ao mesmo tempo. E o de Max Aub, escrito entre campos de concentração, guarda o trauma no próprio estilo, em frases sem conectivos. O diário, sugere a autora, é mais do que documento.",
+   "conferencia": "La naturaleza ha sido transformada por el horror de la historia. (p. 284)",
+   "autor": "Raquel Fernández Menéndez",
+   "figura": "Diários do exílio republicano espanhol: Zambrano, Camprubí, Aub",
+   "veiculo": "452ºF",
+   "url": "https://revistes.ub.edu/index.php/452f/article/view/52111",
+   "lingua": "es",
+   "acesso_fonte": "aberto",
+   "area": [
+    "teoria literária",
+    "exílio"
+   ],
+   "regiao": "Europa Ocidental",
+   "veiculo_complemento": "Universitat de Barcelona"
+  }
+ ],
+ "lancamentos": [],
+ "prazos": [
+  {
+   "nome": "Programa Lélia Gonzalez (Chamada 23/2026): pesquisas sobre desigualdades étnico-raciais na ciência, na educação e na sociedade",
+   "promotor": "CNPq/MIR",
+   "prazo": "2027-03-01",
+   "url": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-23-2026/chamada-publica-cnpq-N-23-2026",
+   "rotulo_link": "chamada",
+   "nova_na_semana": true
+  },
+  {
+   "nome": "Auxílio Jovem Pesquisador para pesquisadores estrangeiros (prorrogado)",
+   "promotor": "FAPESP",
+   "prazo": "2026-12-03",
+   "url": "https://fapesp.br/18389",
+   "rotulo_link": "edital",
+   "nova_na_semana": true
+  },
+  {
+   "nome": "convocatória da sexta edição, para artistas e curadores",
+   "promotor": "Bienalsur",
+   "prazo": "2026-11-30",
+   "url": "https://bienalsur.org/es/page/convocatoria-abierta",
+   "rotulo_link": "convocatória"
+  },
+  {
+   "nome": "dossiê (prorrogação)",
+   "promotor": "*Synergies Brésil*",
+   "prazo": "2026-11-30",
+   "url": "https://anpoll.org.br/2022/prolongation-dossier-synergies/",
+   "rotulo_link": "chamada"
+  },
+  {
+   "nome": "dossiê 20 anos da BNDigital",
+   "promotor": "*Revista Brasileira de Preservação Digital*",
+   "prazo": "2026-12-01",
+   "url": "https://www.gov.br/bn/pt-br/central-de-conteudos/noticias/revista-brasileira-de-preservacao-digital-recebe-trabalhos-cientificos-para-dossie-especial-sobre-os-20-anos-da-bndigital",
+   "rotulo_link": "chamada"
+  },
+  {
+   "nome": "Chamada 34/2026, ARC, para promover eventos",
+   "promotor": "CNPq",
+   "prazo": "2026-12-04",
+   "url": "https://www.gov.br/cnpq/pt-br/chamadas/todas-as-chamadas/chamadas-2026/chamada-no-34-2026/chamada-publica-cnpq-N-34-2026",
+   "rotulo_link": "chamada"
+  }
+ ],
+ "notas": [
+  {
+   "titulo": "FIL Guadalajara, 40 anos.",
+   "texto": "A feira vai de 28 de novembro a 6 de dezembro, com a Itália como convidada de honra. A 14ª edição do programa Destinação Brasil reúne oito autores brasileiros em duas mesas.",
+   "url": "https://www.publishnews.com.br/materias/2026/11/18/programa-da-fil-guadalajara-reune-vozes-de-destaque-da-literatura-brasileira/",
+   "rotulo_link": "PublishNews"
+  },
+  {
+   "titulo": "O tamanho do livro no Brasil.",
+   "texto": "Estudo da CBL com a AVRI conta 56.976 empresas e 73.818 empregos formais no setor em 2025. O Sudeste concentra 58% das empresas e 64% dos empregos; o Norte, 3% e 2%. *[Em inglês]*",
+   "url": "https://publishingperspectives.com/2026/11/new-study-maps-the-economic-footprint-of-brazils-book-industry/",
+   "rotulo_link": "Publishing Perspectives"
+  },
+  {
+   "titulo": "Ana Mendieta no MoMA.",
+   "texto": "Retrospectiva com cerca de 200 obras, de 12 de dezembro de 2027 a 15 de abril de 2028: a primeira nos EUA em mais de vinte anos. Foi anunciada em 18/11, dia em que a artista faria 78 anos. *[Em inglês]*",
+   "url": "https://hyperallergic.com/moma-to-host-first-us-ana-mendieta-retrospective-in-over-20-years/",
+   "rotulo_link": "Hyperallergic"
+  },
+  {
+   "titulo": "Gaza desenhada de memória.",
+   "texto": "Em *Who Is Still Alive*, do suíço Nicolas Wadimoff, refugiados que saíram de Gaza para o Egito desenham no chão de um estúdio a planta dos bairros que perderam. Estreia nos cinemas britânicos em 27/11. *[Em inglês]*",
+   "url": "https://www.theguardian.com/film/2026/nov/23/who-is-still-alive-review",
+   "rotulo_link": "The Guardian"
+  },
+  {
+   "titulo": "Malcolm e Roth por fax.",
+   "texto": "Entre o fim dos anos 1980 e meados dos 1990, Janet Malcolm e Philip Roth trocaram faxes num ritmo de vício (“faxoholic”, dizia ele): piadas, leituras francas dos textos um do outro e até um julgamento simulado que ele montou para prepará-la para o tribunal. A partir dos arquivos dos dois, Eve Sneider, autora da primeira biografia de Malcolm, refaz a amizade até o fim, com o bilhete que ela acrescentou em 2012 a um fax antigo: “Que carta ridícula!” *[Em inglês]*",
+   "url": "https://www.newyorker.com/books/page-turner/the-impish-faxes-between-janet-malcolm-and-philip-roth",
+   "rotulo_link": "The New Yorker"
+  },
+  {
+   "titulo": "Um poeta de Gaza na *New Yorker*.",
+   "texto": "A revista publica “No Prophet”, de **Nasser Rabah**, poeta e romancista de Gaza, em tradução do árabe de Wiam El-Tamami. É um poema ao pai, de sonhos, pássaros e uma gazela que nunca chega. A primeira coleção de Rabah em inglês, *Gaza: The Poem Said Its Piece*, saiu em 2025. *[Em inglês; original em árabe]* *[paywall]*",
+   "url": "https://www.newyorker.com/magazine/2026/11/30/no-prophet-nasser-rabah-poem",
+   "rotulo_link": "The New Yorker"
+  }
+ ],
+ "destaques_por_dia": {
+  "2026-11-25": [
+   "n3-t02",
+   "n3-t03",
+   "n3-t08",
+   "n3-t10"
+  ],
+  "2026-11-26": [
+   "n3-t04",
+   "n3-t09",
+   "n3-t05"
+  ],
+  "2026-11-27": [
+   "n3-t11",
+   "n3-t06",
+   "n3-t12"
+  ],
+  "2026-11-28": [
+   "n3-t17"
+  ],
+  "2026-11-29": [
+   "notas"
+  ],
+  "2026-11-30": [
+   "n3-t13",
+   "n3-t14"
+  ],
+  "2026-12-01": [
+   "n3-t16",
+   "n3-t15",
+   "n3-t07"
+  ]
+ }
+}

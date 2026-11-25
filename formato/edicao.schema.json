@@ -462,7 +462,7 @@
             "type": "string"
           },
           "minItems": 1,
-          "maxItems": 3,
+          "maxItems": 4,
           "uniqueItems": true,
           "description": "ids dos verbetes; o primeiro é o principal."
         }
