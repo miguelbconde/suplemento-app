@@ -32,9 +32,10 @@ def principal(v):
     return ('<blockquote><p>“' + md(v['citacao']) + '”</p></blockquote>\n'
             '<p>' + md(v['resumo']) + (' ' + m if m else '') + ' — ' + fonte(v) + '</p>\n')
 
-def tambem(v):
+def tambem(v, i=0):
     m = marca(v)
-    return '<p><strong>E também:</strong> ' + md(v['linha']) + (' ' + m if m else '') + ' — ' + fonte(v) + '</p>\n'
+    rot = ['E também','E ainda','E mais'][min(i,2)]
+    return '<p><strong>' + rot + ':</strong> ' + md(v['linha']) + (' ' + m if m else '') + ' — ' + fonte(v) + '</p>\n'
 
 def data_br(iso):
     d = dt.date.fromisoformat(iso); return f'{d.day}/{d.month}'
@@ -74,9 +75,13 @@ def main(src, dst):
         for t in tops:
             if len(tops) > 1 or sid not in ('repare','para-ler-com-calma','estante-academica'):
                 out.append('<h3>' + md(t['titulo']) + '</h3>\n')
+            k = 0
             for vid in t['verbetes']:
                 v = V[vid]
-                out.append(tambem(v) if v.get('papel') == 'tambem' else principal(v))
+                if v.get('papel') == 'tambem':
+                    out.append(tambem(v, k)); k += 1
+                else:
+                    out.append(principal(v))
     out.append('<hr>\n<p style="text-align:center">Gostou? <strong>Compartilhe com quem também lê com gosto.</strong></p>\n<hr>\n')
     out.append('<p><small>“Quem desconfia, fica sábio” é uma frase dita por Riobaldo no <em>Grande sertão: veredas</em>, de Guimarães Rosa. A frase aparece na página 125 da edição comemorativa dos 50 anos do livro, publicada em 2006 pela editora Nova Fronteira.</small></p>\n')
     out.append('<p><small>As citações são trechos curtos, traduzidos pela redação, sempre com autor e origem, para fins de crítica e divulgação (Lei 9.610/98, art. 46, III). Os textos pertencem a seus autores e veículos; o <em>Suplemento</em> só aponta o caminho.</small></p>\n')

@@ -3,9 +3,9 @@
  "numero": 3,
  "data": "2026-11-25",
  "titulo": "“Você pode, e isso adoece”",
- "subtitulo": "Epidemia de ansiedade, Foucault visto do Sul, a livraria como infraestrutura da leitura, as mulheres da libertação da Guiné-Bissau, a música drone, os faxes de Malcolm e Roth e mais.",
+ "subtitulo": "Epidemia de ansiedade, quem conta na história (da Guiné-Bissau ao Panthéon), a livraria como infraestrutura da leitura, a música drone, os faxes de Malcolm e Roth e mais.",
  "url_substack": "https://suplemento.substack.com/p/voce-pode-e-isso-adoece",
- "abertura": "Em entrevista à *Revista Ñ*, do *Clarín*, a antropóloga Paula Sibilia vê na promessa de que tudo é possível uma explicação para a ansiedade epidêmica do presente. Mas os limites não somem: mudam de lugar. Às vezes estão no olhar, como o de Foucault, que, dando aula em Túnis, mal viu o mundo que se descolonizava à sua volta; ponto cego que as comemorações do centenário do pensador francês mantêm impensado. Também o bolso, quem não sabe, tem limites todos seus: a Festa do Livro da USP, aberta hoje, deve lotar mais uma vez com seus irresistíveis descontos de 50%, enquanto livreiros reclamam de concorrência desigual. Na Europa, um relatório leva essa discussão para outras estantes e propõe pensar a livraria como infraestrutura da leitura. No Saara, outro tipo de comércio ajudou a traçar limites geopolíticos: o colonialismo inventou fronteiras a partir das rotas de um deserto que nunca foi vazio. Quem traça os limites, e para quem, é a pergunta que atravessa a edição.",
+ "abertura": "Em entrevista à *Revista Ñ*, do *Clarín*, a antropóloga Paula Sibilia vê na promessa de que tudo é possível uma explicação para a ansiedade epidêmica do presente. Mas os limites não somem: mudam de lugar. Às vezes estão na própria história, que decide quem conta: as mulheres que lutaram pela libertação da Guiné-Bissau, as camponesas do Piemonte gravadas por Nuto Revelli, as “vidas minúsculas” que uma exposição leva ao Panthéon, em Paris. Também o bolso, quem não sabe, tem limites todos seus: a Festa do Livro da USP, aberta hoje, deve lotar mais uma vez com seus irresistíveis descontos de 50%, enquanto livreiros reclamam de concorrência desigual. Na Europa, um relatório leva essa discussão para outras estantes e propõe pensar a livraria como infraestrutura da leitura. No Saara, outro tipo de comércio ajudou a traçar limites geopolíticos: o colonialismo inventou fronteiras a partir das rotas de um deserto que nunca foi vazio. Quem traça os limites, e para quem, é a pergunta que atravessa a edição.",
  "secoes": [
   {
    "id": "repare",
@@ -50,20 +50,14 @@
  ],
  "topicos": [
   {
-   "id": "n3-t01",
-   "secao": "repare",
-   "titulo": "Foucault em Túnis",
-   "verbetes": [
-    "n3-01"
-   ]
-  },
-  {
    "id": "n3-t02",
-   "secao": "para-ler-ja",
-   "titulo": "As mulheres e os trabalhos da libertação",
+   "secao": "repare",
+   "titulo": "Quem conta",
    "verbetes": [
     "n3-02",
-    "n3-03"
+    "n3-03",
+    "n3-23",
+    "n3-24"
    ]
   },
   {
@@ -193,26 +187,8 @@
  ],
  "verbetes": [
   {
-   "id": "n3-01",
-   "secao": "repare",
-   "citacao": "No fim, Foucault só presta homenagem ao presente a contragosto.",
-   "resumo": "Em 1966, uma década depois da independência da Tunísia, **Michel Foucault** deu na universidade de Túnis um curso sobre o lugar do homem no pensamento ocidental moderno. As notas, dezessete roteiros de aula, saem agora em livro (EHESS/Gallimard/Seuil), e **Pascal Engel** não se deixa comover pelo centenário. Para ele, a arqueologia foucaultiana é arbitrária: elege Descartes como porta-voz de uma época, esquece o *De homine* de Hobbes e o discurso dos direitos do homem das revoluções, e conclui que, se um conceito muda, a coisa desaparece. O aparato editorial, diz, enxerga no esboço mais do Foucault futuro do que há nele. E há um silêncio que salta aos olhos de quem lê do Sul: dado num país recém-descolonizado, o curso mal menciona a descolonização. Resta saber o que sobra do “filósofo do presente” quando se olha para onde ele estava.",
-   "conferencia": "Finalement, Foucault ne rend hommage au présent que malgré lui",
-   "autor": "Pascal Engel",
-   "figura": "Michel Foucault, curso de Túnis (1966-1967)",
-   "veiculo": "En attendant Nadeau",
-   "url": "https://www.en-attendant-nadeau.fr/2026/11/17/un-archeologue-hegelien-a-carthage/",
-   "lingua": "fr",
-   "acesso_fonte": "aberto",
-   "area": [
-    "filosofia"
-   ],
-   "regiao": "Oriente Médio e mundo árabe",
-   "regiao_obs": "Tunísia; veículo francês"
-  },
-  {
    "id": "n3-02",
-   "secao": "para-ler-ja",
+   "secao": "repare",
    "citacao": "Na Guiné-Bissau, dizemos que as mulheres precisam lutar contra dois colonialismos.",
    "resumo": "Nos onze anos de guerrilha contra Portugal na Guiné-Bissau e em Cabo Verde, as mulheres combateram em duas frentes: o colonizador e o preconceito dos próprios camaradas. *The Moon Will Not Burn Us* (Cassava Republic), de **Ricci Shryock**, reúne essas histórias, e **Rose Nneoma Abba** lê o livro atenta ao que o PAIGC construiu ainda durante a guerra: escolas, formação, um Estado em ensaio. A terra explorada pela política colonial aparece como aliada dos combatentes. Amílcar Cabral, como alguém que não inventou a raiva anticolonial, mas usou seus privilégios para organizá-la. E uma pergunta atravessa o livro: o que se ama mais, o país ou os filhos?",
    "conferencia": "In Guinea-Bissau, we say that women must fight against two colonialisms. (fala de Carmen Pereira)",
@@ -231,9 +207,9 @@
   },
   {
    "id": "n3-03",
-   "secao": "para-ler-ja",
+   "secao": "repare",
    "papel": "tambem",
-   "linha": "**Nancy Fraser** chama “patológica” a governação dos EUA e lê a interseccionalidade por três trabalhos: o assalariado, o de cuidado e o expropriado.",
+   "linha": "**Nancy Fraser** chama de “patológica” a governança dos EUA e lê o debate atual sobre interseccionalidade a partir de três eixos que são três formas de trabalho: o assalariado, o de cuidado e o expropriado.",
    "autor": "Afonso Dias Ramos (entrevista)",
    "figura": "Nancy Fraser",
    "veiculo": "Electra",
@@ -247,6 +223,39 @@
    "regiao": "América do Norte",
    "assinatura": "Nancy Fraser, em conversa com Afonso Dias Ramos",
    "regiao_obs": "veículo português"
+  },
+  {
+   "id": "n3-23",
+   "secao": "repare",
+   "papel": "tambem",
+   "linha": "**Nuto Revelli** gravou, entre 1977 e 1982, camponesas do Piemonte nascidas entre 1884 e 1958; Édith de la Héronnière lê os 107 depoimentos de *Le maillon fort* (Nous).",
+   "autor": "Édith de la Héronnière",
+   "figura": "Nuto Revelli, Le maillon fort. Vies de femmes paysannes",
+   "veiculo": "En attendant Nadeau",
+   "url": "https://www.en-attendant-nadeau.fr/2026/11/24/vies-majuscules/",
+   "lingua": "fr",
+   "acesso_fonte": "aberto",
+   "area": [
+    "história oral",
+    "gênero"
+   ],
+   "regiao": "Europa Ocidental"
+  },
+  {
+   "id": "n3-24",
+   "secao": "repare",
+   "papel": "tambem",
+   "linha": "No Panthéon, templo dos grandes homens, a exposição *Vies minuscules*, com título tirado de Pierre Michon, leva vidas comuns para baixo da cúpula. Por Paul Bernard-Nouraud.",
+   "autor": "Paul Bernard-Nouraud",
+   "figura": "Exposição Vies minuscules (Centre Pompidou, Panthéon)",
+   "veiculo": "En attendant Nadeau",
+   "url": "https://www.en-attendant-nadeau.fr/2026/11/24/vies-minuscules/",
+   "lingua": "fr",
+   "acesso_fonte": "aberto",
+   "area": [
+    "artes visuais"
+   ],
+   "regiao": "Europa Ocidental"
   },
   {
    "id": "n3-04",
@@ -524,7 +533,7 @@
    "id": "n3-19",
    "secao": "a-contrapelo",
    "citacao": "Por isso o vazio nunca é uma descrição inocente.",
-   "resumo": "Chamar o Saara de vazio não é só erro de geografia. É o que permite ignorar as rotas, as trocas e as obrigações que sustentam a vida ali, e apresentar cada intervenção de fora como a primeira chegada da ordem. **Fabrizio Floris** parte de *Shifting Sands*, história humana do deserto escrita pela antropóloga **Judith Scheele**. Para ela, o colonialismo endureceu em fronteiras caminhos antigos, que os Estados independentes herdaram. Do Fezzan, na Líbia, a Assamaka, na divisa entre Argélia e Níger, o texto chega à política de agora: expulsões de migrantes, a lei nigerina revogada em 2023, a Aliança dos Estados do Sahel apertando o controle das passagens. Resta saber quem decide o que é comércio, tráfico ou ameaça.",
+   "resumo": "Chamar o Saara de vazio não é só cometer um erro de geografia. É uma forma de apagamento que permite ignorar as rotas, as trocas e as obrigações que sustentam a vida ali, e apresentar cada intervenção de fora como a primeira chegada da ordem. **Fabrizio Floris** parte de *Shifting Sands*, história humana do deserto escrita pela antropóloga **Judith Scheele**. Para ela, o colonialismo endureceu em fronteiras caminhos antigos, que os Estados independentes herdaram. Do Fezzan, na Líbia, a Assamaka, na divisa entre Argélia e Níger, o texto chega à política de agora: expulsões de migrantes, a lei nigerina revogada em 2023, a Aliança dos Estados do Sahel apertando o controle das passagens. Resta saber quem decide o que é comércio, tráfico ou ameaça.",
    "conferencia": "This is why emptiness is never an innocent description.",
    "autor": "Fabrizio Floris",
    "figura": "Saara; Shifting Sands, de Judith Scheele",
@@ -681,15 +690,15 @@
  ],
  "destaques_por_dia": {
   "2026-11-25": [
-   "n3-t01",
+   "n3-t02",
    "n3-t03",
    "n3-t08",
    "n3-t10"
   ],
   "2026-11-26": [
-   "n3-t02",
    "n3-t04",
-   "n3-t09"
+   "n3-t09",
+   "n3-t05"
   ],
   "2026-11-27": [
    "n3-t11",
@@ -704,8 +713,7 @@
   ],
   "2026-11-30": [
    "n3-t13",
-   "n3-t14",
-   "n3-t05"
+   "n3-t14"
   ],
   "2026-12-01": [
    "n3-t16",
