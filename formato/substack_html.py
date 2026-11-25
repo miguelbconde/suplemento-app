@@ -72,7 +72,8 @@ def main(src, dst):
         if not tops: continue
         out.append('<h2>' + s['nome'] + '</h2>\n')
         if s.get('linha_do_fio'): out.append('<p><em>' + md(s['linha_do_fio']) + '</em></p>\n')
-        for t in tops:
+        for ti, t in enumerate(tops):
+            if ti: out.append('<p style="text-align:center">· · ·</p>\n')
             k = 0
             for vid in t['verbetes']:
                 v = V[vid]
